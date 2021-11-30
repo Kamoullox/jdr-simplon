@@ -1,0 +1,81 @@
+body{
+      background-image: url(Goldshire.jpg) ;
+      background-size: cover;
+      font-family :Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#histoire{
+       text-align: center;
+       height: fit-content;
+       margin-left: 5vh;
+       margin-right: 5vh;
+       margin-top: 5vh;
+       font-size: 33px;
+       float:left;
+       border: solid 1vh; 
+       border-color:rgb(61, 27, 2);
+       background-color: rgba(78, 53, 7, 0.5);
+       
+       
+
+}
+#histoire p{  color:cornsilk; 
+
+              
+              
+} 
+
+#choix{
+       font-size: 22px;
+       float:right;
+       text-align: center;
+       height: fit-content;
+}
+ul{
+       
+       list-style: none;
+}
+
+li{
+       border: solid; 
+       border-color:rgb(61, 27, 2);
+       background-color: rgba(78, 53, 7, 0.5);
+       margin-bottom: 3vh ;
+       margin-right: 5vh;
+       margin-left: 3vh;
+       color:cornsilk;
+      
+} 
+
+#container{
+       
+       display:flex;
+      flex-direction: column;  
+}
+@media screen and (min-width: 1800px)
+{ 
+       #container{
+       
+              
+             flex-direction: row;  
+       }   
+       
+       #histoire p{
+              font-size: 45px;
+              margin-left: 10vh;
+              margin-right: 15vh;
+              
+       }
+
+       #choix {
+              font-size: 35px;
+              
+              
+       }
+
+       li{
+              
+              margin-right: 13vh;
+       }
+}
+
