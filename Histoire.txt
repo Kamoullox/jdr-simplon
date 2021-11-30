@@ -1,0 +1,24 @@
+//Par convention, la scène où l'aventurier décède est la 0
+Scène 0
+
+Scène 1
+Description = "Bonjour fier aventurier ! Vous êtes dans une forêt obscure (et réputée dangeureuse), sur la route menant à la ville de Magimar. Votre objectif est de l'atteindre sain et sauf. Sur votre droite, vous remarquez une caverne."
+Choix 1 = "Vous décidez de passer votre chemin", "Vous continuez sur la route.", 2, 0
+Choix 2 = "Vous allumez votre torche et entrez dans la grotte", "", 3, 0
+Scène 2
+Description = "Le temps se gâte et il commence à pleuvoir. Sur le bord de la route, vous remarquez un vieux puits."
+Choix 1 = "Vous jetez une pièce d'or dans le puits en formulant un voeu.", "La pièce tombe avec un plouf! sonore, et vous êtes guéri de vos blessures.", 6, 20
+Choix 2 = "Vous descendez dans le puits.", "Vous glissez et tombez au fond du puits. L'eau monte inexorablement, personne n'entend vos appels à l'aide, et vous mourez noyé.", 0, -20
+Choix 3 = "Vous décidez de ne pas y accorder d'importance et continuez votre route.", "", 6, 0
+Scène 3
+Description = "Le sol de la grotte est assez uniforme et vous progressez aisément. Soudain, un grondement sourd se fait entendre devant vous. Vous avez dérangé un ours énorme !"
+Choix 1 = "Vous poussez un cri de terreur et prenez vos jambes à votre cou.", "L'ours vous laboure le dos de ses puissantes griffes, et vous poursuit jusqu'à l'entrée de sa caverne, puis retourne se coucher.", 2, -5
+Choix 2 = "Vous tirez votre épée et décidez de l'affronter.", "", 4, -10
+Choix 3 = "Vous lui jetez vos rations et reculez lentement.", "L'ours se jette sur vos rations et vous en profitez pour rejoindre la route.", 2, 0
+Scène 4
+Description = "Le combat est difficile et sanglant. L'ours s'écroule, mort, mais non sans vous avoir infligé de nombreuses blessures. Au fond de son antre, vous distinguez deux coffres fermés."
+Choix 1 = "Vous décidez d'ouvrir le grand coffre à droite.", "Le coffre était piégé ! Une aiguille empoisonnée vous pique le doigt au moment où vous l'ouvrez, et vous perdez 5 pdv. Vous quittez la grotte en maugréant sur votre infortune.", 2, -5
+Choix 2 = "Vous décidez d'ouvrir le petit coffre à gauche.", "Quelle chance, le coffre contient une potion de guérison qui vous redonne 7 points de vie.", 2, 7
+Choix 3 = "Vous sortez de la grotte sans plus de cérémonie.", "", 2, 0
+Scène 4
+
