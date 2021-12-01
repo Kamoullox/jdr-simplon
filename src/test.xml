@@ -1,4 +1,4 @@
-<Histoire>
+<?xml version="1.0" encoding="UTF-8"?>
 <Scene num="0">
 	<Description>
 		Hu ho, vous êtes mort. Mais avant de rejoindre l'au-delà, les dieux ont décidé de vous accorder une nouvelle chance.
@@ -50,4 +50,3 @@
 		<PdV>0</PdV>
 	</Choix>
 </Scene>
-</Histoire>
