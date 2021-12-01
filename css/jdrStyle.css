@@ -49,6 +49,7 @@ li{
        background-color: rgba(0, 0, 0, 0.493);
        margin-bottom: 3vh ;
        color:cornsilk; 
+       cursor: pointer;
       
 } 
 
@@ -108,10 +109,8 @@ li:hover{
        
 } 
 
-li:active{
-       transform: translateY(1.5vh);
-                  
-                
+li:active {
+                transform: translateY(1.5vh);
                 border-radius: 5%;
                 transition-duration: 0.5s;
               

@@ -5,8 +5,10 @@ const choix3 = document.getElementById('choix3');
 
 
 
+
 // choix1.addEventListener('click', anime)
 
 // function anime(){
 //     choix1.classList.remove('li');
 // }
+
