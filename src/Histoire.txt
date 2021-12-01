@@ -23,23 +23,33 @@ Choix 2 = "Vous décidez d'ouvrir le petit coffre à gauche.", "Quelle chance, l
 Choix 3 = "Vous sortez de la grotte sans plus de cérémonie.", "", 2, 0
 Scène 4
 Description = "La pluie a cessé, mais le soleil se couche. Alors que vous cherchez un endroit pour passer la nuit, vous remarquez la lueur de ce qui semble être un grand feu entre les arbres."
-Choix 1 = "Vous faites un détour pour passer à distance, et cherchez un abri pour la nuit.", "", XXXabri, 0
+Choix 1 = "Vous faites un détour pour passer à distance, et cherchez un abri pour la nuit.", "", 9, 0
 Choix 2 = "Vous vous faufilez discrètement pour approcher du feu de camp et voir de quoi il retourne.", "", 5, 0
 Choix 3 = "Vous avancez en direction du feu pour souhaiter le bonsoir.", "Vous arrivez à un camp où se trouve trois individus louches, à leur pied se trouve une jeune femme ligotée et baillonée.", 6, 0
 Scène 5
 Description = "Vous progressez en silence parmi les ombres, et arrivez en vue du feu de camp. Trois individus à la mine patibulaire se partagent une outre de vin en riant bruyamment. A leur pied git une jeune femme baillonée et solidement ligotée."
-Choix 1 = "Vous attendez que les hommes s'endorment pour délivrer leur prisonnière en silence.", "Au bout d'un moment, les hommes s'endorment sous l'effet de la boisson.", XXXlibere, 0
+Choix 1 = "Vous attendez que les hommes s'endorment pour délivrer leur prisonnière en silence.", "Au bout d'un moment, les hommes s'endorment sous l'effet de la boisson.", 8, 0
 Choix 2 = "Vous tirez votre épée et avancez dans la lumière pour leur demander des explications.", "", 6, 0
-Choix 3 = "Vous décidez que tout cela ne vous concerne pas, et faites demi-tour.", "", XXXabri, 0
+Choix 3 = "Vous décidez que tout cela ne vous concerne pas, et faites demi-tour.", "", 9, 0
 Scène 6
 Description = "Les trois hommes se lèvent d'un bond en vous voyant, et portent la main sur leur épée. Le plus grand, qui semble être leur chef, vous dit d'un ton rude de passer votre chemin."
 Choix 1 = "Vous les attaquez tous les trois.", "Les hommes tirent leurs épées, et vous vous apercevez bien vite qu'ils savent s'en servir ! A un contre trois le combat est trop inégal, et vous succombez sous le nombre.", 0, -20
 Choix 2 = "Vous leur ordonnez de libérer leur prisonnière, sinon...", "", 7, 0
-Choix 3 = "Vous vous excusez pour le dérangement, et partez à la recherche d'un autre abri pour la nuit.", "Les hommes vous laissent partir.", XXXabri, 0
+Choix 3 = "Vous vous excusez pour le dérangement, et partez à la recherche d'un autre abri pour la nuit.", "Les hommes vous laissent partir.", 9, 0
 Scène 7
 Description = "Le chef s'esclaffe : \"La libérer ? Allons donc, sa tête est mise à prix, et sa capture n'a pas été sans mal. Passe ton chemin, étranger !\""
-Choix 1 = "Vous vous excusez pour le dérangement, et partez à la recherche d'un autre abri pour la nuit.", "Les hommes vous laissent partir.", XXXabri, 0
-Choix 2 = "Vous bondissez sur le chef pour le tuer et porter secours à sa prisonnière.", "Le chef s'écroule et ses comparses, épouvantés, prennent la fuite.", XXXlibere, 0
+Choix 1 = "Vous vous excusez pour le dérangement, et partez à la recherche d'un autre abri pour la nuit.", "Les hommes vous laissent partir.", 9, 0
+Choix 2 = "Vous bondissez sur le chef pour le tuer et porter secours à sa prisonnière.", "Le chef s'écroule et ses comparses, épouvantés, prennent la fuite.", 8, 0
 Scène 8
 Description = "Vous vous approchez de la prisonnière. Elle a le teint très pâle, et ses yeux noirs brillent à la lumière de la lune, vous suppliant muettement de la libérer."
-Choix 1 = "
+Choix 1 = "Vous la délivrez de ses liens.", "La prisonnière enlève son baillon, et s'effondre dans vos bras. Vous sentez alors ses crocs pointus s'enfoncer dans votre cou, et comprenez votre erreur fatale, car vous avez libéré une vampire !", 0, -20
+Choix 2 = "Vous lui retirez juste son baillon.", "Son regard vous hypnotise. Dans un atroce sourire qui dévoile ses canines pointues de vampire, elle vous ordonne de la libérer. Subjugué, vous lui obéissez, et la laissez se nourrir...", 0, -20
+Scène 9
+Description = "La nuit se fait de plus en plus froide. Plus loin sur la route, vous découvrez une auberge, \"La tête qui roule\". Une occasion inespérée d'un bon lit et d'un repas chaud !"
+Choix 1 = "Vous entrez dans l'auberge", "", 10, 0
+Choix 2 = "Vous décidez de dormir à la belle étoile sur le bord de la route.", "", XXXdormirdehors, 0
+Choix 3 = "Vous continuez à marche forcée sans dormir.", "La fatigue se fait sentir, et votre nuit blanche vous coûte 6 points de vie", XXXembranchement, -6
+Scène 10
+Description = "Vous entrez dans l'auberge, sombre et enfumée. Des éclats de rires et des discussions viennent d'un peu partout, et vous êtes surpris de voir autant de voyageurs."
+Choix 1 = "Vous vous asseyez à une table libre, et commandez un repas et une chambre.", "", XXXrepas, 0
+Choix 2 = "Vous 
