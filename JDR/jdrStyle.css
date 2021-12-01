@@ -1,7 +1,6 @@
 body{
-      
        background: rgb(0,0,0);
-       background: linear-gradient(90deg, rgba(0,0,0,1) 8%, rgba(13,45,75,1) 79%, rgba(92,60,9,1) 100%);     
+       background: linear-gradient(90deg, rgba(0,0,0,1) 7%, rgba(13,45,75,1) 64%);   
 
       
       
@@ -19,6 +18,7 @@ body{
        border: solid 0.5vh; 
        border-color:rgb(61, 27, 2);
        background-color: rgba(0, 0, 0, 0.493);
+       
        
        
 
@@ -43,11 +43,12 @@ ul{
 }
 
 li{
-       border: solid; 
+       border: solid;
+       border-width: 5px;
        border-color:rgb(61, 27, 2);
        background-color: rgba(0, 0, 0, 0.493);
        margin-bottom: 3vh ;
-       color:cornsilk;
+       color:cornsilk; 
       
 } 
 
@@ -70,12 +71,16 @@ li{
              padding-top: 12vh;
              flex-direction: row;  
        }   
+
+       #histoire{
+              max-width: 50%;
+       }
        
        #histoire p{
               font-size: 45px;
               margin-left: 10vh;
               margin-right: 15vh;
-              
+                            
               
        }
 
@@ -94,16 +99,21 @@ li{
 
 li:hover{
        border-color:rgb(41, 22, 3);
-       
-       
+      background-color: rgba(43, 22, 2, 0.541);
+      transition-duration: 1s;
+      transform: translateX(-3vh);
+      box-shadow: rgba(0, 0, 0, 0.589) 1vh 1vh 1vh; 
+
+      
        
 } 
 
 li:active{
-       transform: translateY(1.5vh)
-                  translateX(1.5vh);
-                box-shadow: rgba(80, 79, 78, 0.884) 1vh 1vh; 
-                border-radius: 5%;
+       transform: translateY(1.5vh);
+                  
                 
+                border-radius: 5%;
+                transition-duration: 0.5s;
+              
         
 }
