@@ -59,6 +59,7 @@
         <Vers>4</Vers>
         <PdV>-10</PdV>
     </Choix>
+	<Choix>
         <Texte>Vous lui jetez vos rations et reculez lentement.</Texte>
         <Liaison>L'ours se jette sur vos rations et vous en profitez pour rejoindre la route.</Liaison>
         <Vers>2</Vers>
