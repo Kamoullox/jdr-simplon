@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<Histoire>
 <Scene num="0">
 	<Description>
 		Hu ho, vous êtes mort. Mais avant de rejoindre l'au-delà, les dieux ont décidé de vous accorder une nouvelle chance.
@@ -49,4 +50,26 @@
 		<Vers>4</Vers>
 		<PdV>0</PdV>
 	</Choix>
+</Scene num="3">
+	<Description>
+		Le sol de la grotte est assez uniforme et vous progressez aisément. Soudain, un grondement sourd se fait entendre devant vous. Vous avez dérangé un ours énorme !
+    </Description>
+    <Choix>
+        <Texte>Vous poussez un cri de terreur et prenez vos jambes à votre cou.</Texte>
+        <Liaison>L'ours vous laboure le dos de ses puissantes griffes, et vous poursuit jusqu'à l'entrée de sa caverne, puis retourne se coucher.</Liaison>
+        <Vers>2</Vers>
+        <PdV>-5</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Vous tirez votre épée et décidez de l'affronter.</Texte>
+        <Liaison></Liaison>
+        <Vers>4</Vers>
+        <PdV>-10</PdV>
+    </Choix>
+        <Texte>Vous lui jetez vos rations et reculez lentement.</Texte>
+        <Liaison>L'ours se jette sur vos rations et vous en profitez pour rejoindre la route.</Liaison>
+        <Vers>2</Vers>
+        <PdV>0</PdV>
+    </Choix>
 </Scene>
+</Histoire>
