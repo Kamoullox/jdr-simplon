@@ -1,0 +1,52 @@
+<Histoire>
+<Scene num="0">
+	<Description>
+		Hu ho, vous êtes mort. Mais avant de rejoindre l'au-delà, les dieux ont décidé de vous accorder une nouvelle chance.
+	</Description>
+	<Choix>
+		<Texte>Recommencer l'aventure</Texte>
+		<Liaison></Liaison>
+		<Vers>1</Vers>
+		<PdV>100</PdV>
+	</Choix>
+</Scene>
+<Scene num="1">
+	<Description>
+		Bonjour fier aventurier ! Vous êtes dans une forêt obscure (et réputée dangeureuse), sur la route menant à la ville de Magimar. Votre objectif est de l'atteindre sain et sauf. Sur votre droite, vous remarquez une caverne.		
+	</Description>
+	<Choix>
+		<Texte>Vous décidez de passer votre chemin.</Texte>
+		<Liaison>Vous continuez sur la route.</Liaison>
+		<Vers>2</Vers>
+		<PdV>0</PdV>
+	</Choix>
+	<Choix>
+		<Texte>Vous allumez votre torche et entrez dans la grotte</Texte>
+		<Liaison></Liaison>
+		<Vers>3</Vers>
+		<PdV>0</PdV>
+	</Choix>
+</Scene>
+<Scene num="2">
+	<Description>
+		Le temps se gâte et il commence à pleuvoir. Sur le bord de la route, vous remarquez un vieux puits.		
+	</Description>
+	<Choix>
+		<Texte>Vous jetez une pièce d'or dans le puits en formulant un voeu.</Texte>
+		<Liaison>La pièce tombe avec un plouf! sonore, et vous êtes guéri de toutes vos blessures.</Liaison>
+		<Vers>4</Vers>
+		<PdV>20</PdV>
+	</Choix>
+	<Choix>
+		<Texte>Vous descendez dans le puits.</Texte>
+		<Liaison>Vous glissez et tombez au fond du puits. L'eau monte inexorablement, personne n'entend vos appels à l'aide, et vous mourez noyé.</Liaison>
+		<Vers>0</Vers>
+		<PdV>-20</PdV>
+	</Choix>
+	<Choix>
+		<Texte>Vous décidez de ne pas y accorder d'importance et continuez votre route.</Texte>
+		<Liaison></Liaison>
+		<Vers>4</Vers>
+		<PdV>0</PdV>
+	</Choix>
+</Histoire>
