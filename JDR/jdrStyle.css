@@ -1,20 +1,24 @@
 body{
-      background-image: url(Goldshire.jpg) ;
-      background-size: cover;
-      font-family :Verdana, Geneva, Tahoma, sans-serif;
+      
+       background: rgb(0,0,0);
+       background: linear-gradient(90deg, rgba(0,0,0,1) 8%, rgba(13,45,75,1) 79%, rgba(92,60,9,1) 100%);     
+
+      
+      
+      font-family:'Times New Roman', Times, serif;
 }
 
 #histoire{
        text-align: center;
        height: fit-content;
-       margin-left: 5vh;
-       margin-right: 5vh;
-       margin-top: 5vh;
-       font-size: 33px;
+       margin-left: 2vh;
+       margin-right: 2vh;
+       margin-top: 3vh;
+       font-size: 30px;
        float:left;
-       border: solid 1vh; 
+       border: solid 0.5vh; 
        border-color:rgb(61, 27, 2);
-       background-color: rgba(78, 53, 7, 0.5);
+       background-color: rgba(0, 0, 0, 0.493);
        
        
 
@@ -26,7 +30,7 @@ body{
 } 
 
 #choix{
-       font-size: 22px;
+       font-size: 20px;
        float:right;
        text-align: center;
        height: fit-content;
@@ -34,15 +38,15 @@ body{
 ul{
        
        list-style: none;
+       padding-right: 3vh;
+       padding-left: 3vh;
 }
 
 li{
        border: solid; 
        border-color:rgb(61, 27, 2);
-       background-color: rgba(78, 53, 7, 0.5);
+       background-color: rgba(0, 0, 0, 0.493);
        margin-bottom: 3vh ;
-       margin-right: 5vh;
-       margin-left: 3vh;
        color:cornsilk;
       
 } 
@@ -54,9 +58,16 @@ li{
 }
 @media screen and (min-width: 1800px)
 { 
+       #body{
+              background: rgb(0,0,0);
+       background: linear-gradient(90deg, rgba(0,0,0,1) 8%, rgb(11, 41, 70) 79%, rgb(41, 28, 7) 100%);   
+              
+              
+            
+       }
        #container{
        
-              
+             padding-top: 12vh;
              flex-direction: row;  
        }   
        
@@ -65,6 +76,7 @@ li{
               margin-left: 10vh;
               margin-right: 15vh;
               
+              
        }
 
        #choix {
@@ -72,10 +84,26 @@ li{
               
               
        }
+      
 
        li{
               
-              margin-right: 13vh;
+              margin-right: 3vh;
        }
 }
 
+li:hover{
+       border-color:rgb(41, 22, 3);
+       
+       
+       
+} 
+
+li:active{
+       transform: translateY(1.5vh)
+                  translateX(1.5vh);
+                box-shadow: rgba(80, 79, 78, 0.884) 1vh 1vh; 
+                border-radius: 5%;
+                
+        
+}
