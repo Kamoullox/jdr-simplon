@@ -1,6 +1,6 @@
 let scene;
 
-let urlJSON = "./data/test.json";
+let urlJSON = "./data/story.json";
 
 async function fetchInfo() {
     fetch(urlJSON)
