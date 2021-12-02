@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Histoire>
+<Scene num="0">
+	<Description>Hu ho, vous êtes mort. Mais avant de rejoindre l'au-delà, les dieux ont décidé de vous accorder une nouvelle chance.</Description>
+	<Choix>
+		<Texte>Recommencer l'aventure</Texte>
+		<Liaison></Liaison>
+		<Vers>1</Vers>
+		<PdV>100</PdV>
+	</Choix>
+</Scene>
+<Scene num="1">
+	<Description>Bonjour fier aventurier ! Vous êtes dans une forêt obscure (et réputée dangeureuse), sur la route menant à la ville de Magimar. Votre objectif est de l'atteindre sain et sauf. Sur votre droite, vous remarquez une caverne.</Description>
+	<Choix>
+		<Texte>Vous décidez de passer votre chemin.</Texte>
+		<Liaison>Vous continuez sur la route.</Liaison>
+		<Vers>2</Vers>
+		<PdV>0</PdV>
+	</Choix>
+	<Choix>
+		<Texte>Vous allumez votre torche et entrez dans la grotte</Texte>
+		<Liaison></Liaison>
+		<Vers>3</Vers>
+		<PdV>0</PdV>
+	</Choix>
+</Scene>
+<Scene num="2">
+	<Description>Le temps se gâte et il commence à pleuvoir. Sur le bord de la route, vous remarquez un vieux puits.</Description>
+	<Choix>
+		<Texte>Vous jetez une pièce d'or dans le puits en formulant un voeu.</Texte>
+		<Liaison>La pièce tombe avec un plouf! sonore, et vous êtes guéri de toutes vos blessures.</Liaison>
+		<Vers>5</Vers>
+		<PdV>20</PdV>
+	</Choix>
+	<Choix>
+		<Texte>Vous descendez dans le puits.</Texte>
+		<Liaison>Vous glissez et tombez au fond du puits. L'eau monte inexorablement, personne n'entend vos appels à l'aide, et vous mourez noyé.</Liaison>
+		<Vers>5</Vers>
+		<PdV>-20</PdV>
+	</Choix>
+	<Choix>
+		<Texte>Vous décidez de ne pas y accorder d'importance et continuez votre route.</Texte>
+		<Liaison></Liaison>
+		<Vers>5</Vers>
+		<PdV>0</PdV>
+	</Choix>
+</Scene>
+<Scene num="3">
+	<Description>Le sol de la grotte est assez uniforme et vous progressez aisément. Soudain, un grondement sourd se fait entendre devant vous. Vous avez dérangé un ours énorme !</Description>
+    <Choix>
+        <Texte>Vous poussez un cri de terreur et prenez vos jambes à votre cou.</Texte>
+        <Liaison>L'ours vous laboure le dos de ses puissantes griffes, et vous poursuit jusqu'à l'entrée de sa caverne, puis retourne se coucher.</Liaison>
+        <Vers>2</Vers>
+        <PdV>-5</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Vous tirez votre épée et décidez de l'affronter.</Texte>
+        <Liaison></Liaison>
+        <Vers>4</Vers>
+        <PdV>-10</PdV>
+    </Choix>
+	<Choix>
+        <Texte>Vous lui jetez vos rations et reculez lentement.</Texte>
+        <Liaison>L'ours se jette sur vos rations et vous en profitez pour rejoindre la route.</Liaison>
+        <Vers>2</Vers>
+        <PdV>0</PdV>
+    </Choix>
+</Scene>
+<Scene num="4">
+	<Description>Le combat est difficile et sanglant. L'ours s'écroule, mort, mais non sans vous avoir infligé de nombreuses blessures. Au fond de son antre, vous distinguez deux coffres fermés.</Description>
+    <Choix>
+        <Texte>Vous décidez d'ouvrir le grand coffre à droite.</Texte>
+        <Liaison>Le coffre était piégé ! Une aiguille empoisonnée vous pique le doigt au moment où vous l'ouvrez, et vous perdez 5 pdv. Vous quittez la grotte en maugréant sur votre infortune.</Liaison>
+        <Vers>2</Vers>
+        <PdV>5</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Vous décidez d'ouvrir le petit coffre à gauche.</Texte>
+        <Liaison>Quelle chance, le coffre contient une potion de guérison qui vous redonne 7 points de vie. Vous quittez la grotte pour rejoindre la route.</Liaison>
+        <Vers>2</Vers>
+        <PdV>7</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Vous sortez de la grotte sans plus de cérémonie.</Texte>
+        <Liaison></Liaison>
+        <Vers>2</Vers>
+        <PdV>0</PdV>
+    </Choix>
+</Scene>
+<Scene num="5">
+	<Description>La pluie a cessé, mais le soleil se couche. Alors que vous cherchez un endroit pour passer la nuit, vous remarquez la lueur de ce qui semble être un grand feu entre les arbres.</Description>
+    <Choix>
+        <Texte>Vous faites un détour pour passer à distance, et cherchez un abri pour la nuit.</Texte>
+        <Liaison></Liaison>
+        <Vers>10</Vers>
+        <PdV>0</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Vous vous faufilez discrètement pour approcher du feu de camp et voir de quoi il retourne.</Texte>
+        <Liaison></Liaison>
+        <Vers>6</Vers>
+        <PdV>0</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Vous avancez en direction du feu pour souhaiter le bonsoir.</Texte>
+        <Liaison>Vous arrivez à un camp où se trouve trois individus louches, à leur pied se trouve une jeune femme ligotée et baillonée.</Liaison>
+        <Vers>7</Vers>
+        <PdV>0</PdV>
+    </Choix>
+</Scene>
+<Scene num="6">
+	<Description>"Vous progressez en silence parmi les ombres, et arrivez en vue du feu de camp. Trois individus à la mine patibulaire se partagent une outre de vin en riant bruyamment. A leur pied git une jeune femme baillonée et solidement ligotée.</Description>
+    <Choix>
+        <Texte>Vous attendez que les hommes s'endorment pour délivrer leur prisonnière en silence.</Texte>
+        <Liaison>Au bout d'un moment, les hommes s'endorment sous l'effet de la boisson.</Liaison>
+        <Vers>9</Vers>
+        <PdV>0</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Vous tirez votre épée et avancez dans la lumière pour leur demander des explications.</Texte>
+        <Liaison></Liaison>
+        <Vers>7</Vers>
+        <PdV>0</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Vous décidez que tout cela ne vous concerne pas, et faites demi-tour.</Texte>
+        <Liaison></Liaison>
+        <Vers>10</Vers>
+        <PdV>0</PdV>
+    </Choix>
+</Scene>
+<Scene num="7">
+	<Description>Les trois hommes se lèvent d'un bond en vous voyant, et portent la main sur leur épée. Le plus grand, qui semble être leur chef, vous dit d'un ton rude de passer votre chemin.</Description>
+    <Choix>
+        <Texte>Vous les attaquez tous les trois.</Texte>
+        <Liaison>Les hommes tirent leurs épées, et vous vous apercevez bien vite qu'ils savent s'en servir ! A un contre trois le combat est trop inégal, et vous succombez sous le nombre.</Liaison>
+        <Vers>0</Vers>
+        <PdV>-20</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Vous leur ordonnez de libérer leur prisonnière, sinon...</Texte>
+        <Liaison></Liaison>
+        <Vers>8</Vers>
+        <PdV>0</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Vous vous excusez pour le dérangement, et partez à la recherche d'un autre abri pour la nuit.</Texte>
+        <Liaison>Les hommes vous laissent partir.</Liaison>
+        <Vers>10</Vers>
+        <PdV>0</PdV>
+    </Choix>
+</Scene>
+<Scene num="8">
+	<Description>Le chef s'esclaffe : "La libérer ? Allons donc, sa tête est mise à prix, et sa capture n'a pas été sans mal. Passe ton chemin, étranger !"</Description>
+   <Choix>
+        <Texte>Vous vous excusez pour le dérangement, et partez à la recherche d'un autre abri pour la nuit.</Texte>
+        <Liaison>Les hommes vous laissent partir.</Liaison>
+        <Vers>10</Vers>
+        <PdV>0</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Vous bondissez par surprise sur le chef pour le tuer et porter secours à sa prisonnière.</Texte>
+        <Liaison>Le chef s'écroule décapité et ses comparses, épouvantés, prennent la fuite.</Liaison>
+        <Vers>9</Vers>
+        <PdV>0</PdV>
+    </Choix>
+</Scene>
+<Scene num="9">
+	<Description>Vous vous approchez de la prisonnière. Elle a le teint très pâle, et ses yeux noirs brillent à la lumière de la lune, vous suppliant muettement de la libérer.</Description>
+    <Choix>
+        <Texte>Vous la délivrez de ses liens.</Texte>
+        <Liaison>La prisonnière enlève son baillon, et s'effondre dans vos bras. Vous sentez alors ses crocs pointus s'enfoncer dans votre cou, et comprenez votre erreur fatale, car vous avez libéré une vampire !</Liaison>
+        <Vers>0</Vers>
+        <PdV>-20</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Vous lui retirez juste son baillon.</Texte>
+        <Liaison>Son regard vous hypnotise. Dans un atroce sourire qui dévoile ses canines pointues de vampire, elle vous ordonne de la libérer. Subjugué, vous lui obéissez, et la laissez se nourrir...</Liaison>
+        <Vers>10</Vers>
+        <PdV>-10</PdV>
+    </Choix>
+</Scene>
+<Scene num="10">
+	<Description>La nuit se fait de plus en plus froide et vous grelottez. Plus loin sur la route, vous découvrez une auberge, "La tête qui roule". Une occasion inespérée d'un bon lit et d'un repas chaud !</Description>
+    <Choix>
+        <Texte>Vous poussez la porte de l'auberge</Texte>
+        <Liaison></Liaison>
+        <Vers>11</Vers>
+        <PdV>0</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Vous décidez de dormir à la belle étoile sur le bord de la route.</Texte>
+        <Liaison></Liaison>
+        <Vers>XXXdormirdehors</Vers>
+        <PdV>0</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Au diable la fatigue ! Vous continuez à marche forcée sans dormir.</Texte>
+        <Liaison>La fatigue se fait sentir, et votre nuit blanche vous coûte 6 points de vie</Liaison>
+        <Vers>XXXembranchement</Vers>
+        <PdV></PdV>
+    </Choix>
+</Scene>
+</Histoire>

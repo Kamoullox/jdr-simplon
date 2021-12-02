@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Using the XMLHttpRequest Object</h2>
+
+<div id="demo">
+<button type="button" onclick="loadXMLDoc()">Test XML console</button>
+</div>
+
+<script>
+function loadXMLDoc() {
+  var xhttp = new XMLHttpRequest();
+  var text, parser, xmlDoc;
+  parser = new DOMParser();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      //document.getElementById("demo").innerHTML = this.responseText;
+      xmlDoc = parser.parseFromString(this.responseText,"text/xml");
+        // Element object. <--> <class>
+        var rootElement = xmlDoc.documentElement;
+        var children = rootElement.childNodes;
+        console.log(rootElement.nodeName + " has " + children.length + "childs.");
+      for(var i = 0; i < children.length; i++) {
+          console.log("i=" + i + " nodeName=" + children[i].nodeName);
+       var child = children[i];
+       // <studen> Element
+       if(child.nodeType == Node.ELEMENT_NODE)  {
+           var n = child.getAttribute("num");
+           var descriptionElement = child.getElementsByTagName("Description")[0];
+           var description = descriptionElement.textContent;
+           
+           console.log("num: " + n);
+           console.log("Description: " + description);
+           
+       }
+    }
+    }
+  };
+  xhttp.open("GET", "https://raw.githubusercontent.com/Kamoullox/jdr-simplon/history/src/test.xml", true);
+  xhttp.send();
+}
+
+
+</script>
+
+</body>
+</html>
