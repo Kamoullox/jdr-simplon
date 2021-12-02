@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<h2>Using the XMLHttpRequest Object</h2>
+<h2>Exemple XMLHttpRequest Object, et parse du XML</h2>
 
 <div id="demo">
 <button type="button" onclick="loadXMLDoc()">Test XML console</button>
@@ -20,11 +20,11 @@ function loadXMLDoc() {
         // Element object. <--> <class>
         var rootElement = xmlDoc.documentElement;
         var children = rootElement.childNodes;
-        console.log(rootElement.nodeName + " has " + children.length + "childs.");
+        console.log(rootElement.nodeName + " has " + children.length + " childs.");
       for(var i = 0; i < children.length; i++) {
           console.log("i=" + i + " nodeName=" + children[i].nodeName);
        var child = children[i];
-       // <studen> Element
+       // <Scene> Element
        if(child.nodeType == Node.ELEMENT_NODE)  {
            var n = child.getAttribute("num");
            var descriptionElement = child.getElementsByTagName("Description")[0];
