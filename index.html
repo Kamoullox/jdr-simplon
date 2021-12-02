@@ -2,31 +2,31 @@
 <html lang="en">
     
 <head>
-    <link href="./css/jdrStyle.css" rel="stylesheet">
+    <link href="jdrStyle.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JDR</title>
-    <script src="jdrJs.js" defer></script>
+    <script src="js/index.js" ></script>
 </head>
 
 <body>
     <div id="container">
         <section id="histoire">
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in eros laoreet, imperdiet purus non,
+            <p id="content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in eros laoreet, imperdiet purus non,
                 tempus nisl. Praesent sed tortor mauris. Aliquam malesuada ac erat in mattis. Etiam tristique justo eu
                 sapien pellentesque molestie. Aenean gravida varius fermentum. Donec tempus augue non ornare finibus.
                 Aenean euismod vel elit sed facilisis.</p>
         </section>
         <section id="choix">
             <ul>
-                <li id="choix1">  Aliquam malesuada ac erat in mattis. Etiam tristique justo eu sapien pellentesque molestie. Aenean
+                <li id="choix1" onclick = majFullChoix(1)>  Aliquam malesuada ac erat in mattis. Etiam tristique justo eu sapien pellentesque molestie. Aenean
                     gravida varius fermentum. Donec tempus augue non ornare finibus. Aenean euismod vel elit sed
                     facilisis.</li>
-                <li id="choix2"> Aliquam malesuada ac erat in mattis. Etiam tristique justo eu sapien pellentesque molestie. Aenean
+                <li id="choix2" onclick = majFullChoix(2)> Aliquam malesuada ac erat in mattis. Etiam tristique justo eu sapien pellentesque molestie. Aenean
                     gravida varius fermentum. Donec tempus augue non ornare finibus. Aenean euismod vel elit sed
                     facilisis.</li>
-                <li id="choix3"> Aliquam malesuada ac erat i.</li>
+                <li id="choix3" onclick = majFullChoix(3)> Aliquam malesuada ac erat i.</li>
             </ul>
         </section>
     </div>
