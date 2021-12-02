@@ -9,32 +9,69 @@
 </div>
 
 <script>
-function loadXMLDoc() {
-  var xhttp = new XMLHttpRequest();
-  var text, parser, xmlDoc;
-  parser = new DOMParser();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      //document.getElementById("demo").innerHTML = this.responseText;
-      xmlDoc = parser.parseFromString(this.responseText,"text/xml");
-        // Element object. <--> <class>
-        var rootElement = xmlDoc.documentElement;
-        var children = rootElement.childNodes;
-        console.log(rootElement.nodeName + " has " + children.length + " childs.");
-      for(var i = 0; i < children.length; i++) {
-          console.log("i=" + i + " nodeName=" + children[i].nodeName);
-       var child = children[i];
-       // <Scene> Element
-       if(child.nodeType == Node.ELEMENT_NODE)  {
-           var n = child.getAttribute("num");
-           var descriptionElement = child.getElementsByTagName("Description")[0];
-           var description = descriptionElement.textContent;
-           
-           console.log("num: " + n);
-           console.log("Description: " + description);
-           
-       }
+
+// Utility function:
+// Return XMLDocument, or throw an Error!
+function parseXML(xmlString) {
+    var parser = new DOMParser();
+    // Parse a simple Invalid XML source to get namespace of <parsererror>:
+    var docError = parser.parseFromString('INVALID', 'text/xml');
+    var parsererrorNS = docError.getElementsByTagName("parsererror")[0].namespaceURI;
+    // Parse xmlString:
+    // (XMLDocument object)
+    var doc = parser.parseFromString(xmlString, 'text/xml');
+    if (doc.getElementsByTagNameNS(parsererrorNS, 'parsererror').length > 0) {
+        throw new Error('Error parsing XML');
     }
+    return doc;
+}
+
+function loadXMLDoc() {
+    var xhttp = new XMLHttpRequest();
+    var text, parser, xmlDoc;
+    parser = new DOMParser();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        //document.getElementById("demo").innerHTML = this.responseText;
+        try {
+            xmlDoc = parseXML(this.responseText);
+            // Element object. <--> <class>
+            var rootElement = xmlDoc.documentElement;
+            var children = rootElement.childNodes;
+            console.log(rootElement.nodeName + " has " + children.length + " childs.");
+            /*for(var i = 0; i < children.length; i++) {
+                console.log("i=" + i + " nodeName=" + children[i].nodeName);
+                var child = children[i];
+                // <Scene> Element
+                if(child.nodeType == Node.ELEMENT_NODE)  {
+                    var n = child.getAttribute("num");
+                    var descriptionElement = child.getElementsByTagName("Description")[0];
+                    var description = descriptionElement.textContent;
+                    
+                    console.log("num: " + n);
+                    console.log("Description: " + description);
+                }
+              }*/
+              //Essai de récupération d'un scène par sa référence
+              console.log("Essai xPath");
+              var documentNode = xmlDoc.documentElement;
+              console.log("Type " + typeof(documentNode));
+              var iterator = xmlDoc.evaluate("//Scene[@num='2']", documentNode, null, XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null );
+
+              try {
+                var thisNode = iterator.iterateNext();
+                
+                while (thisNode) {
+                  console.log( thisNode.textContent );
+                  thisNode = iterator.iterateNext();
+                }	
+              }
+              catch (e) {
+                alert( 'Error: Document tree modified during iteration ' + e );
+              }
+            } catch (e) {
+              alert(e);
+            }
     }
   };
   xhttp.open("GET", "https://raw.githubusercontent.com/Kamoullox/jdr-simplon/history/src/test.xml", true);
