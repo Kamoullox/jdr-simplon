@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html>
-<body>
 
+<body>
+  <script>
+    let history = [];
+    let choices = [];
+    class UserAnswer {
+    constructor(choiceText, linkText, indexOfNextScene, lifeModification){
+        this.choiceText = choiceText;
+        this.linkText = linkText;
+        this.indexOfNextScene = indexOfNextScene;
+        this.lifeModification = lifeModification;
+    }
+};
+  </script>
+  <script src="./src/testStructure.js"></script>
 <h2>Exemple XMLHttpRequest Object, et parse du XML</h2>
 
 <div id="demo">
 <button type="button" onclick="loadXMLDoc()">Test XML console</button>
+<br>
+<button type="button" onclick="testHistory()">Init History</button>
 </div>
+
+<script>
+  function testHistory() {
+    initHistory();
+    console.log(history[1]);
+    console.log(choices[1].choiceText)
+  }
+</script>
 
 <script>
 
@@ -56,18 +79,23 @@ function loadXMLDoc() {
               console.log("Essai xPath");
               var documentNode = xmlDoc.documentElement;
               console.log("Type " + typeof(documentNode));
-              var iterator = xmlDoc.evaluate("//Scene[@num='2']", documentNode, null, XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null );
-
+              var iterator = xmlDoc.evaluate("//Scene[@num='1']/Choix", documentNode, null, XPathResult.UNORDERED_NODE_ITERATOR_TYPE, null );
               try {
                 var thisNode = iterator.iterateNext();
                 
                 while (thisNode) {
                   console.log( thisNode.textContent );
+
                   thisNode = iterator.iterateNext();
                 }	
               }
               catch (e) {
                 alert( 'Error: Document tree modified during iteration ' + e );
+              }
+              var nodesSnapshot = document.evaluate("//Scene[@num='1']/Choix", documentNode, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null );
+
+              for ( var i=0 ; i < nodesSnapshot.snapshotLength; i++ ){
+                console.log( nodesSnapshot.snapshotItem(i).textContent );
               }
             } catch (e) {
               alert(e);
