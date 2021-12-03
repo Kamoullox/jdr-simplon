@@ -3,12 +3,14 @@
       "@num": "0",
       "Description": "Hu ho, vous êtes mort. Mais avant de rejoindre l'au-delà, les dieux ont décidé de vous accorder une nouvelle chance.",
       "Decor": "mort",
-      "Choix": {
-         "Texte": "Recommencer l'aventure",
-         "Liaison": "",
-         "Vers": "1",
-         "PdV": "100"
-      }
+      "Choix": [
+		  {
+			 "Texte": "Recommencer l'aventure",
+			 "Liaison": "",
+			 "Vers": "1",
+			 "PdV": "100"
+		  }
+		]
    },
    {
       "@num": "1",
@@ -58,12 +60,14 @@
       "@num": "3",
       "Description": "Vous êtes arrivé à Magimar ! Vous avez gagné.",
       "Decor": "victory",
-      "Choix": {
-         "Texte": "Recommencer l'aventure depuis le début ?",
-         "Liaison": "",
-         "Vers": "1",
-         "PdV": "100"
-      }
+      "Choix": [
+		  {
+			 "Texte": "Recommencer l'aventure depuis le début ?",
+			 "Liaison": "",
+			 "Vers": "1",
+			 "PdV": "100"
+		  }
+		]
    }
 ]
 }
