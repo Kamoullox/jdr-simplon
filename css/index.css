@@ -18,16 +18,14 @@ body{
        border: solid 0.5vh; 
        border-color:rgb(61, 27, 2);
        background-color: rgba(0, 0, 0, 0.493);
-       
-       
-       
-
 }
-#histoire p{  color:cornsilk; 
 
-              
-              
+#histoire p{  color:cornsilk; 
 } 
+
+#life{
+       color: white;
+}
 
 #choix{
        font-size: 20px;
