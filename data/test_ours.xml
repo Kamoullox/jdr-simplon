@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Histoire>
+<Scene num="0">
+	<Description>Hu ho, vous êtes mort. Mais avant de rejoindre l'au-delà, les dieux ont décidé de vous accorder une nouvelle chance.</Description>
+	<Decor>mort</Decor>
+	<Choix>
+		<Texte>Recommencer l'aventure</Texte>
+		<Liaison></Liaison>
+		<Vers>1</Vers>
+		<PdV>100</PdV>
+	</Choix>
+</Scene>
+<Scene num="1">
+	<Description>Vous voyez un ours !</Description>
+	<Decor>ours</Decor>
+	<Choix>
+		<Texte>Vous fuyez !</Texte>
+		<Liaison></Liaison>
+		<Vers>2</Vers>
+		<PdV>0</PdV>
+	</Choix>
+	<Choix>
+		<Texte>Vous le combattez.</Texte>
+		<Liaison>L'ours vous inflige 10 PdV et vous fuyez.</Liaison>
+		<Vers>2</Vers>
+		<PdV>-10</PdV>
+	</Choix>
+</Scene>
+<Scene num="2">
+	<Description>Le temps se gâte et il commence à pleuvoir. Sur le bord de la route, vous remarquez un vieux puits.</Description>
+	<Decor>puits</Decor>
+	<Choix>
+		<Texte>Vous jetez une pièce d'or dans le puits en formulant un voeu.</Texte>
+		<Liaison>La pièce tombe avec un plouf! sonore, et vous gagnez 5 PdV.</Liaison>
+		<Vers>3</Vers>
+		<PdV>5</PdV>
+	</Choix>
+	<Choix>
+		<Texte>Vous descendez dans le puits.</Texte>
+		<Liaison>Vous glissez et tombez au fond du puits. L'eau monte inexorablement, personne n'entend vos appels à l'aide, et vous mourez noyé.</Liaison>
+		<Vers>0</Vers>
+		<PdV>-20</PdV>
+	</Choix>
+	<Choix>
+		<Texte>Vous décidez de ne pas y accorder d'importance et continuez votre route.</Texte>
+		<Liaison></Liaison>
+		<Vers>3</Vers>
+		<PdV>0</PdV>
+	</Choix>
+</Scene>
+<Scene num="3">
+	<Description>Vous êtes arrivé à Magimar ! Vous avez gagné.</Description>
+	<Decor>victory</Decor>
+    <Choix>
+        <Texte>Recommencer l'aventure depuis le début ?</Texte>
+        <Liaison></Liaison>
+        <Vers>1</Vers>
+        <PdV>100</PdV>
+    </Choix>
+</Scene>
+</Histoire>
