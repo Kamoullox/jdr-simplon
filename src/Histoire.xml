@@ -2,6 +2,7 @@
 <Histoire>
 <Scene num="0">
 	<Description>Hu ho, vous êtes mort. Mais avant de rejoindre l'au-delà, les dieux ont décidé de vous accorder une nouvelle chance.</Description>
+	<Decor>mort</Decor>
 	<Choix>
 		<Texte>Recommencer l'aventure</Texte>
 		<Liaison></Liaison>
@@ -11,6 +12,7 @@
 </Scene>
 <Scene num="1">
 	<Description>Bonjour fier aventurier ! Vous êtes dans une forêt obscure (et réputée dangeureuse), sur la route menant à la ville de Magimar. Votre objectif est de l'atteindre sain et sauf. Sur votre droite, vous remarquez une caverne.</Description>
+	<Decor>foret</Decor>
 	<Choix>
 		<Texte>Vous décidez de passer votre chemin.</Texte>
 		<Liaison>Vous continuez sur la route.</Liaison>
@@ -26,6 +28,7 @@
 </Scene>
 <Scene num="2">
 	<Description>Le temps se gâte et il commence à pleuvoir. Sur le bord de la route, vous remarquez un vieux puits.</Description>
+	<Decor>puits</Decor>
 	<Choix>
 		<Texte>Vous jetez une pièce d'or dans le puits en formulant un voeu.</Texte>
 		<Liaison>La pièce tombe avec un plouf! sonore, et vous êtes guéri de toutes vos blessures.</Liaison>
@@ -33,9 +36,9 @@
 		<PdV>20</PdV>
 	</Choix>
 	<Choix>
-		<Texte>Vous descendez dans le puits.</Texte>
-		<Liaison>Vous glissez et tombez au fond du puits. L'eau monte inexorablement, personne n'entend vos appels à l'aide, et vous mourez noyé.</Liaison>
-		<Vers>5</Vers>
+		<Texte>Vous descendez dans le puits pour voir s'il n'y a pas quelque chose d'intéressant au fond.</Texte>
+		<Liaison>Vous glissez et tombez au fond du puits. Impossible de remonter ! L'eau monte inexorablement, personne n'entend vos appels à l'aide, et vous mourez noyé.</Liaison>
+		<Vers>0</Vers>
 		<PdV>-20</PdV>
 	</Choix>
 	<Choix>
@@ -47,7 +50,8 @@
 </Scene>
 <Scene num="3">
 	<Description>Le sol de la grotte est assez uniforme et vous progressez aisément. Soudain, un grondement sourd se fait entendre devant vous. Vous avez dérangé un ours énorme !</Description>
-    <Choix>
+    <Decor>ours</Decor>
+	<Choix>
         <Texte>Vous poussez un cri de terreur et prenez vos jambes à votre cou.</Texte>
         <Liaison>L'ours vous laboure le dos de ses puissantes griffes, et vous poursuit jusqu'à l'entrée de sa caverne, puis retourne se coucher.</Liaison>
         <Vers>2</Vers>
@@ -68,14 +72,15 @@
 </Scene>
 <Scene num="4">
 	<Description>Le combat est difficile et sanglant. L'ours s'écroule, mort, mais non sans vous avoir infligé de nombreuses blessures. Au fond de son antre, vous distinguez deux coffres fermés.</Description>
-    <Choix>
-        <Texte>Vous décidez d'ouvrir le grand coffre à droite.</Texte>
+    <Decor>coffres</Decor>
+	<Choix>
+        <Texte>Vous décidez d'ouvrir le plus grand coffre. Il y a une serrure dessus.</Texte>
         <Liaison>Le coffre était piégé ! Une aiguille empoisonnée vous pique le doigt au moment où vous l'ouvrez, et vous perdez 5 pdv. Vous quittez la grotte en maugréant sur votre infortune.</Liaison>
         <Vers>2</Vers>
-        <PdV>5</PdV>
+        <PdV>-5</PdV>
     </Choix>
     <Choix>
-        <Texte>Vous décidez d'ouvrir le petit coffre à gauche.</Texte>
+        <Texte>Vous décidez d'ouvrir le tout petit coffre. Il ne semble pas y avoir de serrure.</Texte>
         <Liaison>Quelle chance, le coffre contient une potion de guérison qui vous redonne 7 points de vie. Vous quittez la grotte pour rejoindre la route.</Liaison>
         <Vers>2</Vers>
         <PdV>7</PdV>
@@ -88,8 +93,9 @@
     </Choix>
 </Scene>
 <Scene num="5">
-	<Description>La pluie a cessé, mais le soleil se couche. Alors que vous cherchez un endroit pour passer la nuit, vous remarquez la lueur de ce qui semble être un grand feu entre les arbres.</Description>
-    <Choix>
+	<Description>La pluie a cessé, mais le soleil s'est couché depuis une heure. Alors que vous cherchez un endroit pour passer la nuit, vous remarquez la lueur de ce qui semble être un grand feu entre les arbres.</Description>
+    <Decor>foretnuit</Decor>
+	<Choix>
         <Texte>Vous faites un détour pour passer à distance, et cherchez un abri pour la nuit.</Texte>
         <Liaison></Liaison>
         <Vers>10</Vers>
@@ -102,15 +108,16 @@
         <PdV>0</PdV>
     </Choix>
     <Choix>
-        <Texte>Vous avancez en direction du feu pour souhaiter le bonsoir.</Texte>
-        <Liaison>Vous arrivez à un camp où se trouve trois individus louches, à leur pied se trouve une jeune femme ligotée et baillonée.</Liaison>
+        <Texte>Vous avancez en direction du feu pour souhaiter le bonsoir à quiconque s'y trouverait.</Texte>
+        <Liaison>Vous arrivez à un camp où se trouve trois individus louches, à leur pied se trouve une jeune femme au teint pâle, ligotée et baillonée.</Liaison>
         <Vers>7</Vers>
         <PdV>0</PdV>
     </Choix>
 </Scene>
 <Scene num="6">
-	<Description>"Vous progressez en silence parmi les ombres, et arrivez en vue du feu de camp. Trois individus à la mine patibulaire se partagent une outre de vin en riant bruyamment. A leur pied git une jeune femme baillonée et solidement ligotée.</Description>
-    <Choix>
+	<Description>"Vous progressez en silence parmi les ombres, et arrivez en vue du feu de camp. Trois individus à la mine patibulaire se partagent une outre de vin en riant bruyamment. A leur pied git une jeune femme au teint pâle, baillonée et solidement ligotée.</Description>
+    <Decor>feucamp</Decor>
+	<Choix>
         <Texte>Vous attendez que les hommes s'endorment pour délivrer leur prisonnière en silence.</Texte>
         <Liaison>Au bout d'un moment, les hommes s'endorment sous l'effet de la boisson.</Liaison>
         <Vers>9</Vers>
@@ -130,9 +137,10 @@
     </Choix>
 </Scene>
 <Scene num="7">
-	<Description>Les trois hommes se lèvent d'un bond en vous voyant, et portent la main sur leur épée. Le plus grand, qui semble être leur chef, vous dit d'un ton rude de passer votre chemin.</Description>
-    <Choix>
-        <Texte>Vous les attaquez tous les trois.</Texte>
+	<Description>Les trois hommes se lèvent d'un bond en vous voyant, et portent la main sur le pommeau leur épée. Le plus grand, qui semble être leur chef, vous demande d'un ton rude de passer votre chemin.</Description>
+    <Decor></Decor>
+	<Choix>
+        <Texte>Vous les attaquez tous les trois de front.</Texte>
         <Liaison>Les hommes tirent leurs épées, et vous vous apercevez bien vite qu'ils savent s'en servir ! A un contre trois le combat est trop inégal, et vous succombez sous le nombre.</Liaison>
         <Vers>0</Vers>
         <PdV>-20</PdV>
@@ -152,7 +160,8 @@
 </Scene>
 <Scene num="8">
 	<Description>Le chef s'esclaffe : "La libérer ? Allons donc, sa tête est mise à prix, et sa capture n'a pas été sans mal. Passe ton chemin, étranger !"</Description>
-   <Choix>
+	<Decor></Decor>
+	<Choix>
         <Texte>Vous vous excusez pour le dérangement, et partez à la recherche d'un autre abri pour la nuit.</Texte>
         <Liaison>Les hommes vous laissent partir.</Liaison>
         <Vers>10</Vers>
@@ -167,7 +176,8 @@
 </Scene>
 <Scene num="9">
 	<Description>Vous vous approchez de la prisonnière. Elle a le teint très pâle, et ses yeux noirs brillent à la lumière de la lune, vous suppliant muettement de la libérer.</Description>
-    <Choix>
+    <Decor>vampire</Decor>
+	<Choix>
         <Texte>Vous la délivrez de ses liens.</Texte>
         <Liaison>La prisonnière enlève son baillon, et s'effondre dans vos bras. Vous sentez alors ses crocs pointus s'enfoncer dans votre cou, et comprenez votre erreur fatale, car vous avez libéré une vampire !</Liaison>
         <Vers>0</Vers>
@@ -181,9 +191,10 @@
     </Choix>
 </Scene>
 <Scene num="10">
-	<Description>La nuit se fait de plus en plus froide et vous grelottez. Plus loin sur la route, vous découvrez une auberge, "La tête qui roule". Une occasion inespérée d'un bon lit et d'un repas chaud !</Description>
-    <Choix>
-        <Texte>Vous poussez la porte de l'auberge</Texte>
+	<Description>La nuit se fait de plus en plus froide et vous grelottez. Plus loin sur la route, vous découvrez une auberge, \"Le dé qui roule\". Une occasion inespérée d'un bon lit et d'un repas chaud !</Description>
+    <Decor>aubergenuit</Decor>
+	<Choix>
+        <Texte>Vous poussez la porte de l'auberge.</Texte>
         <Liaison></Liaison>
         <Vers>11</Vers>
         <PdV>0</PdV>
@@ -191,14 +202,176 @@
     <Choix>
         <Texte>Vous décidez de dormir à la belle étoile sur le bord de la route.</Texte>
         <Liaison></Liaison>
-        <Vers>XXXdormirdehors</Vers>
+        <Vers>12</Vers>
         <PdV>0</PdV>
     </Choix>
     <Choix>
         <Texte>Au diable la fatigue ! Vous continuez à marche forcée sans dormir.</Texte>
         <Liaison>La fatigue se fait sentir, et votre nuit blanche vous coûte 6 points de vie</Liaison>
-        <Vers>XXXembranchement</Vers>
+        <Vers>14</Vers>
+        <PdV>-6</PdV>
+    </Choix>
+</Scene>
+<Scene num="11">
+	<Description>Vous poussez la porte de l'auberge, qui est sombre, crasseuse et enfumée. Des éclats de rires et des discussions viennent d'un peu partout, et vous êtes surpris de voir autant de voyageurs.</Description>
+    <Decor>aubergesalle</Decor>
+	<Choix>
+        <Texte>Vous vous asseyez à une table libre, et commandez un repas et une chambre.</Texte>
+        <Liaison>La nourriture est infecte, et la chambre infestée de cafards. Pendant la nuit vous êtes pris d'horribles coliques, et perdez 8 points de vie.</Liaison>
+        <Vers>12</Vers>
+        <PdV>-8</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Vous essayez de participer à un jeu de dés qui se déroule à une table près de la cheminée.</Texte>
+        <Liaison></Liaison>
+        <Vers>13</Vers>
+        <PdV>0</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Fourbu, vous prenez juste une chambre, et allez dormir.</Texte>
+        <Liaison>La chambre est assez confortable, et votre nuit se passe sans encombre. Vous gagnez 3 points de vie.</Liaison>
+        <Vers>12</Vers>
+        <PdV>3</PdV>
+    </Choix>
+</Scene>
+<Scene num="12">
+	<Description>Au petit matin, vous vous réveillez dans l'herbe couverte de rosée. Il n'y a plus aucune trace de l'auberge !</Description>
+    <Decor></Decor>
+	<Choix>
+        <Texte>Vous haussez les épaules, et continuez votre route pour vous réchauffer.</Texte>
+        <Liaison></Liaison>
+        <Vers>14</Vers>
+        <PdV>0</PdV>
+    </Choix>
+	<Choix>
+        <Texte>Interloqué, vous cherchez aux alentours des traces de cette auberge.</Texte>
+        <Liaison>Elle s'est évaporée. Sous le choc, vous perdez 2 points de vie. Vous finissez par hausser les épaules, et reprenez la route.</Liaison>
+        <Vers>14</Vers>
+        <PdV>-2</PdV>
+    </Choix>
+</Scene>
+<Scene num="13">
+	<Description>Une foule bruyante s'est rassemblée autour de la table de jeu. Vous êtes en veine, et gagnez une coquette somme. Soudain, un Nain mauvais perdant plante un couteau devant vous et vous accuse de tricher.</Description>
+	<Decor>jeuauberge</Decor>
+    <Choix>
+        <Texte>Vous sortez votre épée, et tuez cet insolent.</Texte>
+        <Liaison>Le Nain se défend aprement, et vous inflige pour 8 PdV de blessures, mais vous le trucidez. Un grand silence tombe dans l'auberge, et vous décidez qu'il serait sage de fuir cet endroit.</Liaison>
+        <Vers>14</Vers>
+        <PdV>-8</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Vous lui tirez la barbe en le défiant du regard, et exigez des excuses d'un ton menaçant.</Texte>
+        <Liaison>Le Nain se bagarre avec vous, mais vous prenez le dessus. Calmé, il vous offre une chope et partage ses provisions. Après quoi, fourbu, vous prenez une chambre et allez vous coucher.</Liaison>
+        <Vers>12</Vers>
+        <PdV>-1</PdV>
+    </Choix>
+    <Choix>
+        <Texte>Ne souhaitant pas d'ennuis, vous lui proposez de lui rendre son argent.</Texte>
+        <Liaison>Le Nain vous prend votre bourse, riant de votre faiblesse. Il ne vous reste plus qu'à aller dormir dehors dans le froid !</Liaison>
+        <Vers>12</Vers>
+        <PdV>-3</PdV>
+    </Choix>
+</Scene>
+<Scene num="14">
+	<Description>Le ciel matinal est nuageux. Vous arrivez à un embranchement. Hélas, le panneau indicateur a été détruit, et vous ne savez trop quel chemin prendre.</Description>
+	<Decor>embranchement</Decor>
+    <Choix>
+        <Texte>Vous prenez la route de droite.</Texte>
+        <Liaison>15</Liaison>
+        <Vers></Vers>
+        <PdV>0</PdV>
+    </Choix>
+	<Choix>
+        <Texte>Vous prenez le chemin de gauche.</Texte>
+        <Liaison>17</Liaison>
+        <Vers></Vers>
+        <PdV>0</PdV>
+    </Choix>
+</Scene>
+<Scene num="15">
+	<Description>Au bout de quelques heures, vous arrivez en vue d'une large rivière que traverse un solide pont de pierre.</Description>
+	<Decor>pontpierre</Decor>
+    <Choix>
+        <Texte>Vous traversez le pont.</Texte>
+        <Liaison></Liaison>
+        <Vers>16</Vers>
         <PdV></PdV>
+    </Choix>
+	<Choix>
+        <Texte>Vous traversez la rivière à la nage.</Texte>
+        <Liaison>Le fort courant vous emporte ! L'eau glaciale vous prive de vos force, et vous coulez...</Liaison>
+        <Vers>0</Vers>
+        <PdV>-20</PdV>
+    </Choix>
+	<Choix>
+        <Texte>Vous faites demi-tour pour rejoindre l'embranchement et prendre l'autre route.</Texte>
+        <Liaison></Liaison>
+        <Vers>17</Vers>
+        <PdV>0</PdV>
+    </Choix>
+</Scene>
+<Scene num="16">
+	<Description>Arrivé au mileu du pont, un horrible Troll surgit d'en-dessous, et vous réclame votre bourse pour prix de votre passage.</Description>
+	<Decor>trollpont</Decor>
+    <Choix>
+        <Texte>Tremblant, vous lui donnez votre bourse.</Texte>
+        <Liaison>Le Troll vous remercie avec un sourire mauvais, et vous laisse passer.</Liaison>
+        <Vers>19</Vers>
+        <PdV>0</PdV>
+    </Choix>
+	<Choix>
+        <Texte>Vous dégainez votre épée, et partez à l'assaut du monstre.</Texte>
+        <Liaison>Les blessures du monstre se referment aussi vite que vous les infligez ! Vous réalisez alors que vous n'aviez aucune chance contre cet ennemi.</Liaison>
+        <Vers>0</Vers>
+        <PdV>-20</PdV>
+    </Choix>
+	<Choix>
+        <Texte>Vous vous jetez à l'eau pour échapper au monstre.</Texte>
+        <Liaison>Vous tombez du pont avec un plouf sonore. Le fort courant vous emporte ! L'eau glaciale vous prive de vos force, et vous coulez...</Liaison>
+        <Vers>0</Vers>
+        <PdV>-20</PdV>
+    </Choix>
+</Scene>
+<Scene num="17">
+	<Description>Le chemin semble se rétrécir pour devenir un sentier tapissé de feuilles mortes.</Description>
+	<Decor>sentier</Decor>
+    <Choix>
+        <Texte>Vous décidez de continuer pour voir où il mène.</Texte>
+        <Liaison>Le silence règne sur le chemin. Soudain, le sol s'effondre sous vos pieds, et vous tombez brutalement dans une fosse.</Liaison>
+        <Vers>18</Vers>
+        <PdV>-5</PdV>
+    </Choix>
+	<Choix>
+        <Texte>Inquiet, vous décidez de faire demi-tour et prendre l'autre embranchement.</Texte>
+        <Liaison></Liaison>
+        <Vers>15</Vers>
+        <PdV>0</PdV>
+    </Choix>
+</Scene>
+<Scene num="18">
+	<Description>Des rires gras résonnent, levant la tête vous apercevez des brigands hilares, qui vous demandent rançon.</Description>
+	<Decor>brigands</Decor>
+    <Choix>
+        <Texte>Vous leur donnez votre bourse et les suppliez de vous laisser la vie sauve.</Texte>
+        <Liaison>Ils vous font remonter, et vous indiquent comment rejoindre la ville de Magimar.</Liaison>
+        <Vers>19</Vers>
+        <PdV>0</PdV>
+    </Choix>
+	<Choix>
+        <Texte>Vous essayez de sortir de la fosse pour les combattre.</Texte>
+        <Liaison>Un brigand vous tend aimablement la main pour vous aider à sortir de là... et vous plante un couteau dans la gorge !</Liaison>
+        <Vers>0</Vers>
+        <PdV>-20</PdV>
+    </Choix>
+</Scene>
+<Scene num="19">
+	<Description>Vous arrivez enfin aux portes de la ville de Magimar. Il ne vous reste plus aucun sou vaillant, et vous allez devoir mettre vos talents d'aventurier à contribution pour gagner quelques pièces. Ne manquez pas l'épisode suivant de cette aventure !</Description>
+	<Decor>ville</Decor>
+    <Choix>
+        <Texte>Recommencer depuis le début ?</Texte>
+        <Liaison></Liaison>
+        <Vers>1</Vers>
+        <PdV>100</PdV>
     </Choix>
 </Scene>
 </Histoire>
