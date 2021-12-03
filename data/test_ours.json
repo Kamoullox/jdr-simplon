@@ -1,0 +1,69 @@
+{"Scene" : [
+   {
+      "@num": "0",
+      "Description": "Hu ho, vous êtes mort. Mais avant de rejoindre l'au-delà, les dieux ont décidé de vous accorder une nouvelle chance.",
+      "Decor": "mort",
+      "Choix": {
+         "Texte": "Recommencer l'aventure",
+         "Liaison": "",
+         "Vers": "1",
+         "PdV": "100"
+      }
+   },
+   {
+      "@num": "1",
+      "Description": "Vous voyez un ours !",
+      "Decor": "ours",
+      "Choix": [
+         {
+            "Texte": "Vous fuyez !",
+            "Liaison": "",
+            "Vers": "2",
+            "PdV": "0"
+         },
+         {
+            "Texte": "Vous le combattez.",
+            "Liaison": "L'ours vous inflige 10 PdV et vous fuyez.",
+            "Vers": "2",
+            "PdV": "-10"
+         }
+      ]
+   },
+   {
+      "@num": "2",
+      "Description": "Le temps se gâte et il commence à pleuvoir. Sur le bord de la route, vous remarquez un vieux puits.",
+      "Decor": "puits",
+      "Choix": [
+         {
+            "Texte": "Vous jetez une pièce d'or dans le puits en formulant un voeu.",
+            "Liaison": "La pièce tombe avec un plouf! sonore, et vous gagnez 5 PdV.",
+            "Vers": "3",
+            "PdV": "5"
+         },
+         {
+            "Texte": "Vous descendez dans le puits.",
+            "Liaison": "Vous glissez et tombez au fond du puits. L'eau monte inexorablement, personne n'entend vos appels à l'aide, et vous mourez noyé.",
+            "Vers": "0",
+            "PdV": "-20"
+         },
+         {
+            "Texte": "Vous décidez de ne pas y accorder d'importance et continuez votre route.",
+            "Liaison": "",
+            "Vers": "3",
+            "PdV": "0"
+         }
+      ]
+   },
+   {
+      "@num": "3",
+      "Description": "Vous êtes arrivé à Magimar ! Vous avez gagné.",
+      "Decor": "victory",
+      "Choix": {
+         "Texte": "Recommencer l'aventure depuis le début ?",
+         "Liaison": "",
+         "Vers": "1",
+         "PdV": "100"
+      }
+   }
+]
+}
