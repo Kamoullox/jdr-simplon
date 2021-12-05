@@ -1,6 +1,7 @@
+const maxLife = 20;
 let scene;
 let sceneEnCours = 1;
-let life = 20;
+let life = maxLife;
 let textLiaison = "";
 
 let urlJSON = "./data/data.json";
@@ -17,26 +18,92 @@ fetchInfo();
 
 
 function main() {
-    displayLife();
+    displayLife(0);
     majScene();
 }
 
-function displayLife(){
-    lifeDisplay = document.querySelector("#life");
-    lifeDisplay.textContent = life;
+// blink "on" state
+function show() {
+	//document.getElementById("blink1").style.visibility = "visible";
+    document.getElementById("blink2").style.display = "none";
+    document.getElementById("blink1").style.display = "inline";
+}
+// blink "off" state
+function hide() {
+    document.getElementById("blink1").style.display = "none";
+    document.getElementById("blink2").style.display = "inline";
+	//document.getElementById("blink1").style.visibility = "hidden";
+}
+
+//Effet de clignotement, delay en millisecondes, pendant seconds
+function blink(delay, duration) {
+    for(let i = 0; i < duration; i += delay) {
+        setTimeout("hide()", i);
+        setTimeout("show()", i + delay / 2);
+    }
+}
+
+//Crée la barre de points de vie.
+//Fait clignoter les points gagnés ou perdus.
+function displayLife(old) {
+    lifeDisplay = document.getElementById("life");
+    let s = "";
+    //Gain de PdV
+    if (old < life) {
+        for( let i = 1; i <= old; i++) {
+            s += "<i class='heart fa fa-2x fa-heart'></i>";
+        }
+        s += "<span id='blink1'>";
+        for( let i = old + 1; i <= life; i++) {
+            s += "<i class='heart fa fa-2x fa-heart'></i>";
+        }
+        s += "</span>";
+        s += "<span id='blink2' style='display:none'>";
+        for( let i = old + 1; i <= life; i++) {
+            s += "<i class='heart fa fa-2x fa-heart-o'></i>";
+        }
+        s += "</span>";
+        for( let i = life + 1; i <= maxLife; i++) {
+            s += "<i class='heart fa fa-2x fa-heart-o'></i>";
+        }
+    }
+    //Perte de PdV
+    if (old > life) {
+        for( let i = 1; i <= life; i++) {
+            s += "<i class='heart fa fa-2x fa-heart'></i>";
+        }
+        s += "<span id='blink1'>";
+        for( let i = life + 1; i <= old; i++) {
+            s += "<i class='heart fa fa-2x fa-heart-o'></i>";
+        }
+        s += "</span>";
+        s += "<span id='blink2' style='display:none'>";
+        for( let i = life + 1; i <= old; i++) {
+            s += "<i class='heart fa fa-2x fa-heart'></i>";
+        }
+        s += "</span>";
+        for( let i = old + 1; i < maxLife; i++) {
+            s += "<i class='heart fa fa-2x fa-heart-o'></i>";
+        }
+    }
+    if ( old != life ) {
+        lifeDisplay.innerHTML = "<div aria_label='" + life + " points de vie.'>" + s + "</div>";
+        blink(300, 800);
+    }
 }
 
 function changeLifePoint(changeLife){
     console.log("Mise a jour des point de vie -> " + changeLife);
-    changeLife =parseInt(changeLife);
+    changeLife = parseInt(changeLife);
+
+    const oldLife = life;
 
     life += changeLife;
 
     life = life > 20 ? 20 : life;
-
-   
-
-    displayLife();
+    life = life < 0 ? 0 : life;
+    
+    displayLife(oldLife);
 }
 
 // -----------------------------------------------------------------------------------------------------------
@@ -65,8 +132,6 @@ function clickOption(i){
         sceneEnCours = scene[sceneEnCours].Choix[i].Vers;
     }
 
-
-
     majScene();
 }
 
@@ -82,7 +147,7 @@ function majFullChoix() {
         majUnChoix(i);
     }
 
-    // Cache les éléments de la liste si il n'y a pas de choix pour la scène en cours
+    // Cache les éléments de la liste s'il n'y a pas de choix pour la scène en cours
     for (i = nbChoix + 1; i < 4; i++) {
         const choix = document.getElementById('choix' + (i));
         choix.hidden = true;
