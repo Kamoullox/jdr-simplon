@@ -318,8 +318,8 @@
       "Choix": [
          {
             "Texte": "Vous prenez la route de droite.",
-            "Liaison": "15",
-            "Vers": "",
+            "Liaison": "",
+            "Vers": "15",
             "PdV": "0"
          },
          {
@@ -339,7 +339,7 @@
             "Texte": "Vous traversez le pont.",
             "Liaison": "",
             "Vers": "16",
-            "PdV": ""
+            "PdV": "0"
          },
          {
             "Texte": "Vous traversez la rivière à la nage.",
