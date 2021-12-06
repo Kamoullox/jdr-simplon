@@ -12,17 +12,17 @@
    },
    {
       "@num": "1",
-      "Description": "Bonjour fier aventurier ! Vous êtes dans une forêt obscure (et réputée dangeureuse), sur la route menant à la ville de Magimar. Votre objectif est de l'atteindre sain et sauf. Sur votre droite, vous remarquez une caverne.",
+      "Description": "Bonjour fier aventurier ! Vous êtes dans une forêt obscure (et réputée dangereuse), sur la route menant à la ville de Magimar. Votre objectif est de l'atteindre sain et sauf. Sur votre droite, non loin de la route, vous remarquez une caverne.",
       "Decor": "foret",
       "Choix": [
          {
-            "Texte": "Vous décidez de passer votre chemin.",
+            "Texte": "Vous décidez de continuer votre chemin.",
             "Liaison": "Vous continuez sur la route.",
             "Vers": "2",
             "PdV": "0"
          },
          {
-            "Texte": "Vous allumez votre torche et entrez dans la grotte",
+            "Texte": "Vous allumez votre torche et entrez dans la grotte pour l'explorer.",
             "Liaison": "",
             "Vers": "3",
             "PdV": "0"
@@ -35,8 +35,8 @@
       "Decor": "puits",
       "Choix": [
          {
-            "Texte": "Vous jetez une pièce d'or dans le puits en formulant un voeu.",
-            "Liaison": "La pièce tombe avec un plouf! sonore, et vous êtes guéri de toutes vos blessures.",
+            "Texte": "Vous jetez une pièce d'or dans le puits en formulant un vœu.",
+            "Liaison": "La pièce tombe avec un plouf! sonore, et vous êtes guéri de toutes vos blessures. Quelle chance !",
             "Vers": "5",
             "PdV": "20"
          },
@@ -123,7 +123,7 @@
          },
          {
             "Texte": "Vous avancez en direction du feu pour souhaiter le bonsoir à quiconque s'y trouverait.",
-            "Liaison": "Vous arrivez à un camp où se trouve trois individus louches, à leur pied se trouve une jeune femme au teint pâle, ligotée et baillonée.",
+            "Liaison": "Vous arrivez à un camp où se trouve trois individus louches, à leur pied se trouve une jeune femme au teint pâle, ligotée et bâillonnée.",
             "Vers": "7",
             "PdV": "0"
          }
@@ -131,7 +131,7 @@
    },
    {
       "@num": "6",
-      "Description": "\"Vous progressez en silence parmi les ombres, et arrivez en vue du feu de camp. Trois individus à la mine patibulaire se partagent une outre de vin en riant bruyamment. A leur pied git une jeune femme au teint pâle, baillonée et solidement ligotée.",
+      "Description": "Vous progressez en silence parmi les ombres, et arrivez en vue du feu de camp. Trois individus à la mine patibulaire se partagent une outre de vin en riant bruyamment. A leur pied gît une jeune femme au teint pâle, bâillonnée et solidement ligotée.",
       "Decor": "feucamp",
       "Choix": [
          {
@@ -205,13 +205,13 @@
       "Choix": [
          {
             "Texte": "Vous la délivrez de ses liens.",
-            "Liaison": "La prisonnière enlève son baillon, et s'effondre dans vos bras. Vous sentez alors ses crocs pointus s'enfoncer dans votre cou, et comprenez votre erreur fatale, car vous avez libéré une vampire !",
+            "Liaison": "La prisonnière enlève son bâillon, et s'effondre dans vos bras. Vous sentez alors ses crocs pointus s'enfoncer dans votre cou, et comprenez votre erreur fatale, car vous avez libéré une vampire !",
             "Vers": "0",
             "PdV": "-20"
          },
          {
-            "Texte": "Vous lui retirez juste son baillon.",
-            "Liaison": "Son regard vous hypnotise. Dans un atroce sourire qui dévoile ses canines pointues de vampire, elle vous ordonne de la libérer. Subjugué, vous lui obéissez, et la laissez se nourrir...",
+            "Texte": "Vous lui retirez juste son bâillon.",
+            "Liaison": "Son regard vous hypnotise. Dans un atroce sourire qui dévoile ses canines pointues de vampire, elle vous ordonne de la libérer. Subjugué, vous lui obéissez, et la laissez se nourrir de votre sang.",
             "Vers": "10",
             "PdV": "-10"
          }
@@ -219,7 +219,7 @@
    },
    {
       "@num": "10",
-      "Description": "La nuit se fait de plus en plus froide et vous grelottez. Plus loin sur la route, vous découvrez une auberge, \\\"Le dé qui roule\\\". Une occasion inespérée d'un bon lit et d'un repas chaud !",
+      "Description": "La nuit se fait de plus en plus froide et vous grelottez. Plus loin sur la route, vous découvrez une auberge, \"Le dé qui roule\". Une occasion inespérée d'un bon lit et d'un repas chaud !",
       "Decor": "aubergenuit",
       "Choix": [
          {
@@ -293,7 +293,7 @@
       "Choix": [
          {
             "Texte": "Vous sortez votre épée, et tuez cet insolent.",
-            "Liaison": "Le Nain se défend aprement, et vous inflige pour 8 PdV de blessures, mais vous le trucidez. Un grand silence tombe dans l'auberge, et vous décidez qu'il serait sage de fuir cet endroit.",
+            "Liaison": "Le Nain se défend âprement, et vous inflige pour 8 PdV de blessures, mais vous le trucidez. Un grand silence tombe dans l'auberge, et vous décidez qu'il serait sage de fuir cet endroit.",
             "Vers": "14",
             "PdV": "-8"
          },
@@ -324,8 +324,8 @@
          },
          {
             "Texte": "Vous prenez le chemin de gauche.",
-            "Liaison": "17",
-            "Vers": "",
+            "Liaison": "",
+            "Vers": "17",
             "PdV": "0"
          }
       ]
@@ -357,7 +357,7 @@
    },
    {
       "@num": "16",
-      "Description": "Arrivé au mileu du pont, un horrible Troll surgit d'en-dessous, et vous réclame votre bourse pour prix de votre passage.",
+      "Description": "Arrivé au milieu du pont, un horrible Troll surgit d'en-dessous, et vous réclame votre bourse pour prix de votre passage.",
       "Decor": "trollpont",
       "Choix": [
          {
@@ -387,9 +387,9 @@
       "Choix": [
          {
             "Texte": "Vous décidez de continuer pour voir où il mène.",
-            "Liaison": "Le silence règne sur le chemin. Soudain, le sol s'effondre sous vos pieds, et vous tombez brutalement dans une fosse.",
+            "Liaison": "Le silence règne sur le chemin. Soudain, le sol s'effondre sous vos pieds, et vous tombez brutalement dans une fosse. Sous le choc, vous perdez 12 points de vie.",
             "Vers": "18",
-            "PdV": "-5"
+            "PdV": "-12"
          },
          {
             "Texte": "Inquiet, vous décidez de faire demi-tour et prendre l'autre embranchement.",
@@ -405,8 +405,8 @@
       "Decor": "brigands",
       "Choix": [
          {
-            "Texte": "Vous leur donnez votre bourse et les suppliez de vous laisser la vie sauve.",
-            "Liaison": "Ils vous font remonter, et vous indiquent comment rejoindre la ville de Magimar.",
+            "Texte": "Vous leur jetez votre bourse et les suppliez de vous laisser la vie sauve.",
+            "Liaison": "Ils vous font remonter, et vous indiquent même comment rejoindre la ville de Magimar. Cependant, ils ne vous laissent que votre caleçon !",
             "Vers": "19",
             "PdV": "0"
          },
@@ -420,7 +420,7 @@
    },
    {
       "@num": "19",
-      "Description": "Vous arrivez enfin aux portes de la ville de Magimar. Il ne vous reste plus aucun sou vaillant, et vous allez devoir mettre vos talents d'aventurier à contribution pour gagner quelques pièces. Ne manquez pas l'épisode suivant de cette aventure !",
+      "Description": "Vous arrivez enfin aux portes de la ville de Magimar. Il ne vous reste plus aucun sou vaillant, et vous allez devoir y mettre vos talents d'aventurier à contribution pour gagner quelques pièces. Ne manquez pas l'épisode suivant de cette aventure !",
       "Decor": "ville",
       "Choix": [{
          "Texte": "Recommencer depuis le début ?",

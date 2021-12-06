@@ -4,7 +4,7 @@ let sceneEnCours = 1;
 let life = maxLife;
 let textLiaison = "";
 
-let urlJSON = "./data/data.json";
+let urlJSON = "./data/histoire.json";
 
 async function fetchInfo() {
     fetch(urlJSON)
@@ -98,7 +98,7 @@ function changeLifePoint(changeLife){
 
     life += changeLife;
 
-    life = life > 20 ? 20 : life;
+    life = life > maxLife ? maxLife : life;
     life = life < 0 ? 0 : life;
     
     displayLife(oldLife);
