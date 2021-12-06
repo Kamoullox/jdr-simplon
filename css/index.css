@@ -47,6 +47,22 @@ body, html {
 
 /* -------------------------------------- */
 
+.heart {
+       font-size: 2em;
+       background: #FC1D0D;
+       background: -webkit-linear-gradient(to bottom, #FC1D0D 0%, #960F0D 100%);
+       background: -moz-linear-gradient(to bottom, #FC1D0D 0%, #960F0D 100%);
+       background: linear-gradient(to bottom, #FC1D0D 0%, #960F0D 100%);
+       -webkit-background-clip: text;
+       -webkit-text-fill-color: transparent;
+       padding-right:3px;
+   }
+   @media screen and (max-width: 600px) {
+       .heart {
+           font-size: 1em;
+       }
+   }
+
 #histoire {
        text-align: center;
        height: fit-content;
@@ -66,6 +82,7 @@ body, html {
 }
 
 #life {
+       z-index: 1111;
        color: white;
 }
 
@@ -104,6 +121,13 @@ li {
        position: relative;
 }
 
+.lifeContainer {
+       display: flex;
+       z-index: 10;
+       position: relative;
+       margin-left: 1.5vw;
+}
+
 
 
 li:hover {
@@ -129,7 +153,7 @@ li:active {
        }
 
        #container {
-              padding-top: 12vh;
+              padding-top: 8vh;
               flex-direction: row;
               justify-content: space-around;
        }

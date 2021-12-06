@@ -270,7 +270,7 @@
    {
       "@num": "12",
       "Description": "Au petit matin, vous vous réveillez dans l'herbe couverte de rosée. Il n'y a plus aucune trace de l'auberge !",
-      "Decor": "",
+      "Decor": "", 
       "Choix": [
          {
             "Texte": "Vous haussez les épaules, et continuez votre route pour vous réchauffer.",
