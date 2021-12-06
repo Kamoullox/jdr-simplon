@@ -23,8 +23,7 @@ function main() {
 }
 
 // blink "on" state
-function show() {
-	//document.getElementById("blink1").style.visibility = "visible";
+function show() {	
     document.getElementById("blink2").style.display = "none";
     document.getElementById("blink1").style.display = "inline";
 }
@@ -32,10 +31,9 @@ function show() {
 function hide() {
     document.getElementById("blink1").style.display = "none";
     document.getElementById("blink2").style.display = "inline";
-	//document.getElementById("blink1").style.visibility = "hidden";
 }
 
-//Effet de clignotement, delay en millisecondes, pendant seconds
+//Effet de clignotement, delay en millisecondes, pendant duration secondes
 function blink(delay, duration) {
     for(let i = 0; i < duration; i += delay) {
         setTimeout("hide()", i);
@@ -51,39 +49,39 @@ function displayLife(old) {
     //Gain de PdV
     if (old < life) {
         for( let i = 1; i <= old; i++) {
-            s += "<i class='heart fa fa-2x fa-heart'></i>";
+            s += "<i class='heart fa fa-heart'></i>";
         }
         s += "<span id='blink1'>";
         for( let i = old + 1; i <= life; i++) {
-            s += "<i class='heart fa fa-2x fa-heart'></i>";
+            s += "<i class='heart fa fa-heart'></i>";
         }
         s += "</span>";
         s += "<span id='blink2' style='display:none'>";
         for( let i = old + 1; i <= life; i++) {
-            s += "<i class='heart fa fa-2x fa-heart-o'></i>";
+            s += "<i class='heart fa fa-heart-o'></i>";
         }
         s += "</span>";
         for( let i = life + 1; i <= maxLife; i++) {
-            s += "<i class='heart fa fa-2x fa-heart-o'></i>";
+            s += "<i class='heart fa fa-heart-o'></i>";
         }
     }
     //Perte de PdV
     if (old > life) {
         for( let i = 1; i <= life; i++) {
-            s += "<i class='heart fa fa-2x fa-heart'></i>";
+            s += "<i class='heart fa fa-heart'></i>";
         }
         s += "<span id='blink1'>";
         for( let i = life + 1; i <= old; i++) {
-            s += "<i class='heart fa fa-2x fa-heart-o'></i>";
+            s += "<i class='heart fa fa-heart-o'></i>";
         }
         s += "</span>";
         s += "<span id='blink2' style='display:none'>";
         for( let i = life + 1; i <= old; i++) {
-            s += "<i class='heart fa fa-2x fa-heart'></i>";
+            s += "<i class='heart fa fa-heart'></i>";
         }
         s += "</span>";
         for( let i = old + 1; i < maxLife; i++) {
-            s += "<i class='heart fa fa-2x fa-heart-o'></i>";
+            s += "<i class='heart fa fa-heart-o'></i>";
         }
     }
     if ( old != life ) {

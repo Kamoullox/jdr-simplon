@@ -12,6 +12,7 @@
     <script src="./js/index.js" defer></script>
     <style>
         .heart {
+            font-size: 2em;
             background: #FC1D0D;
             background: -webkit-linear-gradient(to bottom, #FC1D0D 0%, #960F0D 100%);
             background: -moz-linear-gradient(to bottom, #FC1D0D 0%, #960F0D 100%);
@@ -19,6 +20,11 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             padding-right:3px;
+        }
+        @media screen and (max-width: 600px) {
+            .heart {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
