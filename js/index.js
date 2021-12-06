@@ -2,6 +2,7 @@ let scene;
 let sceneEnCours = 1;
 let life = 20;
 let textLiaison = "";
+let decorUrl = "url('../images/decor/";
 
 let urlJSON = "./data/data.json";
 
@@ -10,15 +11,21 @@ async function fetchInfo() {
         .then(response => response.json())
         .then(data => scene = data.Scene)
         .catch(error => console.log(error));
-    setTimeout(() => { main() }, 150);
+    setTimeout(() => { main() }, 350);
 }
+// -----------------------------------------------------------------------------
 
-fetchInfo();
+function majDecor(decorName){
+    console.log("Url du décor en cours de chargement -> " + (decorUrl + decorName + "')"))
 
+    let decor = document.querySelector(".top");
+    let nextDecor = document.querySelector("."+decorName);
 
-function main() {
-    displayLife();
-    majScene();
+    nextDecor.classList.toggle("top");
+    nextDecor.classList.toggle("transparent");
+
+    decor.classList.toggle("top");
+    decor.classList.toggle("transparent");
 }
 
 function displayLife(){
@@ -33,8 +40,6 @@ function changeLifePoint(changeLife){
     life += changeLife;
 
     life = life > 20 ? 20 : life;
-
-   
 
     displayLife();
 }
@@ -65,8 +70,6 @@ function clickOption(i){
         sceneEnCours = scene[sceneEnCours].Choix[i].Vers;
     }
 
-
-
     majScene();
 }
 
@@ -95,10 +98,20 @@ function majFullChoix() {
 function majScene() {
     console.log("Mise en place de la scène -> " + sceneEnCours);
 
+    if(scene[sceneEnCours].Decor != ""){
+        majDecor(scene[sceneEnCours].Decor);
+    }
+
     const histoire = document.getElementById("content");
     histoire.innerHTML  = textLiaison + (textLiaison != "" ? "<br /><br />" : "")  + scene[sceneEnCours].Description;
 
     majFullChoix();
 }
 
+fetchInfo();
+
+function main() {
+    displayLife();
+    majScene();
+}
 
