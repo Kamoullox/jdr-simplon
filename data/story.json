@@ -1,0 +1,216 @@
+{
+    "Scene": [
+        {
+            "Description": "Bonjour fier aventurier ! Vous êtes dans une forêt obscure (et réputée dangeureuse), sur la route menant à la ville de Magimar. Votre objectif est de l'atteindre sain et sauf. Sur votre droite, vous remarquez une caverne.",
+            "Choix": [
+                {
+                    "Texte": "Vous décidez de passer votre chemin.",
+                    "Liaison": "Vous continuez sur la route.",
+                    "Vers": "2",
+                    "PdV": "0"
+                },
+                {
+                    "Texte": "Vous allumez votre torche et entrez dans la grotte",
+                    "Liaison": {},
+                    "Vers": "3",
+                    "PdV": "0"
+                }
+            ]
+        },
+        {
+            "Description": "Le temps se gâte et il commence à pleuvoir. Sur le bord de la route, vous remarquez un vieux puits.",
+            "Choix": [
+                {
+                    "Texte": "Vous jetez une pièce d'or dans le puits en formulant un voeu.",
+                    "Liaison": "La pièce tombe avec un plouf! sonore, et vous êtes guéri de toutes vos blessures.",
+                    "Vers": "5",
+                    "PdV": "20"
+                },
+                {
+                    "Texte": "Vous descendez dans le puits.",
+                    "Liaison": "Vous glissez et tombez au fond du puits. L'eau monte inexorablement, personne n'entend vos appels à l'aide, et vous mourez noyé.",
+                    "Vers": "5",
+                    "PdV": "-20"
+                },
+                {
+                    "Texte": "Vous décidez de ne pas y accorder d'importance et continuez votre route.",
+                    "Liaison": {},
+                    "Vers": "5",
+                    "PdV": "0"
+                }
+            ]
+        },
+        {
+            "Description": "Le sol de la grotte est assez uniforme et vous progressez aisément. Soudain, un grondement sourd se fait entendre devant vous. Vous avez dérangé un ours énorme !",
+            "Choix": [
+                {
+                    "Texte": "Vous poussez un cri de terreur et prenez vos jambes à votre cou.",
+                    "Liaison": "L'ours vous laboure le dos de ses puissantes griffes, et vous poursuit jusqu'à l'entrée de sa caverne, puis retourne se coucher.",
+                    "Vers": "2",
+                    "PdV": "-5"
+                },
+                {
+                    "Texte": "Vous tirez votre épée et décidez de l'affronter.",
+                    "Liaison": {},
+                    "Vers": "4",
+                    "PdV": "-10"
+                },
+                {
+                    "Texte": "Vous lui jetez vos rations et reculez lentement.",
+                    "Liaison": "L'ours se jette sur vos rations et vous en profitez pour rejoindre la route.",
+                    "Vers": "2",
+                    "PdV": "0"
+                }
+            ]
+        },
+        {
+            "Description": "Le combat est difficile et sanglant. L'ours s'écroule, mort, mais non sans vous avoir infligé de nombreuses blessures. Au fond de son antre, vous distinguez deux coffres fermés.",
+            "Choix": [
+                {
+                    "Texte": "Vous décidez d'ouvrir le grand coffre à droite.",
+                    "Liaison": "Le coffre était piégé ! Une aiguille empoisonnée vous pique le doigt au moment où vous l'ouvrez, et vous perdez 5 pdv. Vous quittez la grotte en maugréant sur votre infortune.",
+                    "Vers": "2",
+                    "PdV": "5"
+                },
+                {
+                    "Texte": "Vous décidez d'ouvrir le petit coffre à gauche.",
+                    "Liaison": "Quelle chance, le coffre contient une potion de guérison qui vous redonne 7 points de vie. Vous quittez la grotte pour rejoindre la route.",
+                    "Vers": "2",
+                    "PdV": "7"
+                },
+                {
+                    "Texte": "Vous sortez de la grotte sans plus de cérémonie.",
+                    "Liaison": {},
+                    "Vers": "2",
+                    "PdV": "0"
+                }
+            ]
+        },
+        {
+            "Description": "La pluie a cessé, mais le soleil se couche. Alors que vous cherchez un endroit pour passer la nuit, vous remarquez la lueur de ce qui semble être un grand feu entre les arbres.",
+            "Choix": [
+                {
+                    "Texte": "Vous faites un détour pour passer à distance, et cherchez un abri pour la nuit.",
+                    "Liaison": {},
+                    "Vers": "10",
+                    "PdV": "0"
+                },
+                {
+                    "Texte": "Vous vous faufilez discrètement pour approcher du feu de camp et voir de quoi il retourne.",
+                    "Liaison": {},
+                    "Vers": "6",
+                    "PdV": "0"
+                },
+                {
+                    "Texte": "Vous avancez en direction du feu pour souhaiter le bonsoir.",
+                    "Liaison": "Vous arrivez à un camp où se trouve trois individus louches, à leur pied se trouve une jeune femme ligotée et baillonée.",
+                    "Vers": "7",
+                    "PdV": "0"
+                }
+            ]
+        },
+        {
+            "Description": "\"Vous progressez en silence parmi les ombres, et arrivez en vue du feu de camp. Trois individus à la mine patibulaire se partagent une outre de vin en riant bruyamment. A leur pied git une jeune femme baillonée et solidement ligotée.",
+            "Choix": [
+                {
+                    "Texte": "Vous attendez que les hommes s'endorment pour délivrer leur prisonnière en silence.",
+                    "Liaison": "Au bout d'un moment, les hommes s'endorment sous l'effet de la boisson.",
+                    "Vers": "9",
+                    "PdV": "0"
+                },
+                {
+                    "Texte": "Vous tirez votre épée et avancez dans la lumière pour leur demander des explications.",
+                    "Liaison": {},
+                    "Vers": "7",
+                    "PdV": "0"
+                },
+                {
+                    "Texte": "Vous décidez que tout cela ne vous concerne pas, et faites demi-tour.",
+                    "Liaison": {},
+                    "Vers": "10",
+                    "PdV": "0"
+                }
+            ]
+        },
+        {
+            "Description": "Les trois hommes se lèvent d'un bond en vous voyant, et portent la main sur leur épée. Le plus grand, qui semble être leur chef, vous dit d'un ton rude de passer votre chemin.",
+            "Choix": [
+                {
+                    "Texte": "Vous les attaquez tous les trois.",
+                    "Liaison": "Les hommes tirent leurs épées, et vous vous apercevez bien vite qu'ils savent s'en servir ! A un contre trois le combat est trop inégal, et vous succombez sous le nombre.",
+                    "Vers": "0",
+                    "PdV": "-20"
+                },
+                {
+                    "Texte": "Vous leur ordonnez de libérer leur prisonnière, sinon...",
+                    "Liaison": {},
+                    "Vers": "8",
+                    "PdV": "0"
+                },
+                {
+                    "Texte": "Vous vous excusez pour le dérangement, et partez à la recherche d'un autre abri pour la nuit.",
+                    "Liaison": "Les hommes vous laissent partir.",
+                    "Vers": "10",
+                    "PdV": "0"
+                }
+            ]
+        },
+        {
+            "Description": "Le chef s'esclaffe : \"La libérer ? Allons donc, sa tête est mise à prix, et sa capture n'a pas été sans mal. Passe ton chemin, étranger !\"",
+            "Choix": [
+                {
+                    "Texte": "Vous vous excusez pour le dérangement, et partez à la recherche d'un autre abri pour la nuit.",
+                    "Liaison": "Les hommes vous laissent partir.",
+                    "Vers": "10",
+                    "PdV": "0"
+                },
+                {
+                    "Texte": "Vous bondissez par surprise sur le chef pour le tuer et porter secours à sa prisonnière.",
+                    "Liaison": "Le chef s'écroule décapité et ses comparses, épouvantés, prennent la fuite.",
+                    "Vers": "9",
+                    "PdV": "0"
+                }
+            ]
+        },
+        {
+            "Description": "Vous vous approchez de la prisonnière. Elle a le teint très pâle, et ses yeux noirs brillent à la lumière de la lune, vous suppliant muettement de la libérer.",
+            "Choix": [
+                {
+                    "Texte": "Vous la délivrez de ses liens.",
+                    "Liaison": "La prisonnière enlève son baillon, et s'effondre dans vos bras. Vous sentez alors ses crocs pointus s'enfoncer dans votre cou, et comprenez votre erreur fatale, car vous avez libéré une vampire !",
+                    "Vers": "0",
+                    "PdV": "-20"
+                },
+                {
+                    "Texte": "Vous lui retirez juste son baillon.",
+                    "Liaison": "Son regard vous hypnotise. Dans un atroce sourire qui dévoile ses canines pointues de vampire, elle vous ordonne de la libérer. Subjugué, vous lui obéissez, et la laissez se nourrir...",
+                    "Vers": "10",
+                    "PdV": "-10"
+                }
+            ]
+        },
+        {
+            "Description": "La nuit se fait de plus en plus froide et vous grelottez. Plus loin sur la route, vous découvrez une auberge, \"La tête qui roule\". Une occasion inespérée d'un bon lit et d'un repas chaud !",
+            "Choix": [
+                {
+                    "Texte": "Vous poussez la porte de l'auberge",
+                    "Liaison": {},
+                    "Vers": "11",
+                    "PdV": "0"
+                },
+                {
+                    "Texte": "Vous décidez de dormir à la belle étoile sur le bord de la route.",
+                    "Liaison": {},
+                    "Vers": "XXXdormirdehors",
+                    "PdV": "0"
+                },
+                {
+                    "Texte": "Au diable la fatigue ! Vous continuez à marche forcée sans dormir.",
+                    "Liaison": "La fatigue se fait sentir, et votre nuit blanche vous coûte 6 points de vie",
+                    "Vers": "XXXembranchement",
+                    "PdV": {}
+                }
+            ]
+        }
+    ]
+}
