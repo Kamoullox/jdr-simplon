@@ -329,6 +329,25 @@ function majScene() {
     majFullChoix();
 }
 
+//Charge les images de fond
+function loadImg() {
+    let d = document.getElementById("decor");
+    let s = "";
+    let c = "";
+    for( scn = 0; scn < scene.length; scn++) {
+        if(scene[scn].Decor != "") {
+            if (scene[scn].Decor === "foret") {
+                c = " top";
+            } else {
+                c = " transparent";
+            }
+            s += '<img class="' + scene[scn].Decor + c + '" src="./images/decor/' + scene[scn].Decor + '.jpg" />';
+        }
+    }
+    s += '<img class="combat transparent" src="./images/decor/combat.jpg" />';
+    d.innerHTML = s;
+}
+
 fetchInfo();
 
 function main() {
@@ -346,7 +365,7 @@ function main() {
         [[5,3],  [6,3],  [7,2],[8,0],[9,0], [10,0], [11,0], [11,0],[12,0],[14,0],[16,0], [18,0],[100,0]],
         [[6,0],  [7,0],  [8,0],[9,0],[10,0],[11,0], [12,0], [14,0],[16,0],[18,0],[100,0],[100,0],[100,0]],
     ];
- 
+    loadImg();
     displayLife(0);
     majScene();
 }
