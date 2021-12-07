@@ -133,6 +133,14 @@ function majUnChoix(num) {
     console.log("");
 }
 
+function changeForce(strength) {
+    console.log("Changement de force " + strength);
+    if( strength != undefined ) {
+        let x = parseInt(strength);
+        maForce += x;
+    }
+}
+
 //Regarde s'il y a un combat
 function clickOption(i){
     console.log("Vous avez cliqué sur un choix qui envoie vers la scène " + scene[sceneEnCours].Choix[i].Vers)
@@ -140,6 +148,8 @@ function clickOption(i){
     textLiaison = scene[sceneEnCours].Choix[i].Liaison;
 
     changeLifePoint(scene[sceneEnCours].Choix[i].PdV);
+    //Optionnel dans le JSON pour gérer les points de vie.
+    changeForce(scene[sceneEnCours].Choix[i].Strength);
 
     if (life <= 0){
         life = 0;
