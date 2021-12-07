@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    
 <head>
     <link href="./css/index.css" rel="stylesheet">
     <style></style>
@@ -8,13 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JDR</title>
-    <script src="./js/index.js" defer></script>
+    <script src="./js/index.js" defer ></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
     <div class="decor">
         <img class="mort transparent" src="./images/decor/mort.jpg" />
+        <img class="combat transparent" src="./images/decor/combat.jpg" />
         <img class="puits transparent" src="./images/decor/puits.jpg" />
         <img class="ours transparent" src="./images/decor/ours.jpg" />
         <img class="coffres transparent" src="./images/decor/coffres.jpg" />
@@ -24,6 +25,7 @@
         <img class="aubergenuit transparent" src="./images/decor/aubergenuit.jpg" />
         <img class="aubergesalle transparent" src="./images/decor/aubergesalle.jpg" />
         <img class="jeuauberge transparent" src="./images/decor/jeuauberge.jpg" />
+        <img class="herbe transparent" src="./images/decor/herbe.jpg" />
         <img class="embranchement transparent" src="./images/decor/embranchement.jpg" />
         <img class="pontpierre transparent" src="./images/decor/pontpierre.jpg" />
         <img class="trollpont transparent" src="./images/decor/trollpont.jpg" />
@@ -40,20 +42,23 @@
     <div id="container">
 
         <section id="histoire">
-            <p id="content"></p>
+            <p id="content" tabindex="0"></p>
         </section>
-
+        <section id="combat" style="padding:15px">
+            <div id="description" class="boxCombat"></div>
+            <div>
+                <button id="btnAttack" onclick="attack()"><img src="images/sword.png" style="height: 0.7em;"> Attaque</button>
+            </div>
+        </section>
         <section id="choix">
             <ul>
-                <li id="choix1" onclick=clickOption(0)></li>
-                <li id="choix2" onclick=clickOption(1)></li>
-                <li id="choix3" onclick=clickOption(2)></li>
+                <li id="choix1" tabindex="1" onclick = clickOption(0)></li>
+                <li id="choix2" tabindex="2" onclick = clickOption(1)></li>
+                <li id="choix3" tabindex="3" onclick = clickOption(2)></li>
             </ul>
         </section>
-        
     </div>
-
-
+    
 </body>
 
 </html>

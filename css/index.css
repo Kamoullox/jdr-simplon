@@ -1,6 +1,6 @@
 body, html {
-       /* background: rgb(0,0,0);
-       background: linear-gradient(90deg, rgba(0,0,0,1) 7%, rgba(13,45,75,1) 64%);    */
+       background: black;
+       /* background: linear-gradient(90deg, rgba(0,0,0,1) 7%, rgba(13,45,75,1) 64%);    */
        font-family: 'Times New Roman', Times, serif;
        height: 100%;
        margin: 0;
@@ -54,34 +54,98 @@ body, html {
        background: -moz-linear-gradient(to bottom, #FC1D0D 0%, #960F0D 100%);
        background: linear-gradient(to bottom, #FC1D0D 0%, #960F0D 100%);
        -webkit-background-clip: text;
+       background-clip: text;
        -webkit-text-fill-color: transparent;
-       padding-right: 3px;
-}
-
-@media screen and (max-width: 600px) {
+       padding-right:3px;
+   }
+   @media screen and (max-width: 600px) {
        .heart {
-              font-size: 1em;
+           font-size: 1em;
        }
-}
+   }
 
-/* -------------------------------------------------------------- */
+.boxCombat {
+       border-radius: 1ch;
+       padding: 5px;
+       overflow-x:none;
+       overflow-y: auto;
+       display: none;
+       flex-direction: column-reverse;
+       color: cornsilk;
+       max-width: 900px;
+       height: 70vh;
+       margin : auto;
+       font-size: 22pt;
+       border-radius: 15px;
+       border: solid 0.5vh;
+       border-color: rgb(61, 27, 2);
+       background-color: rgba(0, 0, 0, 0.493);
+}
+/* Scrollbar styles */
+::-webkit-scrollbar {
+       width: 12px;
+       height: 12px;
+       }
+       
+       ::-webkit-scrollbar-track {
+       border: 1px solid rgb(61, 27, 2);
+       border-radius: 15px;
+       }
+       
+       ::-webkit-scrollbar-thumb {
+       background: rgb(61, 27, 2);  
+       border-radius: 15px;
+       }
+       
+       ::-webkit-scrollbar-thumb:hover {
+       background: rgb(71, 37, 12);
+       }
+
+       #btnAttack {
+              margin: auto;
+              margin-top: 1em;
+              cursor: pointer;
+              border-style:solid;
+              border-color: rgb(109,0,0);
+              border-radius: 15px;
+              display: none;
+              font-size: 18pt;
+              padding-right: 20px;
+              padding-left: 20px;
+              padding-top: 5px;
+              padding-bottom: 5px;
+              text-align: center;
+              color:cornsilk;
+              background-color: darkred;
+              
+       }
+       #btnAttack:hover {
+              border-color: darkred;
+              background-color: rgba(109, 0, 0, 0.541);
+              transition-duration: 1s;
+              transform: translateX(-3vh);
+              box-shadow: rgba(0, 0, 0, 0.589) 1vh 1vh 1vh;
+       }
+       
+       #btnAttack:active {
+              transform: translateY(1.5vh);
+              border-radius: 5%;
+              transition-duration: 0.5s;
+       }
+
 #histoire {
        text-align: center;
        height: fit-content;
        margin-left: 2vh;
        margin-right: 2vh;
        margin-top: 1vh;
-       font-size: 2em;
+       font-size: 30px;
        float: left;
        border-radius: 15px;
        border: solid 0.5vh;
        border-color: rgb(61, 27, 2);
        background-color: rgba(0, 0, 0, 0.493);
-       width: 67vw;
-       display: block;
 }
-
-#histoire p::-webkit-scrollbar{width:0px;}
 
 #histoire p {
        color: cornsilk;
@@ -116,8 +180,6 @@ li {
        color: cornsilk;
        cursor: pointer;
        border-radius: 15px;
-
-
 }
 
 #container {
@@ -134,8 +196,6 @@ li {
        margin-left: 1.5vw;
 }
 
-
-
 li:hover {
        border-color: rgb(41, 22, 3);
        background-color: rgba(43, 22, 2, 0.541);
@@ -149,8 +209,6 @@ li:active {
        border-radius: 5%;
        transition-duration: 0.5s;
 }
-
-
 
 @media screen and (min-width: 1500px) {
        #body {
@@ -169,12 +227,13 @@ li:active {
        }
 
        #histoire p {
+              font-size: 45px;
               margin-left: 10vh;
               margin-right: 15vh;
        }
 
        #choix {
-              font-size: 2em;
+              font-size: 35px;
        }
 
 

@@ -61,15 +61,25 @@
       "Choix": [
          {
             "Texte": "Vous poussez un cri de terreur et prenez vos jambes à votre cou.",
-            "Liaison": "L'ours vous laboure le dos de ses puissantes griffes, et vous poursuit jusqu'à l'entrée de sa caverne, puis retourne se coucher.",
-            "Vers": "2",
-            "PdV": "-5"
+            "Liaison": "L'ours vous rattrape et vous laboure le dos de ses puissantes griffes. Vous n'avez pas d'autre choix que de dégainer votre épée.",
+            "Vers": "4",
+            "PdV": "-5",
+            "Combat": ["ours", "l'ours", "un ours"],
+            "Force" : "15",
+            "Endurance": "20",
+            "TexteMort": "Dans un grondement terrifiant, l'ours vous renverse et vous déchire la gorge.",
+            "TexteVictoire" : "L'ours s'effondre enfin sous vos coups."
          },
          {
             "Texte": "Vous tirez votre épée et décidez de l'affronter.",
             "Liaison": "",
             "Vers": "4",
-            "PdV": "-10"
+            "PdV": "0",
+            "Combat": ["ours", "l'ours", "un ours"],
+            "Force" : "15",
+            "Endurance": "20",
+            "TexteMort": "Dans un grondement terrifiant, l'ours vous renverse et vous déchire la gorge.",
+            "TexteVictoire" : "L'ours s'effondre enfin sous vos coups."
          },
          {
             "Texte": "Vous lui jetez vos rations et reculez lentement.",
@@ -81,7 +91,7 @@
    },
    {
       "@num": "4",
-      "Description": "Le combat est difficile et sanglant. L'ours s'écroule, mort, mais non sans vous avoir infligé de nombreuses blessures. Au fond de son antre, vous distinguez deux coffres fermés.",
+      "Description": "Le combat fut difficile et sanglant. L'ours s'écroule, mort, mais non sans vous avoir infligé de nombreuses blessures. Au fond de son antre, vous distinguez deux coffres fermés.",
       "Decor": "coffres",
       "Choix": [
          {
@@ -161,9 +171,14 @@
       "Choix": [
          {
             "Texte": "Vous les attaquez tous les trois de front.",
-            "Liaison": "Les hommes tirent leurs épées, et vous vous apercevez bien vite qu'ils savent s'en servir ! A un contre trois le combat est trop inégal, et vous succombez sous le nombre.",
-            "Vers": "0",
-            "PdV": "-20"
+            "Liaison": "",
+            "Vers": "9",
+            "PdV": "0",
+            "Combat": ["mercenaires", "le groupe de mercenaires", "un groupe de trois mercenaires"],
+            "Force" : "30",
+            "Endurance": "30",
+            "TexteMort": "Alors que vous succombez sous les coups, vous réalisez qu'un combat contre plusieurs adversaires à la fois est trop risqué.",
+            "TexteVictoire": "Essuyant le sang de votre épée, vous vous approchez de la prisonnière."
          },
          {
             "Texte": "Vous leur ordonnez de libérer leur prisonnière, sinon...",
@@ -181,7 +196,7 @@
    },
    {
       "@num": "8",
-      "Description": "Le chef s'esclaffe : \"La libérer ? Allons donc, sa tête est mise à prix, et sa capture n'a pas été sans mal. Passe ton chemin, étranger !\"",
+      "Description": "Le chef s'esclaffe : \"La libérer ? Allons donc, sa tête est mise à prix, et la capture de ce monstre n'a pas été sans mal. Passe ton chemin, étranger !\"",
       "Decor": "",
       "Choix": [
          {
@@ -192,9 +207,14 @@
          },
          {
             "Texte": "Vous bondissez par surprise sur le chef pour le tuer et porter secours à sa prisonnière.",
-            "Liaison": "Le chef s'écroule décapité et ses comparses, épouvantés, prennent la fuite.",
+            "Liaison": "",
             "Vers": "9",
-            "PdV": "0"
+            "PdV": "0",
+            "Combat": ["chef", "le chef", "un mercenaire"],
+            "Force" : "10",
+            "Endurance": "10",
+            "TexteMort": "L'épée du chef des mercenaires vous transperce. Vous vous écroulez, mortellement blessé.",
+            "TexteVictoire" : "Le chef s'écroule décapité et ses comparses, épouvantés, prennent la fuite."
          }
       ]
    },
@@ -207,13 +227,29 @@
             "Texte": "Vous la délivrez de ses liens.",
             "Liaison": "La prisonnière enlève son bâillon, et s'effondre dans vos bras. Vous sentez alors ses crocs pointus s'enfoncer dans votre cou, et comprenez votre erreur fatale, car vous avez libéré une vampire !",
             "Vers": "0",
-            "PdV": "-20"
+            "PdV": "-3",
+            "Combat": ["vampire", "la vampire", "une vampire"],
+            "Force" : "12",
+            "Endurance": "16",
+            "TexteMort": "Elle finit par vous maîtriser. Impuissant, vous sentez sa morsure, et le froid de la mort vous envahit tandis qu'elle vous vide de votre sang.",
+            "TexteVictoire" : "Dans un dernier hurlement, elle s'effondre, et son corps se dessèche et se transforme en poussière sous vos yeux."
          },
          {
             "Texte": "Vous lui retirez juste son bâillon.",
-            "Liaison": "Son regard vous hypnotise. Dans un atroce sourire qui dévoile ses canines pointues de vampire, elle vous ordonne de la libérer. Subjugué, vous lui obéissez, et la laissez se nourrir de votre sang.",
+            "Liaison": "Son regard vous hypnotise. Dans un atroce sourire qui dévoile ses canines pointues de vampire, elle vous ordonne de la libérer. Vous lui obéissez mais reprenez juste à temps votre volonté, et la combattez.",
             "Vers": "10",
-            "PdV": "-10"
+            "PdV": "0",
+            "Combat": ["vampire", "la vampire", "une vampire"],
+            "Force" : "8",
+            "Endurance": "14",
+            "TexteMort": "Elle finit par vous maîtriser. Impuissant, vous sentez sa morsure, et le froid de la mort vous envahit tandis qu'elle vous vide de votre sang.",
+            "TexteVictoire" : "Elle s'effondre, et son corps se dessèche et se transforme en poussière sous vos yeux. Epouvanté, vous quittez les lieux."
+         },
+         {
+            "Texte": "Finalement, vous décidez de l'abandonner à son triste sort.",
+            "Liaison": "Vous reprenez la route, à la recherche d'un abri.",
+            "Vers": "10",
+            "PdV": "0"
          }
       ]
    },
@@ -230,28 +266,28 @@
          },
          {
             "Texte": "Vous décidez de dormir à la belle étoile sur le bord de la route.",
-            "Liaison": "",
+            "Liaison": "La nuit glaciale et humide vous fait perdre 1 point de vie.",
             "Vers": "12",
-            "PdV": "0"
+            "PdV": "-1"
          },
          {
             "Texte": "Au diable la fatigue ! Vous continuez à marche forcée sans dormir.",
-            "Liaison": "La fatigue se fait sentir, et votre nuit blanche vous coûte 6 points de vie",
+            "Liaison": "La fatigue se fait sentir, et votre nuit blanche vous coûte 4 points de vie.",
             "Vers": "14",
-            "PdV": "-6"
+            "PdV": "-4"
          }
       ]
    },
    {
       "@num": "11",
-      "Description": "Vous poussez la porte de l'auberge, qui est sombre, crasseuse et enfumée. Des éclats de rires et des discussions viennent d'un peu partout, et vous êtes surpris de voir autant de voyageurs.",
+      "Description": "Vous poussez la porte de l'auberge, qui est sombre, crasseuse et enfumée. Une odeur suspecte émane des cuisines. Des éclats de rires et des discussions viennent d'un peu partout, et vous êtes surpris de voir autant de voyageurs.",
       "Decor": "aubergesalle",
       "Choix": [
          {
             "Texte": "Vous vous asseyez à une table libre, et commandez un repas et une chambre.",
             "Liaison": "La nourriture est infecte, et la chambre infestée de cafards. Pendant la nuit vous êtes pris d'horribles coliques, et perdez 8 points de vie.",
             "Vers": "12",
-            "PdV": "-8"
+            "PdV": "-3"
          },
          {
             "Texte": "Vous essayez de participer à un jeu de dés qui se déroule à une table près de la cheminée.",
@@ -270,7 +306,7 @@
    {
       "@num": "12",
       "Description": "Au petit matin, vous vous réveillez dans l'herbe couverte de rosée. Il n'y a plus aucune trace de l'auberge !",
-      "Decor": "", 
+      "Decor": "herbe", 
       "Choix": [
          {
             "Texte": "Vous haussez les épaules, et continuez votre route pour vous réchauffer.",
@@ -293,15 +329,20 @@
       "Choix": [
          {
             "Texte": "Vous sortez votre épée, et tuez cet insolent.",
-            "Liaison": "Le Nain se défend âprement, et vous inflige pour 8 PdV de blessures, mais vous le trucidez. Un grand silence tombe dans l'auberge, et vous décidez qu'il serait sage de fuir cet endroit.",
+            "Liaison": "",
             "Vers": "14",
-            "PdV": "-8"
+            "PdV": "-4",
+            "Combat": ["nain", "le nain", "un nain"],
+            "Force" : "7",
+            "Endurance": "8",
+            "TexteMort": "Malgré sa petite taille, le Nain vous assène le coup de grâce.",
+            "TexteVictoire" : "Le Nain s'effondre, et un silence de plomb s'abat dans l'auberge. Vous décidez de partir et vous éloigner sans même dormir (ce qui vous coûte 4 points de vie) !"
          },
          {
             "Texte": "Vous lui tirez la barbe en le défiant du regard, et exigez des excuses d'un ton menaçant.",
-            "Liaison": "Le Nain se bagarre avec vous, mais vous prenez le dessus. Calmé, il vous offre une chope et partage ses provisions. Après quoi, fourbu, vous prenez une chambre et allez vous coucher.",
+            "Liaison": "Le Nain se bagarre avec vous, mais vous prenez le dessus. Calmé, il vous offre une chope et partage ses provisions. Après quoi, fourbu, vous prenez une chambre et allez vous coucher. Vous regagnez 5 points de vie.",
             "Vers": "12",
-            "PdV": "-1"
+            "PdV": "5"
          },
          {
             "Texte": "Ne souhaitant pas d'ennuis, vous lui proposez de lui rendre son argent.",
@@ -343,7 +384,7 @@
          },
          {
             "Texte": "Vous traversez la rivière à la nage.",
-            "Liaison": "Le fort courant vous emporte ! L'eau glaciale vous prive de vos force, et vous coulez...",
+            "Liaison": "Le fort courant vous emporte ! L'eau glaciale vous prive de vos forces, et vous coulez...",
             "Vers": "0",
             "PdV": "-20"
          },
@@ -368,13 +409,18 @@
          },
          {
             "Texte": "Vous dégainez votre épée, et partez à l'assaut du monstre.",
-            "Liaison": "Les blessures du monstre se referment aussi vite que vous les infligez ! Vous réalisez alors que vous n'aviez aucune chance contre cet ennemi.",
-            "Vers": "0",
-            "PdV": "-20"
+            "Liaison": "Inquiet, vous observez la taille et la puissante musculature du monstre, en vous demandant si cette décision était sage.",
+            "Vers": "19",
+            "PdV": "0",
+            "Combat": ["troll", "le troll", "un troll"],
+            "Force" : "23",
+            "Endurance": "58",
+            "TexteMort": "Le troll est un adversaire redoutable. Alors que vous succombez, vous remarquez qu'il se lèche les babines, et n'osez imaginer ce qu'il va faire.",
+            "TexteVictoire" : "Le troll s'effondre, contre toute attente !"
          },
          {
             "Texte": "Vous vous jetez à l'eau pour échapper au monstre.",
-            "Liaison": "Vous tombez du pont avec un plouf sonore. Le fort courant vous emporte ! L'eau glaciale vous prive de vos force, et vous coulez...",
+            "Liaison": "Vous tombez du pont avec un plouf sonore. Le fort courant vous emporte ! L'eau glaciale vous prive de vos forces, et vous coulez...",
             "Vers": "0",
             "PdV": "-20"
          }
