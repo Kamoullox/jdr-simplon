@@ -285,7 +285,7 @@
       "Choix": [
          {
             "Texte": "Vous vous asseyez à une table libre, et commandez un repas et une chambre.",
-            "Liaison": "La nourriture est infecte, et la chambre infestée de cafards. Pendant la nuit vous êtes pris d'horribles coliques, et perdez 8 points de vie.",
+            "Liaison": "La nourriture est infecte, et la chambre infestée de cafards. Pendant la nuit vous êtes pris d'horribles coliques, et perdez 3 points de vie.",
             "Vers": "12",
             "PdV": "-3"
          },

@@ -18,8 +18,9 @@ async function fetchInfo() {
         .then(response => response.json())
         .then(data => scene = data.Scene)
         .catch(error => console.log(error));
-    setTimeout(() => { main() }, 350);
+    setTimeout(() => { main() }, 550);
 }
+
 // -----------------------------------------------------------------------------
 
 function majDecor(decorName){
@@ -133,6 +134,14 @@ function majUnChoix(num) {
     console.log("");
 }
 
+function changeForce(strength) {
+    console.log("Changement de force " + strength);
+    if( strength != undefined ) {
+        let x = parseInt(strength);
+        maForce += x;
+    }
+}
+
 //Regarde s'il y a un combat
 function clickOption(i){
     console.log("Vous avez cliqué sur un choix qui envoie vers la scène " + scene[sceneEnCours].Choix[i].Vers)
@@ -140,6 +149,8 @@ function clickOption(i){
     textLiaison = scene[sceneEnCours].Choix[i].Liaison;
 
     changeLifePoint(scene[sceneEnCours].Choix[i].PdV);
+    //Optionnel dans le JSON pour gérer les points de vie.
+    changeForce(scene[sceneEnCours].Choix[i].Strength);
 
     if (life <= 0){
         life = 0;
@@ -319,6 +330,26 @@ function majScene() {
     majFullChoix();
 }
 
+//Charge les images de fond
+function loadImg() {
+    let d = document.querySelector(".decor");
+    console.log(d);
+    let s = "";
+    let c = "";
+    for( scn = 0; scn < scene.length; scn++) {
+        if(scene[scn].Decor != "") {
+            if (scene[scn].Decor === "foret") {
+                c = " top";
+            } else {
+                c = " transparent";
+            }
+            s += '<img class="' + scene[scn].Decor + c + '" src="./images/decor/' + scene[scn].Decor + '.jpg" />';
+        }
+    }
+    s += '<img class="combat transparent" src="./images/decor/combat.jpg" />';
+    d.innerHTML = s;
+}
+
 fetchInfo();
 
 function main() {
@@ -336,8 +367,7 @@ function main() {
         [[5,3],  [6,3],  [7,2],[8,0],[9,0], [10,0], [11,0], [11,0],[12,0],[14,0],[16,0], [18,0],[100,0]],
         [[6,0],  [7,0],  [8,0],[9,0],[10,0],[11,0], [12,0], [14,0],[16,0],[18,0],[100,0],[100,0],[100,0]],
     ];
- 
+    loadImg();
     displayLife(0);
     majScene();
 }
-
