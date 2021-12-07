@@ -3,6 +3,9 @@ let sceneEnCours = 1;
 const maxLife = 20;
 let life = maxLife;
 let textLiaison = "";
+let i = 0;
+let speed = 5000;
+let allTextDescription;
 
 let decorUrl = "url('../images/decor/";
 
@@ -17,11 +20,11 @@ async function fetchInfo() {
 }
 // -----------------------------------------------------------------------------
 
-function majDecor(decorName){
+function majDecor(decorName) {
     console.log("Url du décor en cours de chargement -> " + (decorUrl + decorName + "')"))
 
     let decor = document.querySelector(".top");
-    let nextDecor = document.querySelector("."+decorName);
+    let nextDecor = document.querySelector("." + decorName);
 
     nextDecor.classList.toggle("top");
     nextDecor.classList.toggle("transparent");
@@ -31,7 +34,7 @@ function majDecor(decorName){
 }
 
 // blink "on" state
-function show() {	
+function show() {
     document.getElementById("blink2").style.display = "none";
     document.getElementById("blink1").style.display = "inline";
 }
@@ -43,7 +46,7 @@ function hide() {
 
 //Effet de clignotement, delay en millisecondes, pendant duration secondes
 function blink(delay, duration) {
-    for(let i = 0; i < duration; i += delay) {
+    for (let i = 0; i < duration; i += delay) {
         setTimeout("hide()", i);
         setTimeout("show()", i + delay / 2);
     }
@@ -56,49 +59,49 @@ function displayLife(old) {
     let s = "";
     //Gain de PdV
     if (old < life) {
-        for( let i = 1; i <= old; i++) {
+        for (let i = 1; i <= old; i++) {
             s += "<i class='heart fa fa-heart'></i>";
         }
         s += "<span id='blink1'>";
-        for( let i = old + 1; i <= life; i++) {
+        for (let i = old + 1; i <= life; i++) {
             s += "<i class='heart fa fa-heart'></i>";
         }
         s += "</span>";
         s += "<span id='blink2' style='display:none'>";
-        for( let i = old + 1; i <= life; i++) {
+        for (let i = old + 1; i <= life; i++) {
             s += "<i class='heart fa fa-heart-o'></i>";
         }
         s += "</span>";
-        for( let i = life + 1; i <= maxLife; i++) {
+        for (let i = life + 1; i <= maxLife; i++) {
             s += "<i class='heart fa fa-heart-o'></i>";
         }
     }
     //Perte de PdV
     if (old > life) {
-        for( let i = 1; i <= life; i++) {
+        for (let i = 1; i <= life; i++) {
             s += "<i class='heart fa fa-heart'></i>";
         }
         s += "<span id='blink1'>";
-        for( let i = life + 1; i <= old; i++) {
+        for (let i = life + 1; i <= old; i++) {
             s += "<i class='heart fa fa-heart-o'></i>";
         }
         s += "</span>";
         s += "<span id='blink2' style='display:none'>";
-        for( let i = life + 1; i <= old; i++) {
+        for (let i = life + 1; i <= old; i++) {
             s += "<i class='heart fa fa-heart'></i>";
         }
         s += "</span>";
-        for( let i = old + 1; i < maxLife; i++) {
+        for (let i = old + 1; i < maxLife; i++) {
             s += "<i class='heart fa fa-heart-o'></i>";
         }
     }
-    if ( old != life ) {
+    if (old != life) {
         lifeDisplay.innerHTML = "<div aria_label='" + life + " points de vie.'>" + s + "</div>";
         blink(300, 800);
     }
 }
 
-function changeLifePoint(changeLife){
+function changeLifePoint(changeLife) {
     console.log("Mise a jour des point de vie -> " + changeLife);
     changeLife = parseInt(changeLife);
 
@@ -107,34 +110,35 @@ function changeLifePoint(changeLife){
     life += changeLife;
 
     life = life > maxLife ? maxLife : life;
+
     life = life < 0 ? 0 : life;
-    
+
     displayLife(oldLife);
 }
 
 // -----------------------------------------------------------------------------------------------------------
 function majUnChoix(num) {
-    console.log("Mise à jour du choix " + (num+1));
+    console.log("Mise à jour du choix " + (num + 1));
 
     const choix = document.getElementById('choix' + (num + 1));
     choix.textContent = scene[sceneEnCours].Choix[num].Texte;
-    
-    choix.hidden = false; 
-    console.log("Choix " + (num+1) + " mis à jour!");
+
+    choix.hidden = false;
+    console.log("Choix " + (num + 1) + " mis à jour!");
     console.log("");
 }
 
-function clickOption(i){
+function clickOption(i) {
     console.log("Vous avez cliqué sur un choix qui envoie vers la scène " + scene[sceneEnCours].Choix[i].Vers)
     textLiaison = scene[sceneEnCours].Choix[i].Liaison;
 
     changeLifePoint(scene[sceneEnCours].Choix[i].PdV);
 
-    if (life <= 0){
+    if (life <= 0) {
         life = 0;
         sceneEnCours = 0;
     }
-    else{
+    else {
         sceneEnCours = scene[sceneEnCours].Choix[i].Vers;
     }
 
@@ -166,17 +170,32 @@ function majFullChoix() {
 function majScene() {
     console.log("Mise en place de la scène -> " + sceneEnCours);
 
-    if(scene[sceneEnCours].Decor != ""){
+    if (scene[sceneEnCours].Decor != "") {
         majDecor(scene[sceneEnCours].Decor);
     }
 
-    const histoire = document.getElementById("content");
-    histoire.innerHTML  = textLiaison + (textLiaison != "" ? "<br /><br />" : "")  + scene[sceneEnCours].Description;
+    // const histoire = document.getElementById("content");
+    // histoire.innerHTML = textLiaison + (textLiaison != "" ? "<br /><br />" : "") + scene[sceneEnCours].Description;
+
+    allTextDescription = textLiaison + (textLiaison != "" ? "<br /><br />" : "") + scene[sceneEnCours].Description;
+    typeWriter();
 
     majFullChoix();
 }
 
 fetchInfo();
+
+function typeWriter() {
+
+    const histoire = document.getElementById("content");
+
+    if (i < allTextDescription.length) {
+        histoire.innerHTML += allTextDescription.charAt(i);
+        console.log(histoire.textContent);
+        i++;
+        setInterval(typeWriter(), 5000);
+    }
+}
 
 function main() {
     displayLife(0);

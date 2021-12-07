@@ -55,27 +55,33 @@ body, html {
        background: linear-gradient(to bottom, #FC1D0D 0%, #960F0D 100%);
        -webkit-background-clip: text;
        -webkit-text-fill-color: transparent;
-       padding-right:3px;
-   }
-   @media screen and (max-width: 600px) {
-       .heart {
-           font-size: 1em;
-       }
-   }
+       padding-right: 3px;
+}
 
+@media screen and (max-width: 600px) {
+       .heart {
+              font-size: 1em;
+       }
+}
+
+/* -------------------------------------------------------------- */
 #histoire {
        text-align: center;
        height: fit-content;
        margin-left: 2vh;
        margin-right: 2vh;
        margin-top: 1vh;
-       font-size: 30px;
+       font-size: 2em;
        float: left;
        border-radius: 15px;
        border: solid 0.5vh;
        border-color: rgb(61, 27, 2);
        background-color: rgba(0, 0, 0, 0.493);
+       width: 67vw;
+       display: block;
 }
+
+#histoire p::-webkit-scrollbar{width:0px;}
 
 #histoire p {
        color: cornsilk;
@@ -163,13 +169,12 @@ li:active {
        }
 
        #histoire p {
-              font-size: 45px;
               margin-left: 10vh;
               margin-right: 15vh;
        }
 
        #choix {
-              font-size: 35px;
+              font-size: 2em;
        }
 
 
