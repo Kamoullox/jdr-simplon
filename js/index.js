@@ -168,6 +168,10 @@ function clickOption(i){
 
     //Affiche un écran de combat spécial
     function ecranCombat(vers) {
+        let gandalf = document.querySelector("#taler");
+        gandalf.style.display = "none";
+
+
         majDecor("combat");
         saLife = null;
         let x = document.getElementsByTagName("LI");
@@ -294,6 +298,9 @@ function quitteCombat() {
     let b = document.getElementById("btnAttack");
     b.style.display = "none";    
     majScene();
+    
+    let gandalf = document.querySelector("#taler");
+    gandalf.style.display = "block";
 }
 
 function majFullChoix() {
@@ -319,6 +326,8 @@ function majFullChoix() {
 
 function majScene() {
     console.log("Mise en place de la scène -> " + sceneEnCours);
+
+    taler();
 
     if(scene[sceneEnCours].Decor != ""){
         majDecor(scene[sceneEnCours].Decor);
@@ -348,6 +357,37 @@ function loadImg() {
     }
     s += '<img class="combat transparent" src="./images/decor/combat.jpg" />';
     d.innerHTML = s;
+}
+
+function taler() {
+    const imgOne = document.getElementById('one');
+    let changement = 1;
+    let speak = true;
+
+    setInterval(function boucheD() {
+        if (speak == true) {
+
+            if (changement == 1) {
+                imgOne.setAttribute("src", "./images/taler/bouche2-removebg-preview.png")
+                changement = 2;
+
+            }
+            else if (changement == 2) {
+                imgOne.setAttribute("src", "./images/taler/bouche3-removebg-preview.png")
+                changement = 3;
+            }
+            else {
+                imgOne.setAttribute("src", "./images/taler/bouche1-removebg-preview.png")
+                changement = 1;
+            }
+        }
+    }, 150);
+
+    setTimeout(function tempsDeParole() {
+        speak = false;
+        imgOne.setAttribute("src", "./images/taler/bouche2-removebg-preview.png")
+    }, 2500);
+
 }
 
 fetchInfo();
