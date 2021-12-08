@@ -345,10 +345,9 @@ function majScene() {
     }
 
     const histoire = document.getElementById("content");
-    // histoire.innerHTML = textLiaison + (textLiaison != "" ? "<br /><br />" : "") + scene[sceneEnCours].Description;
 
     allDescription = textLiaison + (textLiaison != "" ? "<br /><br />" : "") + scene[sceneEnCours].Description;
-
+    initText();
     animationText();
 
 
@@ -424,35 +423,54 @@ function stopTalking(){
     imgOne.setAttribute("src", "./images/taler/bouche2-removebg-preview.png");
 }
 
+function initText() {
+    let t = document.getElementById("content");
+    let s = "";
+    let isTag = false;
+    for (let i = 0; i < allDescription.length; i++) {
+        if (allDescription[i] == "<") {
+            isTag = true;
+        }
+        if (!isTag) {
+            s += "<span id='letter" + i + "' class='invisible'>" + allDescription[i] + "</span>";
+        } else {
+            s += allDescription[i];
+        }
+        if (allDescription[i] == ">") {
+            isTag = false;
+        }
+    }
+    t.innerHTML = s;
+}
+
 function animationText() {
     // EFFET MACHINE A ECRIRE
     let str = allDescription;
     let i = 0;
-    let isTag;
-    let text;
+    let letter;
     toggleAnimationText = false;
 
     (function type() {
-        text = str.slice(0, ++i);
-        // console.log(i);
-        if ((text === str) || (toggleAnimationText)) {
+        //text = str[i];
+         console.log(i);
+        if ((i === str.length) || (toggleAnimationText)) {
             document.getElementById("content").innerHTML = allDescription;
             displayChoices();
             stopTalking();
+            
             return;
         }
 
-        document.getElementById("content").innerHTML = text;
-
-        var char = text.slice(-1);
-        if (char === '<') isTag = true;
-        if (char === '>') isTag = false;
-
-        if (isTag) return type();
-        setTimeout(type, 40);
+        letter = document.getElementById("letter"+i);
+        if( letter ) {
+            letter.classList.toggle("invisible")
+        }
+        i++;
+        
+        setTimeout(type, 30);
     }());
-
 }
+
 
 function stopAnimationText(){
     toggleAnimationText = true;
