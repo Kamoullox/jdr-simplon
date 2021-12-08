@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
     
-<head>
-    <link href="./css/index.css" rel="stylesheet">
-    <style></style>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JDR</title>
-    <script src="./js/index.js" defer ></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+    <head>
+        <link href="./css/index.css" rel="stylesheet">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JDR</title>
+        <script src="./js/index.js" defer ></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
 
 <body>
     <div class="decor">
@@ -27,19 +33,19 @@
                 <img id="gandalf" src="./images/taler/gandalf.png">
                 <img id="one" src="./images/taler/bouche2-removebg-preview.png">
             </div>
-            <p id="content" tabindex="0"></p>
+            <p id="content" class="noSelect" tabindex="0"></p>
         </section>
         <section id="combat" style="padding:15px">
-            <div id="description" class="boxCombat"></div>
+            <div id="description" class="boxCombat noSelect"></div>
             <div>
                 <button id="btnAttack" onclick="attack()"><img src="images/sword.png" style="height: 0.7em;"> Attaque</button>
             </div>
         </section>
         <section id="choix">
             <ul>
-                <li id="choix1" tabindex="1" onclick = clickOption(0)></li>
-                <li id="choix2" tabindex="2" onclick = clickOption(1)></li>
-                <li id="choix3" tabindex="3" onclick = clickOption(2)></li>
+                <li id="choix1" class="noSelect" tabindex="1" onclick = clickOption(0)></li>
+                <li id="choix2" class="noSelect" tabindex="2" onclick = clickOption(1)></li>
+                <li id="choix3" class="noSelect" tabindex="3" onclick = clickOption(2)></li>
             </ul>
         </section>
     </div>
