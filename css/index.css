@@ -253,8 +253,6 @@ li:active {
               height: 100%;
               z-index: auto;
               border-radius: 50%;
-
-
        }
 
        #one {
@@ -262,9 +260,7 @@ li:active {
               height: 15%;
               position: relative;
               left: 1%;
-              top: -46%;
-
-
+              top: -47%;
        }
 
 }
