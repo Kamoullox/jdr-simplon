@@ -29,19 +29,19 @@
 	<Choix>
 		<Texte>Vous jetez une pièce d'or dans le puits en formulant un voeu.</Texte>
 		<Liaison>La pièce tombe avec un plouf! sonore, et vous êtes guéri de toutes vos blessures.</Liaison>
-		<Vers>5</Vers>
+		<Vers>4</Vers>
 		<PdV>20</PdV>
 	</Choix>
 	<Choix>
 		<Texte>Vous descendez dans le puits.</Texte>
 		<Liaison>Vous glissez et tombez au fond du puits. L'eau monte inexorablement, personne n'entend vos appels à l'aide, et vous mourez noyé.</Liaison>
-		<Vers>5</Vers>
+		<Vers>0</Vers>
 		<PdV>-20</PdV>
 	</Choix>
 	<Choix>
 		<Texte>Vous décidez de ne pas y accorder d'importance et continuez votre route.</Texte>
 		<Liaison></Liaison>
-		<Vers>5</Vers>
+		<Vers>4</Vers>
 		<PdV>0</PdV>
 	</Choix>
 </Scene>
