@@ -16,10 +16,13 @@ const urlJSON = "./data/data.json";
 async function fetchInfo() {
     fetch(urlJSON)
         .then(response => response.json())
-        .then(data => scene = data.Scene)
+        .then(data => {scene = data.Scene;
+            main();
+        })
         .catch(error => console.log(error));
-    setTimeout(() => { main() }, 350);
+    // setTimeout(() => { main() }, 550);
 }
+
 // -----------------------------------------------------------------------------
 
 function majDecor(decorName){
