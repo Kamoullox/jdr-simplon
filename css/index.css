@@ -195,7 +195,7 @@ li {
 
 #container {
        display: flex;
-       height: 80%;
+       height: 80vh;
        flex-direction: column;
        z-index: 10;
        position: relative;
@@ -229,8 +229,7 @@ li:active {
        display: none;
 }
 
-@media screen and (min-width: 1200px) {
-
+@media screen and (min-width: 1200px) and (min-height: 730px) {
 
 
        #container {
@@ -240,8 +239,8 @@ li:active {
        #taler {
               display: block;
               z-index: 100;
-              width: 12vh;
-              height: 12vh;
+              width: 113px;
+              height: 113px;
               position: fixed;
               top: 80%;
               left: -11%;
@@ -256,12 +255,13 @@ li:active {
        }
 
        #one {
-              width: 30%;
-              height: 15%;
+              width: 22px;
+              height: 14px;
               position: relative;
-              left: 1%;
-              top: -47%;
+              bottom: 56px;
+              left: 2px;
        }
+}
 
 }
 
