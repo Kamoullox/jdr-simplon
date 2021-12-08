@@ -451,6 +451,7 @@ function animationText() {
         if (isTag) return type();
         setTimeout(type, 40);
     }());
+
 }
 
 function stopAnimationText(){

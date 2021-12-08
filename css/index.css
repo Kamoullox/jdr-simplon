@@ -271,11 +271,11 @@ li:active {
 @media screen and (max-width: 550px) {
 
        #histoire {
-              font-size: 1.5em;
+              font-size: 3vh;
        }
 
        li {
-              font-size: 1.5rem;
+              font-size: 3vh;
        }
 
 }
