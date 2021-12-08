@@ -9,6 +9,8 @@ let choix = null;
 let textLiaison = "";
 let tcp = []; //Table des Coups Portés
 let allDescription = "";
+    let speak = true;
+
 
 const decorUrl = "url('../images/decor/";
 
@@ -386,7 +388,7 @@ function hideChoices(){
 function taler() {
     const imgOne = document.getElementById('one');
     let changement = 1;
-    let speak = true;
+    speak = true;
 
     setInterval(function boucheD() {
         if (speak == true) {
@@ -407,11 +409,17 @@ function taler() {
         }
     }, 150);
 
-    setTimeout(function tempsDeParole() {
-        speak = false;
-        imgOne.setAttribute("src", "./images/taler/bouche2-removebg-preview.png")
-    }, 2500);
+    // setTimeout(function tempsDeParole() {
+    //     speak = false;
+    //     imgOne.setAttribute("src", "./images/taler/bouche2-removebg-preview.png")
+    // }, 2500);
 
+}
+
+function stopTalking(){
+    const imgOne = document.getElementById('one');
+    speak = false;
+    imgOne.setAttribute("src", "./images/taler/bouche2-removebg-preview.png");
 }
 
 function animationText() {
@@ -427,7 +435,8 @@ function animationText() {
         if (text === str) {
 
             displayChoices();
-
+            stopTalking();
+            
             return;
         }
 
