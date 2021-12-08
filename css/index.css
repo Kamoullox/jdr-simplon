@@ -229,6 +229,10 @@ li:active {
        display: none;
 }
 
+.noSelect {
+       user-select: none;
+}
+
 @media screen and (min-width: 1200px) and (min-height: 730px) {
 
 

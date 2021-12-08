@@ -61,7 +61,7 @@
       "Choix": [
          {
             "Texte": "Vous poussez un cri de terreur et prenez vos jambes à votre cou.",
-            "Liaison": "L'ours vous rattrape et vous laboure le dos de ses puissantes griffes. Vous n'avez pas d'autre choix que de dégainer votre épée.",
+            "Liaison": "L'ours vous rattrape et vous laboure le dos de ses puissantes griffes. Vous perdez 5 points de vie. Vous n'avez pas d'autre choix que de dégainer votre épée.",
             "Vers": "4",
             "PdV": "-5",
             "Combat": ["ours", "l'ours", "un ours"],
@@ -91,20 +91,22 @@
    },
    {
       "@num": "4",
-      "Description": "Le combat fut difficile et sanglant. L'ours s'écroule, mort, mais non sans vous avoir infligé de nombreuses blessures. Au fond de son antre, vous distinguez deux coffres fermés.",
+      "Description": "Au fond de la caverne, vous distinguez deux coffres fermés. ",
       "Decor": "coffres",
       "Choix": [
          {
             "Texte": "Vous décidez d'ouvrir le plus grand coffre. Il y a une serrure dessus.",
-            "Liaison": "Le coffre était piégé ! Une aiguille empoisonnée vous pique le doigt au moment où vous l'ouvrez, et vous perdez 5 pdv. Vous quittez la grotte en maugréant sur votre infortune.",
+            "Liaison": "Le coffre était piégé ! Une aiguille empoisonnée vous pique le doigt au moment où vous l'ouvrez. Le poison vous fait perdre 2 points de force ! Vous quittez la grotte en maugréant sur votre infortune.",
             "Vers": "2",
-            "PdV": "-5"
+            "PdV": "-5",
+            "Strength": "-2"
          },
          {
             "Texte": "Vous décidez d'ouvrir le tout petit coffre. Il ne semble pas y avoir de serrure.",
-            "Liaison": "Quelle chance, le coffre contient une potion de guérison qui vous redonne 7 points de vie. Vous quittez la grotte pour rejoindre la route.",
+            "Liaison": "Quelle chance, le coffre contient une potion qui vous redonne 7 points de vie, et augmente votre force de 3. Vous quittez la grotte pour rejoindre la route.",
             "Vers": "2",
-            "PdV": "7"
+            "PdV": "7",
+            "Strength": "3"
          },
          {
             "Texte": "Vous sortez de la grotte sans plus de cérémonie.",
@@ -225,18 +227,19 @@
       "Choix": [
          {
             "Texte": "Vous la délivrez de ses liens.",
-            "Liaison": "La prisonnière enlève son bâillon, et s'effondre dans vos bras. Vous sentez alors ses crocs pointus s'enfoncer dans votre cou, et comprenez votre erreur fatale, car vous avez libéré une vampire !",
+            "Liaison": "La prisonnière s'effondre dans vos bras. Vous sentez alors ses crocs pointus s'enfoncer dans votre cou, et comprenez votre erreur, car vous avez libéré une vampire ! Elle vous a volé 2 points de force.",
             "Vers": "0",
             "PdV": "-3",
+            "Strength": "-2",
             "Combat": ["vampire", "la vampire", "une vampire"],
-            "Force" : "12",
+            "Force" : "10",
             "Endurance": "16",
             "TexteMort": "Elle finit par vous maîtriser. Impuissant, vous sentez sa morsure, et le froid de la mort vous envahit tandis qu'elle vous vide de votre sang.",
             "TexteVictoire" : "Dans un dernier hurlement, elle s'effondre, et son corps se dessèche et se transforme en poussière sous vos yeux."
          },
          {
             "Texte": "Vous lui retirez juste son bâillon.",
-            "Liaison": "Son regard vous hypnotise. Dans un atroce sourire qui dévoile ses canines pointues de vampire, elle vous ordonne de la libérer. Vous lui obéissez mais reprenez juste à temps votre volonté, et la combattez.",
+            "Liaison": "Son regard vous hypnotise. Dans un atroce sourire qui dévoile ses canines pointues de vampire, elle vous ordonne de la libérer. Vous lui obéissez mais reprenez juste à temps le contrôle.",
             "Vers": "10",
             "PdV": "0",
             "Combat": ["vampire", "la vampire", "une vampire"],
@@ -340,13 +343,13 @@
          },
          {
             "Texte": "Vous lui tirez la barbe en le défiant du regard, et exigez des excuses d'un ton menaçant.",
-            "Liaison": "Le Nain se bagarre avec vous, mais vous prenez le dessus. Calmé, il vous offre une chope et partage ses provisions. Après quoi, fourbu, vous prenez une chambre et allez vous coucher. Vous regagnez 5 points de vie.",
+            "Liaison": "Le Nain se bagarre avec vous, mais vous prenez rapidement le dessus. Calmé, il vous offre une chope et partage ses provisions. Après quoi, fourbu, vous prenez une chambre et allez vous coucher. Vous regagnez 5 points de vie.",
             "Vers": "12",
             "PdV": "5"
          },
          {
             "Texte": "Ne souhaitant pas d'ennuis, vous lui proposez de lui rendre son argent.",
-            "Liaison": "Le Nain vous prend votre bourse, riant de votre faiblesse. Il ne vous reste plus qu'à aller dormir dehors dans le froid !",
+            "Liaison": "Le Nain vous prend votre bourse, riant de votre faiblesse. Il ne vous reste plus qu'à aller dormir dehors dans le froid (ce qui vous coûte 3 points de vie) !",
             "Vers": "12",
             "PdV": "-3"
          }
@@ -412,7 +415,7 @@
             "Liaison": "Inquiet, vous observez la taille et la puissante musculature du monstre, en vous demandant si cette décision était sage.",
             "Vers": "19",
             "PdV": "0",
-            "Combat": ["troll", "le troll", "un troll"],
+            "Combat": ["troll", "le Troll", "un Troll"],
             "Force" : "23",
             "Endurance": "58",
             "TexteMort": "Le troll est un adversaire redoutable. Alors que vous succombez, vous remarquez qu'il se lèche les babines, et n'osez imaginer ce qu'il va faire.",
