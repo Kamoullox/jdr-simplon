@@ -242,8 +242,8 @@ li:active {
               width: 113px;
               height: 113px;
               position: fixed;
-              top: 80%;
-              left: -11%;
+              bottom: -78px;
+              left: -78px;
               padding-right: auto;
        }
 
@@ -272,10 +272,6 @@ li:active {
 
        li {
               font-size: 1.5rem;
-       }
-
-       #taler {
-              display: none;
        }
 
 }

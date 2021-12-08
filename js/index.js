@@ -178,7 +178,7 @@ function clickOption(i) {
     //Affiche un écran de combat spécial
     function ecranCombat(vers) {
         let gandalf = document.querySelector("#taler");
-        gandalf.style.display = "none";
+        gandalf.hide = true;
 
 
         majDecor("combat");
@@ -309,7 +309,7 @@ function quitteCombat() {
     majScene();
 
     let gandalf = document.querySelector("#taler");
-    gandalf.style.display = "block";
+    gandalf.hidden = false;
 }
 
 function majFullChoix() {
@@ -436,10 +436,9 @@ function animationText() {
         text = str.slice(0, ++i);
         // console.log(i);
         if ((text === str) || (toggleAnimationText)) {
-
+            document.getElementById("content").innerHTML = allDescription;
             displayChoices();
             stopTalking();
-            
             return;
         }
 
