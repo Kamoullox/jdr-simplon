@@ -9,7 +9,8 @@ let choix = null;
 let textLiaison = "";
 let tcp = []; //Table des Coups Portés
 let allDescription = "";
-    let speak = true;
+let speak = true;
+let toggleAnimationText = false;
 
 
 const decorUrl = "url('../images/decor/";
@@ -42,6 +43,7 @@ function majDecor(decorName) {
     decor.classList.toggle("top");
     decor.classList.toggle("transparent");
 }
+
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -428,11 +430,12 @@ function animationText() {
     let i = 0;
     let isTag;
     let text;
+    toggleAnimationText = false;
 
     (function type() {
         text = str.slice(0, ++i);
         // console.log(i);
-        if (text === str) {
+        if ((text === str) || (toggleAnimationText)) {
 
             displayChoices();
             stopTalking();
@@ -449,8 +452,13 @@ function animationText() {
         if (isTag) return type();
         setTimeout(type, 40);
     }());
+}
 
-
+function stopAnimationText(){
+    toggleAnimationText = true;
+    const histoire = document.getElementById("content");
+    histoire.innerHTML = allDescription;
+    stopTalking();
 }
 
 fetchInfo();
