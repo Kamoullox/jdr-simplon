@@ -1,7 +1,11 @@
+@font-face {
+       font-family: "Medieval";
+       src: url("BLKCHCRY.TTF") format("truetype");
+}
+
 body, html {
        background: black;
-       /* background: linear-gradient(90deg, rgba(0,0,0,1) 7%, rgba(13,45,75,1) 64%);    */
-       font-family: 'Times New Roman', Times, sans-serif;
+       font-family: 'Medieval', cursive;
        height: 100%;
        margin: 0;
 }
@@ -13,7 +17,6 @@ body, html {
 .invisible {
        visibility: hidden;
 }
-
 
 /* -------------------------------------- */
 .decor {
@@ -65,6 +68,7 @@ body, html {
        -webkit-background-clip: text;
        background-clip: text;
        -webkit-text-fill-color: transparent;
+       
        padding-right: 3px;
 }
 
@@ -75,6 +79,7 @@ body, html {
 }
 
 .boxCombat {
+       scroll-behavior: smooth;
        border-radius: 1ch;
        padding: 5px;
        overflow-x: none;
@@ -85,7 +90,7 @@ body, html {
        max-width: 900px;
        height: 70vh;
        margin: auto;
-       font-size: 22pt;
+       font-size: 1.3em;
        border-radius: 15px;
        border: solid 0.5vh;
        border-color: rgb(61, 27, 2);
@@ -127,15 +132,14 @@ body, html {
        padding-bottom: 5px;
        text-align: center;
        color: cornsilk;
-       background-color: darkred;
-
+       background-color: rgb(109, 0, 0, 0.5);
 }
 
 #btnAttack:hover {
        border-color: darkred;
-       background-color: rgba(109, 0, 0, 0.541);
+       background-color: rgba(109, 0, 0);
        transition-duration: 1s;
-       transform: translateX(-3vh);
+       /*transform: translateX(-3vh);*/
        box-shadow: rgba(0, 0, 0, 0.589) 1vh 1vh 1vh;
 }
 
@@ -176,9 +180,6 @@ body, html {
        text-align: center;
        height: fit-content;
 }
-
-
-
 
 ul {
        list-style: none;
@@ -223,8 +224,8 @@ li {
 li:hover {
        border-color: rgb(41, 22, 3);
        background-color: rgba(43, 22, 2, 0.541);
-       transition-duration: 1s;
-       transform: translateX(-3vh);
+       /*transition-duration: 0.1s;
+       /*transform: translateX(-3vh);*/
        box-shadow: rgba(0, 0, 0, 0.589) 1vh 1vh 1vh;
 }
 
@@ -239,7 +240,6 @@ li:active {
 }
 
 @media screen and (min-width: 1200px) and (min-height: 730px) {
-
 
        #container {
               max-width: 50%;
@@ -276,11 +276,11 @@ li:active {
 @media screen and (max-width: 550px) {
 
        #histoire {
-              font-size: 1.5em;
+              font-size: 1.4em;
        }
 
        li {
-              font-size: 1.5rem;
+              font-size: 1.4rem;
        }
 
        #taler {

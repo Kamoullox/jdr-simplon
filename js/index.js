@@ -113,6 +113,7 @@ function displayLife(old) {
     }
     if (old != life) {
         lifeDisplay.innerHTML = "<div aria_label='" + life + " points de vie.'>" + s + "</div>";
+        //lifeDisplay.innerHTML = "<div aria_label='" + life + " points de vie.'>" + s + "<button class='info'>Inventaire</button></div>";
         blink(300, 800);
     }
 }
@@ -138,7 +139,7 @@ function majUnChoix(num) {
     const choix = document.getElementById('choix' + (num + 1));
     choix.textContent = scene[sceneEnCours].Choix[num].Texte;
 
-    choix.hidden = false;
+    choix.visibility = "visible";
     console.log("Choix " + (num + 1) + " mis à jour!");
     console.log("");
 }
@@ -153,12 +154,13 @@ function changeForce(strength) {
 
 //Regarde s'il y a un combat
 function clickOption(i) {
+    
     console.log("Vous avez cliqué sur un choix qui envoie vers la scène " + scene[sceneEnCours].Choix[i].Vers)
     choix = i; //mémorise le clic
     textLiaison = scene[sceneEnCours].Choix[i].Liaison;
 
     changeLifePoint(scene[sceneEnCours].Choix[i].PdV);
-    //Optionnel dans le JSON pour gérer les points de vie.
+    //Optionnel dans le JSON pour gérer les points de force.
     changeForce(scene[sceneEnCours].Choix[i].Strength);
 
     if (life <= 0) {
@@ -326,10 +328,9 @@ function majFullChoix() {
     // Cache les éléments de la liste si il n'y a pas de choix pour la scène en cours
     for (i = nbChoix + 1; i < 4; i++) {
         const choix = document.getElementById('choix' + (i));
-        choix.hidden = true;
+        choix.innerHTML = "";
+        choix.visibility = "hidden";
     }
-    console.log("Tous les Choix sont à jour !");
-    console.log("---------------------------------------------------");
 }
 // -----------------------------------------------------------------------------------------------------------
 
@@ -350,8 +351,6 @@ function majScene() {
     allDescription = textLiaison + (textLiaison != "" ? "<br /><br />" : "") + scene[sceneEnCours].Description;
     initText();
     animationText();
-
-
 
     majFullChoix();
 }
@@ -378,12 +377,12 @@ function loadImg() {
 
 function displayChoices(){
     let choix = document.querySelector('#choix');
-    choix.style.display = "block";
+    choix.style.visibility = "visible";
 }
 
 function hideChoices(){
     let choix = document.querySelector('#choix');
-    choix.style.display = "none";
+    choix.style.visibility = "hidden";
 }
 
 
@@ -452,8 +451,6 @@ function animationText() {
     toggleAnimationText = false;
 
     (function type() {
-        //text = str[i];
-         console.log(i);
         if ((i === str.length) || (toggleAnimationText)) {
             document.getElementById("content").innerHTML = allDescription;
             displayChoices();
@@ -464,7 +461,7 @@ function animationText() {
 
         letter = document.getElementById("letter"+i);
         if( letter ) {
-            letter.classList.toggle("invisible")
+            letter.classList.toggle("invisible");
         }
         i++;
         
