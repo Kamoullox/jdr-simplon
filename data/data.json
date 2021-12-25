@@ -7,25 +7,24 @@
          "Texte": "Recommencer l'aventure",
          "Liaison": "",
          "Vers": "1",
-         "PdV": "100"
+         "PdV": "100",
+         "Rules": ["resetPlayer",["void"]]
       }]
    },
    {
       "@num": "1",
-      "Description": "Bonjour fier aventurier ! Vous êtes dans une forêt obscure (et réputée dangereuse), sur la route menant à la ville de Magimar. Votre objectif est de l'atteindre sain et sauf. Sur votre droite, non loin de la route, vous remarquez une caverne.",
+      "Description": "Vous cheminez depuis un bon moment sur la route menant à la ville de Magimar. Votre marche se déroule sans encombre. Sur votre droite, non loin de la route, vous remarquez une caverne.",
       "Decor": "foret",
       "Choix": [
          {
             "Texte": "Vous décidez de continuer votre chemin.",
             "Liaison": "Vous continuez sur la route.",
-            "Vers": "2",
-            "PdV": "0"
+            "Vers": "2"
          },
          {
-            "Texte": "Vous allumez votre torche et entrez dans la grotte pour l'explorer.",
+            "Texte": "Vous allumez votre lanterne, et entrez dans la grotte pour l'explorer.",
             "Liaison": "",
-            "Vers": "3",
-            "PdV": "0"
+            "Vers": "3"
          }
       ]
    },
@@ -38,7 +37,8 @@
             "Texte": "Vous jetez une pièce d'or dans le puits en formulant un vœu.",
             "Liaison": "La pièce tombe avec un plouf! sonore, et vous êtes guéri de toutes vos blessures. Quelle chance !",
             "Vers": "5",
-            "PdV": "20"
+            "PdV": "20",
+            "Rules": ["changeOr",["-1"]]
          },
          {
             "Texte": "Vous descendez dans le puits pour voir s'il n'y a pas quelque chose d'intéressant au fond.",
@@ -49,8 +49,7 @@
          {
             "Texte": "Vous décidez de ne pas y accorder d'importance et continuez votre route.",
             "Liaison": "",
-            "Vers": "5",
-            "PdV": "0"
+            "Vers": "5"
          }
       ]
    },
@@ -61,12 +60,13 @@
       "Choix": [
          {
             "Texte": "Vous poussez un cri de terreur et prenez vos jambes à votre cou.",
-            "Liaison": "L'ours vous rattrape et vous laboure le dos de ses puissantes griffes. Vous perdez 5 points de vie. Vous n'avez pas d'autre choix que de dégainer votre épée.",
+            "Liaison": "L'ours vous rattrape et vous laboure le dos de ses puissantes griffes. Vous perdez 2 points de vie. Vous n'avez pas d'autre choix que de dégainer votre épée.",
             "Vers": "4",
-            "PdV": "-5",
-            "Combat": ["ours", "l'ours", "un ours"],
-            "Force" : "15",
-            "Endurance": "20",
+            "PdV": "-2",
+            "Combat": ["ours", "l'ours", "un ours", "il"],
+            "Force" : ["8"],
+            "Endurance": ["14"],
+            "Fuir": "2",
             "TexteMort": "Dans un grondement terrifiant, l'ours vous renverse et vous déchire la gorge.",
             "TexteVictoire" : "L'ours s'effondre enfin sous vos coups."
          },
@@ -75,17 +75,19 @@
             "Liaison": "",
             "Vers": "4",
             "PdV": "0",
-            "Combat": ["ours", "l'ours", "un ours"],
-            "Force" : "15",
-            "Endurance": "20",
+            "Combat": ["ours", "l'ours", "un ours", "il"],
+            "Force" : ["8"],
+            "Endurance": ["14"],
+            "Fuir": "2",
             "TexteMort": "Dans un grondement terrifiant, l'ours vous renverse et vous déchire la gorge.",
             "TexteVictoire" : "L'ours s'effondre enfin sous vos coups."
          },
          {
-            "Texte": "Vous lui jetez vos rations et reculez lentement.",
+            "Texte": "Vous lui jetez toutes vos rations et reculez lentement.",
             "Liaison": "L'ours se jette sur vos rations et vous en profitez pour rejoindre la route.",
             "Vers": "2",
-            "PdV": "0"
+            "PdV": "0",
+            "Rules": ["changeRation",["-10"]]
          }
       ]
    },
@@ -96,17 +98,17 @@
       "Choix": [
          {
             "Texte": "Vous décidez d'ouvrir le plus grand coffre. Il y a une serrure dessus.",
-            "Liaison": "Le coffre était piégé ! Une aiguille empoisonnée vous pique le doigt au moment où vous l'ouvrez. Le poison vous fait perdre 2 points de force ! Vous quittez la grotte en maugréant sur votre infortune.",
+            "Liaison": "Le coffre était piégé ! Une aiguille empoisonnée vous pique le doigt au moment où vous l'ouvrez. Le poison vous fait perdre 2 points de force ! Il y a aussi un collier et un anneau d'or.",
             "Vers": "2",
             "PdV": "0",
-            "Strength": "-2"
+            "Rules": ["changeForce",["-2"],"gainJewels",["collier","anneau d'or"]]
          },
          {
             "Texte": "Vous décidez d'ouvrir le tout petit coffre. Il ne semble pas y avoir de serrure.",
-            "Liaison": "Quelle chance, le coffre contient une potion qui vous redonne 7 points de vie, et augmente votre force de 3. Vous quittez la grotte pour rejoindre la route.",
+            "Liaison": "Le coffre contient une potion rouge. Allez dans votre inventaire pour la boire, maintenant ou plus tard. Vous quittez la grotte pour rejoindre la route.",
             "Vers": "2",
             "PdV": "7",
-            "Strength": "3"
+            "Rules": ["gainPotions",["potion rouge"]]
          },
          {
             "Texte": "Vous sortez de la grotte sans plus de cérémonie.",
@@ -169,18 +171,18 @@
    {
       "@num": "7",
       "Description": "Les trois hommes se lèvent d'un bond en vous voyant, et portent la main sur le pommeau leur épée. Le plus grand, qui semble être leur chef, vous demande d'un ton rude de passer votre chemin.",
-      "Decor": "",
+      "Decor": "feucamp",
       "Choix": [
          {
             "Texte": "Vous les attaquez tous les trois de front.",
             "Liaison": "",
             "Vers": "9",
             "PdV": "0",
-            "Combat": ["mercenaires", "le groupe de mercenaires", "un groupe de trois mercenaires"],
-            "Force" : "30",
-            "Endurance": "30",
+            "Combat": ["mercenaire", "le mercenaire", "un mercenaire", "il"],
+            "Force" : ["10","8","8"],
+            "Endurance": ["15","12","12"],
             "TexteMort": "Alors que vous succombez sous les coups, vous réalisez qu'un combat contre plusieurs adversaires à la fois est trop risqué.",
-            "TexteVictoire": "Essuyant le sang de votre épée, vous vous approchez de la prisonnière."
+            "TexteVictoire": "Essuyant le sang de votre épée, vous reprenez votre souffle."
          },
          {
             "Texte": "Vous leur ordonnez de libérer leur prisonnière, sinon...",
@@ -199,7 +201,7 @@
    {
       "@num": "8",
       "Description": "Le chef s'esclaffe : \"La libérer ? Allons donc, sa tête est mise à prix, et la capture de ce monstre n'a pas été sans mal. Passe ton chemin, étranger !\"",
-      "Decor": "",
+      "Decor": "feucamp",
       "Choix": [
          {
             "Texte": "Vous vous excusez pour le dérangement, et partez à la recherche d'un autre abri pour la nuit.",
@@ -212,9 +214,9 @@
             "Liaison": "",
             "Vers": "9",
             "PdV": "0",
-            "Combat": ["chef", "le chef", "un mercenaire"],
-            "Force" : "10",
-            "Endurance": "10",
+            "Combat": ["chef", "le chef", "un mercenaire", "il"],
+            "Force" : ["10"],
+            "Endurance": ["15"],
             "TexteMort": "L'épée du chef des mercenaires vous transperce. Vous vous écroulez, mortellement blessé.",
             "TexteVictoire" : "Le chef s'écroule décapité et ses comparses, épouvantés, prennent la fuite."
          }
@@ -228,12 +230,12 @@
          {
             "Texte": "Vous la délivrez de ses liens.",
             "Liaison": "La prisonnière s'effondre dans vos bras. Vous sentez alors ses crocs pointus s'enfoncer dans votre cou, et comprenez votre erreur, car vous avez libéré une vampire ! Elle vous a volé 2 points de force.",
-            "Vers": "0",
-            "PdV": "-3",
-            "Strength": "-2",
-            "Combat": ["vampire", "la vampire", "une vampire"],
-            "Force" : "10",
-            "Endurance": "16",
+            "Vers": "10",
+            "PdV": "0",
+            "Rules": ["changeForce",["-2"]],
+            "Combat": ["vampire", "la vampire", "une vampire", "elle"],
+            "Force" : ["10"],
+            "Endurance": ["16"],
             "TexteMort": "Elle finit par vous maîtriser. Impuissant, vous sentez sa morsure, et le froid de la mort vous envahit tandis qu'elle vous vide de votre sang.",
             "TexteVictoire" : "Dans un dernier hurlement, elle s'effondre, et son corps se dessèche et se transforme en poussière sous vos yeux."
          },
@@ -242,9 +244,9 @@
             "Liaison": "Son regard vous hypnotise. Dans un atroce sourire qui dévoile ses canines pointues de vampire, elle vous ordonne de la libérer. Vous lui obéissez mais reprenez juste à temps le contrôle.",
             "Vers": "10",
             "PdV": "0",
-            "Combat": ["vampire", "la vampire", "une vampire"],
-            "Force" : "8",
-            "Endurance": "14",
+            "Combat": ["vampire", "la vampire", "une vampire", "elle"],
+            "Force" : ["8"],
+            "Endurance": ["14"],
             "TexteMort": "Elle finit par vous maîtriser. Impuissant, vous sentez sa morsure, et le froid de la mort vous envahit tandis qu'elle vous vide de votre sang.",
             "TexteVictoire" : "Elle s'effondre, et son corps se dessèche et se transforme en poussière sous vos yeux. Epouvanté, vous quittez les lieux."
          },
@@ -269,9 +271,9 @@
          },
          {
             "Texte": "Vous décidez de dormir à la belle étoile sur le bord de la route.",
-            "Liaison": "La nuit glaciale et humide vous fait perdre 1 point de vie.",
+            "Liaison": "La nuit est glaciale et humide. Vous mangez une ration (s'il vous en reste).",
             "Vers": "12",
-            "PdV": "-1"
+            "Rules": ["eatFood",[""]]
          },
          {
             "Texte": "Au diable la fatigue ! Vous continuez à marche forcée sans dormir.",
@@ -287,22 +289,24 @@
       "Decor": "aubergesalle",
       "Choix": [
          {
-            "Texte": "Vous vous asseyez à une table libre, et commandez un repas et une chambre.",
+            "Texte": "Vous vous asseyez à une table libre, et commandez un repas et une chambre pour 3 po.",
             "Liaison": "La nourriture est infecte, et la chambre infestée de cafards. Pendant la nuit vous êtes pris d'horribles coliques, et perdez 3 points de vie.",
             "Vers": "12",
-            "PdV": "-3"
+            "PdV": "-3",
+            "Rules": ["changeOr",["-3"]]
          },
          {
-            "Texte": "Vous essayez de participer à un jeu de dés qui se déroule à une table près de la cheminée.",
+            "Texte": "Vous regardez un jeu de dés qui se déroule à une table près de la cheminée.",
             "Liaison": "",
-            "Vers": "13",
+            "Vers": "20",
             "PdV": "0"
          },
          {
-            "Texte": "Fourbu, vous prenez juste une chambre, et allez dormir.",
+            "Texte": "Fourbu, vous prenez juste une chambre pour 1 po, et allez dormir.",
             "Liaison": "La chambre est assez confortable, et votre nuit se passe sans encombre. Vous gagnez 3 points de vie.",
             "Vers": "12",
-            "PdV": "3"
+            "PdV": "3",
+            "Rules": ["changeOr",["-1"]]
          }
       ]
    },
@@ -327,17 +331,17 @@
    },
    {
       "@num": "13",
-      "Description": "Une foule bruyante s'est rassemblée autour de la table de jeu. Vous êtes en veine, et gagnez une coquette somme. Soudain, un Nain mauvais perdant plante un couteau devant vous et vous accuse de tricher.",
+      "Description": "Vous êtes en veine, et gagnez la coquette somme de 17 po. Soudain, un Nain mauvais perdant plante un couteau devant vous et vous accuse de tricher.",
       "Decor": "jeuauberge",
+      "Rules": ["changeOr",["17"]],
       "Choix": [
          {
             "Texte": "Vous sortez votre épée, et tuez cet insolent.",
             "Liaison": "",
             "Vers": "14",
-            "PdV": "-4",
-            "Combat": ["nain", "le nain", "un nain"],
-            "Force" : "7",
-            "Endurance": "8",
+            "Combat": ["nain", "le nain", "un nain", "il"],
+            "Force" : ["7"],
+            "Endurance": ["12"],
             "TexteMort": "Malgré sa petite taille, le Nain vous assène le coup de grâce.",
             "TexteVictoire" : "Le Nain s'effondre, et un silence de plomb s'abat dans l'auberge. Vous décidez de partir et vous éloigner sans même dormir (ce qui vous coûte 4 points de vie) !"
          },
@@ -351,7 +355,8 @@
             "Texte": "Ne souhaitant pas d'ennuis, vous lui proposez de lui rendre son argent.",
             "Liaison": "Le Nain vous prend votre bourse, riant de votre faiblesse. Il ne vous reste plus qu'à aller dormir dehors dans le froid (ce qui vous coûte 3 points de vie) !",
             "Vers": "12",
-            "PdV": "-3"
+            "PdV": "-3",
+            "Rules": ["changeOr",["-100"]]
          }
       ]
    },
@@ -405,28 +410,30 @@
       "Decor": "trollpont",
       "Choix": [
          {
-            "Texte": "Tremblant, vous lui donnez votre bourse.",
-            "Liaison": "Le Troll vous remercie avec un sourire mauvais, et vous laisse passer.",
-            "Vers": "19",
-            "PdV": "0"
+            "Texte": "Vous vous jetez à l'eau pour lui échapper.",
+            "Liaison": "Vous tombez du pont avec un plouf sonore. Le fort courant vous emporte ! L'eau glaciale vous prive de vos forces, et vous coulez...",
+            "Vers": "0",
+            "PdV": "-20"
          },
          {
             "Texte": "Vous dégainez votre épée, et partez à l'assaut du monstre.",
             "Liaison": "Inquiet, vous observez la taille et la puissante musculature du monstre, en vous demandant si cette décision était sage.",
             "Vers": "19",
             "PdV": "0",
-            "Combat": ["troll", "le Troll", "un Troll"],
-            "Force" : "23",
-            "Endurance": "58",
+            "Combat": ["troll", "le Troll", "un troll", "il"],
+            "Force" : ["16"],
+            "Endurance": ["58"],
             "TexteMort": "Le troll est un adversaire redoutable. Alors que vous succombez, vous remarquez qu'il se lèche les babines, et n'osez imaginer ce qu'il va faire.",
             "TexteVictoire" : "Le troll s'effondre, contre toute attente !"
          },
          {
-            "Texte": "Vous vous jetez à l'eau pour échapper au monstre.",
-            "Liaison": "Vous tombez du pont avec un plouf sonore. Le fort courant vous emporte ! L'eau glaciale vous prive de vos forces, et vous coulez...",
-            "Vers": "0",
-            "PdV": "-20"
+            "Texte": "Tremblant, vous lui donnez votre bourse.",
+            "Liaison": "Le Troll vous remercie avec un sourire mauvais, et vous laisse passer.",
+            "Vers": "19",
+            "PdV": "0",
+            "Conditions": ["minOr", ["1"]]
          }
+         
       ]
    },
    {
@@ -477,6 +484,33 @@
          "Vers": "1",
          "PdV": "100"
       }]
+   },
+   {
+      "@num": "20",
+      "Description": "Une foule bruyante s'est rassemblée autour de la table de jeu. Après avoir observé la partie pour bien comprendre les règles, vous décidez de vous joindre au jeu.",
+      "Decor": "jeuauberge",
+      "Choix": [
+         {
+            "Texte": "Tentez votre chance.",
+            "Liaison": "",
+            "Vers": "",
+            "Rules": ["tentezVotreChance",["13","21"]]
+         }
+      ]
+   },
+   {
+      "@num": "21",
+      "Description": "Quelle malchance ! Petit à petit, vous perdez tout le contenu de votre bourse... Dépité, il ne vous reste plus qu'à passer la nuit dehors.",
+      "Decor": "jeuauberge",
+      "Choix": [
+         {
+            "Texte": "Quitter l'auberge.",
+            "Liaison": "La nuit glaciale et humide vous fait perdre 3 points de vie.",
+            "Vers": "14",
+            "PdV": "-3",
+            "Rules": ["changeOr",["-100"]]
+         }
+      ]
    }
 ]
 }
