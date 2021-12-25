@@ -425,7 +425,7 @@ function main() {
     document.getElementById("texteRules").innerHTML = sRules;
     document.getElementById("texteIntro").innerHTML = sIntro;
     //Commence à charger le fichier audo mais sans le jouer
-    audioBackground = new Audio( "../sounds/background.mp3" );
+    audioBackground = new Audio( "./sounds/background.mp3" );
 }
 
 //Appel depuis l'écran des règles du jeu, affiche l'introduction
@@ -441,9 +441,9 @@ function startGame() {
     hideElementsById(false, "gandalf", "life", "container", "histoire", "choix", "decor", "backpack");
     hideElementsById(true, "introduction", "combat");
     document.getElementById("container").style.height = "85vh";
-    audioCombat = new Audio( "../sounds/combat.mp3" );
+    audioCombat = new Audio( "./sounds/combat.mp3" );
     audioCombat.loop = true;
-    audioDeath = new Audio( "../sounds/death.mp3" );
+    audioDeath = new Audio( "./sounds/death.mp3" );
     audioDeath.loop = true;
     // audioBackground.addEventListener("canplay", event => {
     //     audioBackground.loop = true;
