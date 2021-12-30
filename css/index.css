@@ -41,6 +41,7 @@ body {
        height: 100%;
        margin: 0;
        padding: 0;
+       position: fixed;
 }
 
 .noselect {
@@ -187,7 +188,7 @@ h2{
        margin-left: 2vh;
        margin-right: 2vh;
        margin-top: 1vh;
-       font-size: 4vh;
+       font-size: 3.5vh;
        border-radius: 15px;
        background-color: rgba(0, 0, 0, 0.493);
        backdrop-filter: blur(2px);
@@ -196,8 +197,10 @@ h2{
        -moz-box-shadow: -11px 11px 23px 14px rgba(0, 0, 0, 0.71);
 }
 
+
 #histoire p {
        color: cornsilk;
+       padding: 2vh;
 }
 
 #life {
@@ -215,7 +218,7 @@ h2{
 .ulChoix {
        /*display: flex;
        flex-direction: column;*/
-       font-size: 3.5vh;
+       font-size: 3vh;
        list-style: none;
        padding-right: 3vh;
        padding-left: 3vh;
@@ -286,8 +289,8 @@ h2{
               width: 113px;
               height: 113px;
               position: fixed;
-              top: 80%;
-              left: -11%;
+              transform: translate(-55px, 54px);
+              bottom: 0%;
               padding-right: auto;
        }
 
@@ -302,8 +305,8 @@ h2{
               width: 22px;
               height: 14px;
               position: relative;
-              bottom: 56px;
-              left: 2px;
+              bottom: 70%;
+              left: 42%;
        }
 }
 
@@ -311,7 +314,11 @@ h2{
 @media screen and (max-width: 600px) {
 
        #histoire {
-              font-size: 3vh;
+              font-size: 2.8vh;
+       }
+
+       .ulChoix {
+              font-size: 2.5vh;
        }
 
        #backpack button img {
@@ -337,7 +344,7 @@ h2{
 @media screen and (min-width: 600px) {
 
        #container {
-              max-width: 90%;
+              max-width: 70%;
        }
 
        .floated{
