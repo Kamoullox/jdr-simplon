@@ -29,8 +29,8 @@
 }
 
 .module {
-       all: unset;
-     }
+  all: unset;
+}
 
 html {
   scroll-behavior: smooth;
@@ -57,7 +57,6 @@ body {
 
 #rules,
 #introduction {
-
   background-color: #ab936b;
   background-image: url("../images/parchment.jpg");
   background-repeat: repeat;
@@ -92,6 +91,15 @@ body {
 #rules span {
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
+}
+
+#texteRules, #texteIntro {
+  background: rgb(255 255 255 / 8%);
+  box-shadow: 0 8px 32px 0 rgb(70 70 70 / 37%);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 h1 {
@@ -332,8 +340,8 @@ h2 {
     width: 22px;
     height: 14px;
     position: relative;
-    bottom: 70%;
-    left: 42%;
+    bottom: 62%;
+    left: 41%;
   }
 }
 
@@ -381,9 +389,8 @@ h2 {
   }
 }
 
-
 @media screen and (min-width: 800px) {
-       #introduction { 
-              height: 100%;
-       }
+  #introduction {
+    height: 100%;
+  }
 }
