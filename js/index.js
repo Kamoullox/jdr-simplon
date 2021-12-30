@@ -1,17 +1,14 @@
 let scene;
 let sceneEnCours = 1;
-let sceneApresCombat = 0;
-const maxLife = 20;
-let maForce = 10;
-let life = maxLife;
-let saLife = null;
 let choix = null;
 let textLiaison = "";
 let tcp = []; //Table des Coups Portés
 let allDescription = "";
 let speak = true;
 let toggleAnimationText = false;
-
+let audioBackground;
+let audioCombat;
+let audioDeath;
 
 const decorUrl = "url('../images/decor/";
 
@@ -23,7 +20,7 @@ async function fetchInfo() {
         .then(data => 
             {
                 scene = data.Scene;
-                main()
+                main();
             }
         )
         .catch(error => console.log(error));
@@ -32,21 +29,25 @@ async function fetchInfo() {
 // -----------------------------------------------------------------------------
 
 function majDecor(decorName) {
-    console.log("Url du décor en cours de chargement -> " + (decorUrl + decorName + "')"))
 
     let decor = document.querySelector(".top");
     let nextDecor = document.querySelector("." + decorName);
-
-    nextDecor.classList.toggle("top");
-    nextDecor.classList.toggle("transparent");
-
-    decor.classList.toggle("top");
-    decor.classList.toggle("transparent");
+    if(nextDecor) {
+        nextDecor.classList.toggle("top");
+        nextDecor.classList.toggle("transparent");
+    } else {
+        console.log(`Impossible de trouver décor ${decorName}`)
+    }
+    if( decor ) {
+        decor.classList.toggle("top");
+        decor.classList.toggle("transparent");
+    }
 }
 
-
 function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    if( string ) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 }
 
 // blink "on" state
@@ -74,267 +75,159 @@ function displayLife(old) {
     lifeDisplay = document.getElementById("life");
     let s = "";
     //Gain de PdV
-    if (old < life) {
+    if (old < maLife) {
         for (let i = 1; i <= old; i++) {
             s += "<i class='heart fa fa-heart'></i>";
         }
         s += "<span id='blink1'>";
-        for (let i = old + 1; i <= life; i++) {
+        for (let i = old + 1; i <= maLife; i++) {
             s += "<i class='heart fa fa-heart'></i>";
         }
         s += "</span>";
         s += "<span id='blink2' style='display:none'>";
-        for (let i = old + 1; i <= life; i++) {
+        for (let i = old + 1; i <= maLife; i++) {
             s += "<i class='heart fa fa-heart-o'></i>";
         }
         s += "</span>";
-        for (let i = life + 1; i <= maxLife; i++) {
+        for (let i = maLife + 1; i <= maxLife; i++) {
             s += "<i class='heart fa fa-heart-o'></i>";
         }
     }
     //Perte de PdV
-    if (old > life) {
-        for (let i = 1; i <= life; i++) {
+    if (old > maLife) {
+        for (let i = 1; i <= maLife; i++) {
             s += "<i class='heart fa fa-heart'></i>";
         }
         s += "<span id='blink1'>";
-        for (let i = life + 1; i <= old; i++) {
+        for (let i = maLife + 1; i <= old; i++) {
             s += "<i class='heart fa fa-heart-o'></i>";
         }
         s += "</span>";
         s += "<span id='blink2' style='display:none'>";
-        for (let i = life + 1; i <= old; i++) {
+        for (let i = maLife + 1; i <= old; i++) {
             s += "<i class='heart fa fa-heart'></i>";
         }
         s += "</span>";
-        for (let i = old + 1; i < maxLife; i++) {
+        for (let i = old + 1; i <= maxLife; i++) {
             s += "<i class='heart fa fa-heart-o'></i>";
         }
     }
-    if (old != life) {
-        lifeDisplay.innerHTML = "<div aria_label='" + life + " points de vie.'>" + s + "</div>";
+    if (old != maLife) {
+        //lifeDisplay.innerHTML = "<div aria_label='" + life + " points de vie.'>" + s + "</div>";
+        lifeDisplay.innerHTML = "<div>" + s + "</div>";
         blink(300, 800);
     }
 }
 
 function changeLifePoint(changeLife) {
-    console.log("Mise a jour des point de vie -> " + changeLife);
+    //console.log("Mise a jour des point de vie -> " + changeLife);
     changeLife = parseInt(changeLife);
 
-    const oldLife = life;
+    const oldLife = maLife;
 
-    life += changeLife;
+    maLife += changeLife;
 
-    life = life > maxLife ? maxLife : life;
-    life = life < 0 ? 0 : life;
+    maLife = maLife > maxLife ? maxLife : maLife;
+    maLife = maLife < 0 ? 0 : maLife;
 
     displayLife(oldLife);
 }
 
 // -----------------------------------------------------------------------------------------------------------
 function majUnChoix(num) {
-    console.log("Mise à jour du choix " + (num + 1));
-
     const choix = document.getElementById('choix' + (num + 1));
     choix.textContent = scene[sceneEnCours].Choix[num].Texte;
-
-    choix.hidden = false;
-    console.log("Choix " + (num + 1) + " mis à jour!");
-    console.log("");
-}
-
-function changeForce(strength) {
-    console.log("Changement de force " + strength);
-    if (strength != undefined) {
-        let x = parseInt(strength);
-        maForce += x;
+    //Choix soumis à condition(s) ? Elles doivent toutes être true
+    let conditions = scene[sceneEnCours].Choix[num].Conditions;
+    let result = true;
+    if( conditions ) {
+        for(  let c = 0; c < conditions.length; c += 2) {
+            let fn = scene[sceneEnCours].Choix[num].Conditions[c];
+            let args = scene[sceneEnCours].Choix[num].Conditions[c + 1];
+            console.log(`Fn=${fn}\nargs=${args}`);
+            result = fnCall(fn, args) && result;
+        }
+    }
+    if( result ) {
+        choix.visibility = "visible";
+        choix.hidden = false;    
+    } else {
+        choix.visibility = "hidden"; 
+        choix.hidden = true;
     }
 }
 
 //Regarde s'il y a un combat
 function clickOption(i) {
-    console.log("Vous avez cliqué sur un choix qui envoie vers la scène " + scene[sceneEnCours].Choix[i].Vers)
+    
+    let changeVers;
+    
     choix = i; //mémorise le clic
     textLiaison = scene[sceneEnCours].Choix[i].Liaison;
-
-    changeLifePoint(scene[sceneEnCours].Choix[i].PdV);
-    //Optionnel dans le JSON pour gérer les points de vie.
-    changeForce(scene[sceneEnCours].Choix[i].Strength);
-
-    if (life <= 0) {
-        life = 0;
+    
+    let pdv = scene[sceneEnCours].Choix[i].PdV;
+    if( pdv ) changeLifePoint(pdv);
+    //Optionnel dans le JSON pour gérer les pertes ou gains liés au choix.
+    let rules = scene[sceneEnCours].Choix[i].Rules;
+    if( rules ) {
+        for(  let r = 0; r < rules.length; r += 2) {
+            let fn = scene[sceneEnCours].Choix[i].Rules[r];
+            let args = scene[sceneEnCours].Choix[i].Rules[r + 1];
+            console.log(`Fn=${fn}\nargs=${args}`);
+            changeVers = fnCall(fn, args);
+        }
+    }
+    //Tentez votre chance peut changer la scène de destination
+    if( !changeVers ) changeVers = scene[sceneEnCours].Choix[i].Vers;
+    if (maLife <= 0) {
+        maLife = 0;
         sceneEnCours = 0;
         majScene();
     } else {
         if (scene[sceneEnCours].Choix[i].Combat == undefined) {
-            sceneEnCours = scene[sceneEnCours].Choix[i].Vers;
+            //console.log("vers "+changeVers);
+            sceneEnCours = parseInt( changeVers );
             majScene();
         } else {
             sceneApresCombat = scene[sceneEnCours].Choix[i].Vers;
             ecranCombat();
         }
     }
-
-    //Affiche un écran de combat spécial
-    function ecranCombat(vers) {
-        let gandalf = document.querySelector("#taler");
-        gandalf.hide = true;
-
-
-        majDecor("combat");
-        saLife = null;
-        let x = document.getElementsByTagName("LI");
-        for (let i = 0; i < x.length; i++) {
-            x[i].hidden = true;
-        }
-        document.getElementById("histoire").hidden = true;
-        let c = document.getElementById("description");
-        c.style.display = "flex";
-        let b = document.getElementById("btnAttack");
-        b.style.display = "block";
-        let saForce = parseInt(scene[sceneEnCours].Choix[choix].Force);
-        c.innerHTML = textLiaison + " "; //dans ce cas, introduction au combat qui a lieu
-        c.innerHTML += "Vous allez combattre contre " + scene[sceneEnCours].Choix[choix].Combat[2] + ".<br>";
-        c.innerHTML += "Sa FORCE est de " + saForce + ", la vôtre est de " + maForce + ". ";
-        let diff = maForce - saForce;
-        if (diff == 0 || diff == -1 || diff == 1) {
-            c.innerHTML += "Le combat s'annonce équilibré.<br>";
-        }
-        if (diff > 1 && diff < 8) {
-            c.innerHTML += "Le combat devrait tourner à votre avantage.";
-        }
-        if (diff > 8) {
-            c.innerHTML += "Vous devriez gagner facilement ce combat.";
-        }
-        if (diff < -1 && diff > -8) {
-            c.innerHTML += "Le combat n'est pas gagné d'avance, attention.";
-        }
-        if (diff < -8) {
-            c.innerHTML += "Ce combat s'annonce très difficile !";
-        }
-        c.innerHTML += "<br>";
-    }
-}
-
-//Appelée quand on clique sur le bouton attaque
-function attack() {
-    let c = document.getElementById("description");
-    c.innerHTML += "<br>";
-    let diff = 0;
-    if (saLife == null) {
-        saLife = parseInt(scene[sceneEnCours].Choix[choix].Endurance);
-    }
-    let saForce = parseInt(scene[sceneEnCours].Choix[choix].Force);
-    let dice = Math.floor(Math.random() * 10);
-    if (maForce != saForce) {
-        diff = Math.floor((maForce - saForce) / 2 + 6); //colonne du tableau tcp
-        if (diff < 0) { diff = 0; }
-        if (diff > 12) { diff = 12; }
-    } else {
-        diff = 6; //colonne 7 au milieu en cas d'égalité stricte
-    }
-    switch (dice) {
-        case 0:
-        case 1:
-            c.innerHTML += "La chance vous abandonne";
-            break;
-        case 2:
-        case 3:
-            c.innerHTML += "La chance ne vous sourit pas";
-            break;
-        case 4:
-        case 5:
-            c.innerHTML += "Vous vous en sortez assez bien";
-            break;
-        case 6:
-        case 7:
-            c.innerHTML += "La chance vous sourit";
-            break;
-        case 8:
-        case 9:
-            c.innerHTML += "La chance est avec vous";
-            break;
-    }
-    let saPerte = tcp[dice][diff][0];
-    c.innerHTML += ", " + scene[sceneEnCours].Choix[choix].Combat[1];
-    if (saPerte == 0) {
-        c.innerHTML += " ne perd aucun points de vie.<br>";
-    } else {
-        c.innerHTML += " perd " + saPerte + " points de vie sous vos coups.<br>";
-    }
-    saLife -= saPerte;
-    let maPerte = tcp[dice][diff][1];
-    if (maPerte == 0) {
-        c.innerHTML += "Vous ne perdez aucun points de vie dans l'échange.";
-    } else {
-        c.innerHTML += "Vous perdez " + maPerte + " points de vie dans l'échange.";
-    }
-    let oldLife = life;
-    life -= maPerte;
-    if (life <= 0) {
-        life = 0;
-        displayLife(oldLife);
-        textLiaison = scene[sceneEnCours].Choix[choix].TexteMort;
-        sceneEnCours = 0;
-        quitteCombat();
-    } else {
-        displayLife(oldLife);
-        if (saLife <= 0) {
-            saLife = 0;
-            textLiaison = textLiaison = scene[sceneEnCours].Choix[choix].TexteVictoire;
-            sceneEnCours = sceneApresCombat; //va à la scène prévue
-            quitteCombat();
-        } else {
-            c.innerHTML += "<br>" + capitalizeFirstLetter(scene[sceneEnCours].Choix[choix].Combat[1]);
-            c.innerHTML += " a encore " + saLife + " points de vie.<br>";
-        }
-    }
-    console.log("dice=" + dice);
-    console.log("diff=" + diff);
-    console.log("il perd=" + tcp[dice][diff][0]);
-    console.log("je perds=" + tcp[dice][diff][1]);
-}
-
-function quitteCombat() {
-    saLife = null;
-    let x = document.getElementsByTagName("LI");
-    for (let i = 0; i < x.length; i++) {
-        x[i].hidden = false;
-    }
-    document.getElementById("histoire").hidden = false;
-    let c = document.getElementById("description");
-    c.style.display = "none";
-    let b = document.getElementById("btnAttack");
-    b.style.display = "none";
-    majScene();
-
-    let gandalf = document.querySelector("#taler");
-    gandalf.hidden = false;
 }
 
 function majFullChoix() {
-    console.log("Mise à jour de tous les choix en cours ...");
-    console.log("");
-
     let nbChoix = scene[sceneEnCours].Choix.length;
 
     // Change le texte de tous les choix
-    for (i = 0; i < nbChoix; i++) {
-        majUnChoix(i);
+    for ( let i = 0; i < nbChoix; i++ ) {
+        majUnChoix( i );
     }
 
     // Cache les éléments de la liste si il n'y a pas de choix pour la scène en cours
-    for (i = nbChoix + 1; i < 4; i++) {
-        const choix = document.getElementById('choix' + (i));
-        choix.hidden = true;
+    for ( let i = nbChoix + 1; i < 4; i++ ) {
+        const c = document.getElementById('choix' + i);
+        c.innerHTML = "";
+        c.visibility = "hidden";
+        c.hidden = true;
     }
-    console.log("Tous les Choix sont à jour !");
-    console.log("---------------------------------------------------");
 }
+
+//------------------------------- CONDITIONS -------------------------------
+//Certains choix peuvent être soumis à une condition, et ne pas apparaître !
+function minOr(min) {
+    return gold >= parseInt(min);
+}
+
 // -----------------------------------------------------------------------------------------------------------
 
 function majScene() {
-    console.log("Mise en place de la scène -> " + sceneEnCours);
+
+    //Si mort
+    if( sceneEnCours == 0 ) {
+        audioBackground.pause();
+        audioCombat.pause();
+        audioDeath.play();
+    }
 
     hideChoices();
 
@@ -344,13 +237,22 @@ function majScene() {
         majDecor(scene[sceneEnCours].Decor);
     }
 
-    const histoire = document.getElementById("content");
+    //const histoire = document.getElementById("content");
+    // histoire.innerHTML = textLiaison + (textLiaison != "" ? "<br /><br />" : "") + scene[sceneEnCours].Description;
 
-    allDescription = textLiaison + (textLiaison != "" ? "<br /><br />" : "") + scene[sceneEnCours].Description;
+    allDescription = textLiaison + (textLiaison != "" ? "<br>" : "") + scene[sceneEnCours].Description;
+    //Optionnel dans le JSON pour gérer les pertes ou gains dans la scène.
+    let rules = scene[sceneEnCours].Rules;
+    if( rules ) {
+        for(  let r = 0; r < rules.length; r += 2) {
+            let fn = scene[sceneEnCours].Rules[r];
+            let args = scene[sceneEnCours].Rules[r + 1];
+            console.log(`Fn=${fn}\nargs=${args}`);
+            fnCall(fn, args);
+        }
+    }
     initText();
     animationText();
-
-
 
     majFullChoix();
 }
@@ -358,7 +260,7 @@ function majScene() {
 //Charge les images de fond
 function loadImg() {
     let d = document.querySelector(".decor");
-    console.log(d);
+    
     let s = "";
     let c = "";
     for (scn = 0; scn < scene.length; scn++) {
@@ -368,23 +270,43 @@ function loadImg() {
             } else {
                 c = " transparent";
             }
-            s += '<img class="' + scene[scn].Decor + c + '" src="./images/decor/' + scene[scn].Decor + '.jpg" />';
+            s += `<img class="${scene[scn].Decor + c}" src="./images/decor/${scene[scn].Decor}.jpg" />`;
         }
     }
-    s += '<img class="combat transparent" src="./images/decor/combat.jpg" />';
+    s += `<img class="combat transparent" src="./images/decor/combat.jpg" />`;
+    s += `<img class="inventaire transparent" src="./images/decor/inventaire.jpg" />`;
     d.innerHTML = s;
 }
 
 function displayChoices(){
     let choix = document.querySelector('#choix');
-    choix.style.display = "block";
+    choix.style.visibility = "visible";
+    choicesReveal();
+}
+
+function choicesReveal() {
+    //Fait apparaître les choix l'un après l'autre après displayChoices pour que
+    //la transition CSS soit effectuée par la classe fadeIn
+    for( let i = 1; i <= 3; i++ ) {
+        let c = document.getElementById("choix" + i);
+        if( !c.hidden ) {
+            window.setTimeout( () => {
+            c.style.visibility = "visible";
+            c.classList.add("fadeIn");} , (i-1)*100);
+        }
+    }
 }
 
 function hideChoices(){
     let choix = document.querySelector('#choix');
-    choix.style.display = "none";
+    choix.style.visibility = "hidden";
+    for( let i = 1; i <= 3; i++ ) {
+        let c = document.getElementById("choix" + i);
+        c.style.visibility = "hidden";
+        c.style.hidden = true;
+        c.classList.remove("fadeIn");
+    }
 }
-
 
 function taler() {
     const imgOne = document.getElementById('one');
@@ -451,8 +373,6 @@ function animationText() {
     toggleAnimationText = false;
 
     (function type() {
-        //text = str[i];
-         console.log(i);
         if ((i === str.length) || (toggleAnimationText)) {
             document.getElementById("content").innerHTML = allDescription;
             displayChoices();
@@ -463,14 +383,13 @@ function animationText() {
 
         letter = document.getElementById("letter"+i);
         if( letter ) {
-            letter.classList.toggle("invisible")
+            letter.classList.toggle("invisible");
         }
         i++;
         
         setTimeout(type, 30);
     }());
 }
-
 
 function stopAnimationText(){
     toggleAnimationText = true;
@@ -497,6 +416,41 @@ function main() {
         [[6, 0], [7, 0], [8, 0], [9, 0], [10, 0], [11, 0], [12, 0], [14, 0], [16, 0], [18, 0], [100, 0], [100, 0], [100, 0]],
     ];
     loadImg();
+    initStats();
+    hideElementsById(true, "gandalf", "life", "container", "histoire", "choix", "combat");
+    document.getElementById("container").style.height = "0vh";
+    sRules = sRules.replace("$maForce", maForce);
+    sRules = sRules.replace("$maLife", maLife);
+    sRules = sRules.replace("$maChance", maChance);
+    document.getElementById("texteRules").innerHTML = sRules;
+    document.getElementById("texteIntro").innerHTML = sIntro;
+    //Commence à charger le fichier audo mais sans le jouer
+    audioBackground = new Audio( "./sounds/background.mp3" );
+}
+
+//Appel depuis l'écran des règles du jeu, affiche l'introduction
+function intro() {
+    mesPotionsInitiales = Array.from(mesPotions); //mémorise les potions de départ
+    hideElementsById(true,"rules");
+    window.scrollTo(0, 0);
+    hideElementsById(false,"introduction");
+}
+
+//Appel depuis l'écran d'introduction, démarre l'aventure
+function startGame() {
+    hideElementsById(false, "gandalf", "life", "container", "histoire", "choix", "decor", "backpack");
+    hideElementsById(true, "introduction", "combat");
+    document.getElementById("container").style.height = "85vh";
+    audioCombat = new Audio( "./sounds/combat.mp3" );
+    audioCombat.loop = true;
+    audioDeath = new Audio( "./sounds/death.mp3" );
+    audioDeath.loop = true;
+    // audioBackground.addEventListener("canplay", event => {
+    //     audioBackground.loop = true;
+    //     audioBackground.play();
+    //   });
+    audioBackground.loop = true;
+    audioBackground.play();
     displayLife(0);
     majScene();
 }

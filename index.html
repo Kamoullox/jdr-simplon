@@ -1,51 +1,153 @@
 <!DOCTYPE html>
 <html lang="fr">
     
-    <head>
-        <link href="./css/index.css" rel="stylesheet">
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-        <link rel="manifest" href="/site.webmanifest">
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="theme-color" content="#ffffff">
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>JDR</title>
-        <script src="./js/index.js" defer ></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
+<head>
+    <link href="./css/index.css" rel="stylesheet">
+    <link href="./css/combat.css" rel="stylesheet">
+    <link href="./css/backpack.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href=".favicon/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDR</title>
+    <script src="./js/combat.js" defer></script>
+    <script src="./js/backpack.js" defer></script>
+    <script src="./js/index.js" defer></script>
+    <script src="./js/intro.js" defer></script>
+    <script src="./js/rules.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
 <body>
-    <div class="decor">
+    <div id="rules" class="noselect">
+        <h1>En route vers Magimar</h1>
+        <h2>Règles du jeu</h2>
+        <div id="texteRules"></div>
+        <div class="buttonsStart">
+            <button class="btnCombat" onclick="gainPotions(['puissance','puissance']);intro()">Puissance</button>
+            <button class="btnCombat" onclick="gainPotions(['vigueur','vigueur']);intro()">Vigueur</button>
+            <button class="btnCombat" onclick="gainPotions(['fortune','fortune']);intro()">Bonne Fortune</button>
+        </div>
     </div>
-
+    <div id="introduction" class="noselect" hidden>
+        <h1>Introduction</h1>
+        <div id="texteIntro"></div>
+        <div class="buttonsStart"><button onclick="startGame()" class="btnCombat">Commencez l'aventure !</button></div>
+    </div>
+    <div id="decor" class="decor" hidden>
+        <img class="combat transparent" src="./images/decor/combat.jpg" />
+        <img class="inventaire transparent" src="./images/decor/inventaire.jpg" />
+        <img class="foret top" src="./images/decor/foret.jpg" loading="eager"/>
+    </div>
+    <div id="backpack" hidden><button onclick="ecranInventaire();closeModal()"><img id="backpackImg" alt="Inventaire" src="./images/backpack.png"></button></div>
     <div class="lifeContainer">
         <p id="life"></p>
     </div>
-
-    <div id="container">
-
-        <section id="histoire" onclick="stopAnimationText()">
-            <div id="taler" class="noSelect">
+    <div id="container" hidden>
+        <section id="inventaire" hidden class="noselect">
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2><img alt="" src="images/potion.png">Boire une potion</h2>
+                      </div>
+                      <div id="myModalBody" class="modal-body">
+                        <p>La potion restaure tous vos points de vie !</p>
+                        <p>Some other text...</p>
+                      </div>
+                </div>
+              </div>
+            <p></p>
+            <div id="stats" hidden class="three-columns">
+                <div id="force3">
+                    FORCE
+                    <em>Total de départ 15</em>
+                    <b>13</b>
+                </div>
+                <div id="endurance3">
+                    ENDURANCE
+                    <em>Total de départ 21</em>
+                    <b>20</b>
+                </div>
+                <div id="chance3">
+                    CHANCE
+                    <em>Total de départ 10</em>
+                    <b>8</b>
+                </div>
+            </div>
+            <div id="cadre" class="two-columns">
+                <div id="statsLarge" hidden>
+                    <div id="force2">
+                        FORCE
+                        <em>Total de départ 15</em>
+                        <b>13</b>
+                    </div>
+                    <div id="endurance2">
+                        ENDURANCE
+                        <em>Total de départ 21</em>
+                        <b>20</b>
+                    </div>
+                    <div id="chance2">
+                        CHANCE
+                        <em>Total de départ 10</em>
+                        <b>8</b>
+                    </div>
+                </div>
+                <div id="objets">
+                    <div id="equipement">
+                        EQUIPEMENT
+                        <span>Epée</span>
+                    </div>
+                </div>
+                <div id="divers">
+                    <div class="half">
+                        <div id="or">
+                            OR
+                            <b>25</b>
+                        </div>
+                        <div id="provisions">
+                            RATIONS
+                            <b>5</b>
+                        </div>
+                    </div>
+                    <div id="bijoux">
+                        BIJOUX
+                        <span>Collier</span>
+                    </div>
+                    <div id="potions">
+                        POTION
+                        <a>Endurance</a>
+                    </div>
+                </div>
+            </div>
+        </section>       
+        <section id="histoire" hidden onclick="stopAnimationText()">
+            <div id="taler">
                 <img id="gandalf" src="./images/taler/gandalf.png">
                 <img id="one" src="./images/taler/bouche2-removebg-preview.png">
             </div>
-            <p id="content" class="noSelect" tabindex="0"></p>
+            <p id="content" class="noselect" tabindex="0"></p>
         </section>
-        <section id="combat" style="padding:15px">
-            <div id="description" class="boxCombat noSelect"></div>
-            <div>
-                <button id="btnAttack" onclick="attack()"><img src="images/sword.png" style="height: 0.7em;"> Attaque</button>
+        <section hidden id="combat">
+            <div id="description" class="boxCombat noselect"></div>
+            <div class="buttonsCombat">
+                    <button id="btnAttack" class="btnCombat" onclick="attack(false)"><img src="images/sword.png" style="height: 0.7em;"> Attaque</button>
+                    <button id="btnFlee" class="btnCombat" onclick="flee()"><img src="images/flee.png" style="height: 0.7em;"> Fuir</button>
+                    <button id="btnChance" class="btnCombat" onclick="attack(true)"><img src="images/dice.png" style="height: 0.7em;"> Chance</button>
             </div>
         </section>
-        <section id="choix">
-            <ul>
-                <li id="choix1" class="noSelect" tabindex="1" onclick = clickOption(0)></li>
-                <li id="choix2" class="noSelect" tabindex="2" onclick = clickOption(1)></li>
-                <li id="choix3" class="noSelect" tabindex="3" onclick = clickOption(2)></li>
+        <section id="choix" hidden>
+            <ul class="ulChoix">
+                <li id="choix1" class="noselect liChoix" tabindex="1" onclick = clickOption(0)></li>
+                <li id="choix2" class="noselect liChoix" tabindex="2" onclick = clickOption(1)></li>
+                <li id="choix3" class="noselect liChoix" tabindex="3" onclick = clickOption(2)></li>
             </ul>
         </section>
     </div>
