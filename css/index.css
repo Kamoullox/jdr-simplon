@@ -93,7 +93,8 @@ body {
   font-weight: bold;
 }
 
-#texteRules, #texteIntro {
+#texteRules,
+#texteIntro {
   background: rgb(255 255 255 / 8%);
   box-shadow: 0 8px 32px 0 rgb(70 70 70 / 37%);
   backdrop-filter: blur(3px);
@@ -339,58 +340,58 @@ h2 {
   #one {
     width: 22px;
     height: 14px;
-    position: relative;
-    bottom: 62%;
-    left: 41%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  #histoire {
-    font-size: 2.8vh;
+    position: absolute;
+    bottom: 0%;
+    transform: translate(-65px, -18px);
   }
 
-  .ulChoix {
-    font-size: 2.5vh;
-  }
+  @media screen and (max-width: 600px) {
+    #histoire {
+      font-size: 2.8vh;
+    }
 
-  #backpack button img {
-    width: 6vh;
-  }
+    .ulChoix {
+      font-size: 2.5vh;
+    }
 
-  /*li {
+    #backpack button img {
+      width: 6vh;
+    }
+
+    /*li {
               font-size: 2vw;
        }*/
 
-  #taler {
-    display: none;
-  }
-  .floated {
-    float: none;
-  }
-  .buttonsStart {
-    flex-direction: column;
-  }
-}
-
-@media screen and (min-width: 600px) {
-  #container {
-    max-width: 70%;
+    #taler {
+      display: none;
+    }
+    .floated {
+      float: none;
+    }
+    .buttonsStart {
+      flex-direction: column;
+    }
   }
 
-  .floated {
-    float: none;
-    text-align: center;
+  @media screen and (min-width: 600px) {
+    #container {
+      max-width: 70%;
+    }
+
+    .floated {
+      float: none;
+      text-align: center;
+    }
+
+    .rules--container,
+    .introduction--container {
+      text-align: justify;
+    }
   }
 
-  .rules--container,
-  .introduction--container {
-    text-align: justify;
-  }
-}
-
-@media screen and (min-width: 800px) {
-  #introduction {
-    height: 100%;
+  @media screen and (min-width: 800px) {
+    #introduction {
+      height: 100%;
+    }
   }
 }
