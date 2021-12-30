@@ -28,15 +28,23 @@
   src: url("BLKCHCRY.TTF") format("truetype");
 }
 
+.module {
+       all: unset;
+     }
+
 html {
   scroll-behavior: smooth;
   background-color: black;
+  height: 100%;
+  width: 100%;
 }
 
 body {
   font-family: "Medieval", cursive;
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .noselect {
@@ -49,8 +57,7 @@ body {
 
 #rules,
 #introduction {
-  height: 100%;
-  width: 100%;
+
   background-color: #ab936b;
   background-image: url("../images/parchment.jpg");
   background-repeat: repeat;
@@ -89,7 +96,7 @@ body {
 
 h1 {
   color: black;
-  font-size: 7vh;
+  font-size: 2em;
   text-align: center;
   margin: 0;
   padding: 2vh;
@@ -372,4 +379,11 @@ h2 {
   .introduction--container {
     text-align: justify;
   }
+}
+
+
+@media screen and (min-width: 800px) {
+       #introduction { 
+              height: 100%;
+       }
 }
