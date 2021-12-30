@@ -445,6 +445,16 @@ function startGame() {
     audioCombat.loop = true;
     audioDeath = new Audio( "./sounds/death.mp3" );
     audioDeath.loop = true;
+
+    // let html = document.querySelector("html");
+    // html.style.position = "fixed";
+    // html.style.backgroundImage = "../iamges/decor/mort.jpg"
+
+    // html.style.backgroundImage = null;
+    // html.style.backgroundColor = null;
+
+    // console.log(html.style.backgroundImage)
+
     // audioBackground.addEventListener("canplay", event => {
     //     audioBackground.loop = true;
     //     audioBackground.play();
